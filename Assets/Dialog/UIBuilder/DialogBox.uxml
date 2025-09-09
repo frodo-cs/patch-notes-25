@@ -1,0 +1,22 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Dialog/UI/DialogBox.uss?fileID=7433441132597879392&amp;guid=4d76726ab428d2d4d95e8d89a59751e0&amp;type=3#DialogBox" />
+    <ui:VisualElement name="UI" style="flex-grow: 1; bottom: 0; align-self: auto; align-content: auto; justify-content: flex-end; align-items: stretch; width: 100%; flex-direction: column; display: flex;">
+        <ui:VisualElement name="DialogBox" class="Panel" style="align-content: auto; display: none;">
+            <ui:VisualElement name="RightActor" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-3753015318093942961&amp;guid=5bea87a57b4fbf34bb79f6d7e21ccad2&amp;type=3#arrow-left&quot;); align-self: stretch;" />
+            <ui:VisualElement name="Dialog" style="align-content: auto; flex-direction: row; padding-right: 0; padding-left: 0; bottom: auto; align-self: stretch; width: 90%; padding-top: 0; padding-bottom: 0;">
+                <ui:VisualElement name="TextContainer" style="flex-grow: 1;">
+                    <ui:Label name="ActorName" enable-rich-text="true" selectable="false" language-direction="Inherit" focusable="false" emoji-fallback-support="true" parse-escape-sequences="false" text="Npc Talking (optional):" class="DialogActor" style="align-content: auto;" />
+                    <ui:Label name="Text" enable-rich-text="true" selectable="false" language-direction="Inherit" focusable="false" emoji-fallback-support="true" parse-escape-sequences="false" text="* ( You notice a text box appearing!  )" class="DialogText" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="Responses" class="Panel" style="display: none;">
+            <ui:Label text="Yeah, for sure!" name="LeftResponse" class="ResponseText" style="width: 30%; align-self: center;" />
+            <ui:VisualElement name="Middle" style="flex-grow: 0; align-self: center; align-items: center; padding-top: 0; padding-right: 5px; padding-bottom: 0; padding-left: 5px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; width: 40%; height: 100%; align-content: auto; justify-content: space-between; display: flex;">
+                <ui:Label text="Don&apos;t know, sound weird" name="UpperResponse" class="ResponseText" style="width: auto; margin-bottom: 0; top: 0; margin-top: 0; margin-right: 0; margin-left: 0; display: flex;" />
+                <ui:Label text="[...]" name="DownResponse" class="ResponseText" style="width: auto; margin-top: 0; flex-direction: column; align-self: auto; bottom: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; display: flex;" />
+            </ui:VisualElement>
+            <ui:Label text="Absolutly not!" name="RightResponse" class="ResponseText" style="display: flex; width: 30%; max-width: none; flex-shrink: 0; align-self: center;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
