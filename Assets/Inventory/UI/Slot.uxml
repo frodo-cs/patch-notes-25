@@ -1,0 +1,7 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Inventory/UI/Slot.uss?fileID=7433441132597879392&amp;guid=32aeb397af1028b4fb0f12d15c15fe46&amp;type=3#Slot" />
+    <engine:VisualElement name="Slot" class="Slot">
+        <engine:VisualElement name="Icon" style="flex-grow: 1; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; background-image: none; -unity-background-scale-mode: scale-to-fit;" />
+        <engine:Label text="1/1" name="Amount" style="-unity-text-align: middle-right; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 10px; padding-bottom: 0; padding-left: 0; background-color: rgb(152, 123, 63); font-size: 14%;" />
+    </engine:VisualElement>
+</engine:UXML>

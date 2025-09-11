@@ -16,6 +16,8 @@ public class ChangeScene : MonoBehaviour
     public delegate bool loadScene(int indexBuild);
     public static loadScene LoadScene;
 
+    public static bool isSceneTransitioning;
+
     private void Awake() {
         LoadScene = OnLoadScene;
     }
@@ -49,6 +51,7 @@ public class ChangeScene : MonoBehaviour
 
         IEnumerator corrutine() {
             transitionMaterial.SetFloat("_time", 0);
+            isSceneTransitioning = true;
 
             float t = 0;
             while(t <= 1) {
@@ -83,6 +86,7 @@ public class ChangeScene : MonoBehaviour
             }
 
             sceneRef = new GameObject().transform;
+            isSceneTransitioning = false;
             currentCorrutine = null;
         }
     }

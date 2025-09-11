@@ -97,6 +97,8 @@ namespace Cinematics {
         #region Dialog
 
         void DialogCorrutine(Dialog d) {
+            if(ChangeScene.isSceneTransitioning) return;
+
             if(currentCorrutine != null) StopCoroutine(currentCorrutine);
 
             currentCorrutine = StartCoroutine(corrutine());
@@ -179,6 +181,8 @@ namespace Cinematics {
                     source.Stop();
                 }
             }
+
+            dialogWrittingCorroutine = null;
         }
 
         #endregion
@@ -186,6 +190,8 @@ namespace Cinematics {
         #region Question
 
         void QuestionCorrutine(Question q) {
+            if(ChangeScene.isSceneTransitioning) return;
+
             if(currentCorrutine != null) StopCoroutine(currentCorrutine);
             currentCorrutine = StartCoroutine(corrutine());
 
@@ -238,6 +244,8 @@ namespace Cinematics {
                         Responses[i].text = q.responses[i];
                     }
                 }
+
+                InteractOnDialog = null;
             }
         }
 

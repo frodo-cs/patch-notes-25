@@ -11,7 +11,7 @@
     border-right-color: rgb(255, 255, 255);
     border-top-color: rgb(255, 255, 255);
     border-bottom-color: rgb(255, 255, 255);
-    font-size: 8px;
+    font-size: 150%;
     color: rgb(255, 255, 255);
     position: relative;
     width: 20%;
@@ -21,6 +21,7 @@
 
 .ResponseText:hover {
     color: rgb(255, 194, 0);
+    font-size: 160%;
 }
 
 .Panel {
@@ -106,5 +107,5 @@
     align-items: auto;
     visibility: visible;
     border-top-width: 2px;
-    -unity-font: url("project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=5bea87a57b4fbf34bb79f6d7e21ccad2&type=3#NotInter-Regular");
+    -unity-font: url('project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=5bea87a57b4fbf34bb79f6d7e21ccad2&type=3#NotInter-Regular');
 }

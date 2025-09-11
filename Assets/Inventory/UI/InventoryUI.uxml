@@ -1,0 +1,13 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:Template name="Slot" src="project://database/Assets/Inventory/UI/Slot.uxml?fileID=9197481963319205126&amp;guid=da66c4aa85dc60240858f1437f36d560&amp;type=3#Slot" />
+    <engine:VisualElement name="Background" style="flex-grow: 1; background-color: rgba(116, 116, 116, 0); width: auto; margin-top: auto; margin-right: 15%; margin-bottom: auto; margin-left: 15%; align-self: center; align-content: stretch; justify-content: flex-start; align-items: stretch; display: flex; flex-direction: column-reverse; height: 20%; flex-wrap: nowrap; position: relative;">
+        <engine:VisualElement name="H1" style="flex-grow: 0; background-color: rgba(132, 132, 132, 0.89); height: auto; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; flex-direction: row; align-self: flex-end; align-content: auto; align-items: center; flex-wrap: nowrap;">
+            <engine:Instance template="Slot" name="H1S1" />
+            <engine:Instance template="Slot" name="H1S2" />
+            <engine:Instance template="Slot" name="H1S3" />
+            <engine:Instance template="Slot" name="H1S4" />
+            <engine:Instance template="Slot" name="H1S5" />
+            <engine:Instance template="Slot" name="H1S6" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

@@ -1,0 +1,48 @@
+.Slot {
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    background-color: rgb(192, 156, 79);
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+    border-left-color: rgb(81, 66, 33);
+    border-right-color: rgb(81, 66, 33);
+    border-top-color: rgb(81, 66, 33);
+    border-bottom-color: rgb(81, 66, 33);
+}
+
+.Slot:hover {
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    background-color: rgb(192, 156, 79);
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+    border-left-color: rgb(81, 66, 33);
+    border-right-color: rgb(81, 66, 33);
+    border-top-color: rgb(81, 66, 33);
+    border-bottom-color: rgb(81, 66, 33);
+    scale: 1.1 1.1;
+}
