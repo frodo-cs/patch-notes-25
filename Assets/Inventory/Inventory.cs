@@ -1,3 +1,4 @@
+using Cinematics;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -9,6 +10,11 @@ namespace Player.Inventory {
 
         private void Start() {
             UpdateUI();
+
+            DialogBoxController.OnDialogStars += HideUI;
+
+            DialogBoxController.OnDialogEnds += ShowUI;
+            DialogBoxController.OnQuestionEnds += ShowUI;
         }
 
         [System.Serializable]
@@ -41,6 +47,12 @@ namespace Player.Inventory {
                 }
             }
         }
+
+        void HideUI() { DisplayUI(false); }
+        void ShowUI() { DisplayUI(true); }
+        void ShowUI(byte a) { DisplayUI(true); }
+
+        void DisplayUI(bool t) { UI.rootVisualElement.Q("Background").style.display = t ? DisplayStyle.Flex : DisplayStyle.None; }
     }
 
 } 
