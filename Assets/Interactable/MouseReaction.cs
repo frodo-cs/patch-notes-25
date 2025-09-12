@@ -14,10 +14,16 @@ namespace Player {
 
         }
 
+        /// <summary>
+        /// Dan click al objeto, inicia el click
+        /// </summary>
         public virtual void OnInteractStart() {
             Debug.Log("Interact obj starts");
         }
 
+        /// <summary>
+        /// Dan click al objeto, termina el click
+        /// </summary>
         public virtual void OnInteractEnd() {
             Debug.Log("Interact obj ends");
         }

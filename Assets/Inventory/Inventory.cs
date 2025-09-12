@@ -16,11 +16,32 @@ namespace Player.Inventory {
 
 
         private void Start() {
+            for (int x = 1; x <= 6; x++)
+            {
+                int index = (x - 1);
+                VisualElement e = UI.rootVisualElement.Q($"H1S{x}");
+
+                if (e == null)
+                    continue;
+
+                e.RegisterCallback<ClickEvent>(evt =>
+                {
+                    if (index < objects.Count)
+                    {
+                        selectedIndex = index;
+                        SelectedItem = objects[index];
+                        Debug.Log($"Selected item: {SelectedItem.Value.obj.name}");
+                        UpdateUI();
+                    }
+                });
+            }
+
             UpdateUI();
 
             DialogBoxController.OnDialogStars += HideUI;
             DialogBoxController.OnDialogEnds += ShowUI;
             DialogBoxController.OnQuestionEnds += ShowUI;
+
             PickUpItem += OnPickUpItem;
         }
 
@@ -31,46 +52,37 @@ namespace Player.Inventory {
         }
 
         void UpdateUI() {
-            for(int y = 1; y < 2; y++) {
-                for(int x = 1; x <= 6; x++) {
+            for(int y = 1; y < 2; y++)
+            {
+                for (int x = 1; x <= 6; x++)
+                {
                     VisualElement e = UI.rootVisualElement.Q($"H{y}S{x}");
                     int index = (x - 1) + ((y - 1) * 6);
 
+                    if (e == null)
+                        continue;
                     Texture2D portrait = null;
                     string description = "";
 
-                    if(index < objects.Count) {
+                    if (index < objects.Count)
+                    {
                         InventoryData obj = objects[index];
-
                         description = $"{obj.amount}/{obj.obj.maxAmount}";
                         portrait = obj.obj.Portrait;
                     }
 
                     e.Q("Icon").style.backgroundImage = portrait;
-                    if(index == selectedIndex)
-                    {
+
+                    if (index == selectedIndex)
                         e.Q("Slot").AddToClassList("selected");
-                    } else
-                    {
+                    else
                         e.Q("Slot").RemoveFromClassList("selected");
-                    }
 
-                        
                     Label t = e.Q("Amount") as Label;
-                    e.RegisterCallback<ClickEvent>(evt => {
-                        if (index < objects.Count)
-                        {
-                            selectedIndex = index;
-                            SelectedItem = objects[index];
-                            Debug.Log($"Selected item: {SelectedItem.Value.obj.name}");
-                            UpdateUI();
-                        }
-                    });
-
                     t.text = description;
-
                 }
             }
+ 
         }
 
         private void OnPickUpItem(GameObject gameObject)
@@ -105,6 +117,13 @@ namespace Player.Inventory {
         void ShowUI(byte a) { DisplayUI(true); }
 
         void DisplayUI(bool t) { UI.rootVisualElement.Q("Background").style.display = t ? DisplayStyle.Flex : DisplayStyle.None; }
+
+        private void OnDestroy() {
+            DialogBoxController.OnDialogStars -= HideUI;
+
+            DialogBoxController.OnDialogEnds -= ShowUI;
+            DialogBoxController.OnQuestionEnds -= ShowUI;
+        }
     }
 
 } 
