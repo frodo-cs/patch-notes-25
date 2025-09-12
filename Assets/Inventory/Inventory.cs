@@ -18,6 +18,7 @@ namespace Player.Inventory {
             DialogBoxController.OnDialogStars += HideUI;
             DialogBoxController.OnDialogEnds += ShowUI;
             DialogBoxController.OnQuestionEnds += ShowUI;
+
             PickUpItem += OnPickUpItem;
         }
 
@@ -84,6 +85,13 @@ namespace Player.Inventory {
         void ShowUI(byte a) { DisplayUI(true); }
 
         void DisplayUI(bool t) { UI.rootVisualElement.Q("Background").style.display = t ? DisplayStyle.Flex : DisplayStyle.None; }
+
+        private void OnDestroy() {
+            DialogBoxController.OnDialogStars -= HideUI;
+
+            DialogBoxController.OnDialogEnds -= ShowUI;
+            DialogBoxController.OnQuestionEnds -= ShowUI;
+        }
     }
 
 } 
