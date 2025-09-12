@@ -356,7 +356,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4223287024077899631, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1971703348}
   m_SourcePrefab: {fileID: 100100000, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
 --- !u!1 &1143626936
 GameObject:
@@ -507,13 +510,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialog:
     introAnim: {fileID: 0}
-    text: 
+    text: This door needs an item
     characterSpeaking:
       expresionKey: 
       character: {fileID: 0}
-    textSpeed: 0
-    hideOnDialogEnds: 0
-  neededObject: {fileID: 11400000, guid: e057d9f45c20c934084d980bb2cedeb8, type: 2}
+    textSpeed: 2
+    hideOnDialogEnds: 1
+  neededObjects:
+  - {fileID: 11400000, guid: e057d9f45c20c934084d980bb2cedeb8, type: 2}
+  - {fileID: 11400000, guid: 177c422dca8e28b48a12da752443602e, type: 2}
 --- !u!1001 &1186419169
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -752,6 +757,24 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.27, y: 0.28}
   m_EdgeRadius: 0
+--- !u!1 &1971703343 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4223287024077899631, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
+  m_PrefabInstance: {fileID: 943724697}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1971703348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1971703343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9736b75d39b3de4fa9ff4a268ded9c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemSelected: {fileID: 0}
 --- !u!1001 &1974296125
 PrefabInstance:
   m_ObjectHideFlags: 0

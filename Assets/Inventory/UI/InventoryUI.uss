@@ -1,0 +1,69 @@
+.Background {
+    flex-grow: 0;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.Row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    width: 80%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url("project://database/Assets/Inventory/Sprites/inventory-bg.png?fileID=2800000&guid=60c8aaf61afbed94483ab8b12eb74c0a&type=3#inventory-bg");
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.SlotContainer {
+    flex-grow: 0;
+    width: 9.375%;
+    max-width: 90px;
+    max-height: 90px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Slot {
+    width: 100%;
+    height: 100%;
+}
+
+.Slot .Icon {
+    -unity-background-image-tint-color: white;
+    padding: 2%;
+}
+
+.Slot .Label {
+    color: rgb(255, 255, 255);
+}
+
+.Slot.selected .Icon {
+    -unity-background-image-tint-color: rgb(237, 191, 104);
+}
+
+.Slot.selected .Label {
+    color: rgb(237, 191, 104);
+}
+
+.Slot:hover .Icon {
+    -unity-background-image-tint-color: rgb(237, 191, 104);
+}
+
+.Slot:hover .Label {
+    color: rgb(237, 191, 104);
+}
