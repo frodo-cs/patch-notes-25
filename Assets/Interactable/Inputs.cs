@@ -19,9 +19,6 @@ namespace Player {
 
         private void Awake() {
             GetCursorPosition = OnGetCursorPosition;
-            input.currentActionMap["Interact"].performed += onClickPerformedCallback;
-            input.currentActionMap["Interact"].canceled += onClickCancelCallback;
-
             cam = Camera.main;
         }
 
@@ -29,8 +26,6 @@ namespace Player {
 
             Vector2 minPos = cam.ViewportToWorldPoint(Vector2.zero);
             Vector2 maxPos = cam.ViewportToWorldPoint(Vector2.one);
-
-            Debug.Log($"{minPos} - {maxPos}");
 
             switch(input.currentControlScheme) {
                 case "Keyboard":
@@ -50,8 +45,11 @@ namespace Player {
         }
 
         Vector2 OnGetCursorPosition() { return cursorPos; }
-        void onClickPerformedCallback(InputAction.CallbackContext context) { onClickPerformed?.Invoke(context); }
-        void onClickCancelCallback(InputAction.CallbackContext context) { onClickCancel?.Invoke(context); }
+        public void onClickPerformedCallback(InputAction.CallbackContext context) { 
+
+            if(context.performed) onClickPerformed?.Invoke(context); 
+            else if(context.canceled) onClickCancel?.Invoke(context);
+        }
     }
 
 }

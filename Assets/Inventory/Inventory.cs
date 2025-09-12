@@ -29,7 +29,7 @@ namespace Player.Inventory {
         }
 
         void UpdateUI() {
-            for(int y = 1; y < 2; y++) {
+            for(int y = 1; y < 1; y++) {
                 for(int x = 1; x <= 6; x++) {
                     VisualElement e = UI.rootVisualElement.Q($"H{y}S{x}");
                     int index = (x - 1) + ((y - 1) * 6);
