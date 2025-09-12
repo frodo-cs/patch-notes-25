@@ -1,4 +1,7 @@
 using Cinematics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -6,15 +9,16 @@ using UnityEngine.UIElements;
 namespace Player.Inventory {
     public class Inventory : MonoBehaviour {
         [SerializeField] UIDocument UI;
-        [SerializeField] InventoryData[] objects;
+        [SerializeField] List<InventoryData> objects;
+        public static Action<GameObject> PickUpItem;
 
         private void Start() {
             UpdateUI();
 
             DialogBoxController.OnDialogStars += HideUI;
-
             DialogBoxController.OnDialogEnds += ShowUI;
             DialogBoxController.OnQuestionEnds += ShowUI;
+            PickUpItem += OnPickUpItem;
         }
 
         [System.Serializable]
@@ -32,7 +36,7 @@ namespace Player.Inventory {
                     Texture2D portrait = null;
                     string description = "";
 
-                    if(index < objects.Length) {
+                    if(index < objects.Count) {
                         InventoryData obj = objects[index];
 
                         description = $"{obj.amount}/{obj.obj.maxAmount}";
@@ -45,6 +49,33 @@ namespace Player.Inventory {
                     t.text = description;
 
                 }
+            }
+        }
+
+        private void OnPickUpItem(GameObject gameObject)
+        {
+            if (gameObject.TryGetComponent(out InventoryItem obj))
+            {
+                InventoryData objectExists = objects.FirstOrDefault(o => o.obj.name == obj.obj.name);
+                if (objectExists.obj != null)
+                {
+                    if (objectExists.amount < objectExists.obj.maxAmount)
+                    {
+                        objectExists.amount++;
+                        int index = objects.IndexOf(objectExists);
+                        objects[index] = objectExists;
+                    }
+                }
+                else
+                {
+                    if (objects.Count < 6)
+                    {   
+                        InventoryData newObj = new InventoryData { obj = obj.obj, amount = 1 };
+                        objects.Add(newObj);
+                        Destroy(gameObject);
+                    }
+                }
+                UpdateUI();
             }
         }
 
