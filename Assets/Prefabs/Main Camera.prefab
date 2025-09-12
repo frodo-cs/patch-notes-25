@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: decc8248194a8034aa490c121f2f83aa, type: 3}
-  m_NotificationBehavior: 3
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -119,7 +119,27 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3488184929270611691}
+        m_TargetAssemblyTypeName: Player.Inputs, Assembly-CSharp
+        m_MethodName: onClickPerformedCallback
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d74de4ed-f049-4946-813f-74b7fe28451f
+    m_ActionName: 'Gameplay/Interact[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 570d3924-893b-4b1e-b7a1-99fdf347c775
+    m_ActionName: Gameplay/Cursor
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: Gameplay
@@ -229,9 +249,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 785057684536574421}
-  - component: {fileID: 2679793957364528337}
   - component: {fileID: 5880113555413819152}
   - component: {fileID: 8945439040553427904}
+  - component: {fileID: 3488184929270611691}
   m_Layer: 0
   m_Name: PlayerComponents
   m_TagString: Untagged
@@ -255,19 +275,6 @@ Transform:
   - {fileID: 2325794120097649030}
   m_Father: {fileID: 4248252162900250354}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2679793957364528337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4223287024077899631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dda233a8a69ef5448ae903f7014774b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  input: {fileID: 4217275529697617807}
 --- !u!114 &5880113555413819152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,3 +307,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   cursorPos: {x: 0, y: 0}
+--- !u!114 &3488184929270611691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4223287024077899631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dda233a8a69ef5448ae903f7014774b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 4217275529697617807}

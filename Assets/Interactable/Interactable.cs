@@ -24,7 +24,6 @@ namespace Player {
             else { cursorPos = _cursorPos.Value; }
 
             bool? isDialogRunning = DialogBoxController.IsDialogRunning?.Invoke();
-            Debug.Log(isDialogRunning);
 
             RaycastHit2D hit = Physics2D.CircleCast(cursorPos, 0.2f, Vector2.zero, 0.1f, interactableMask);
 
@@ -46,8 +45,8 @@ namespace Player {
         }
 
         private void OnDestroy() {
-            Inputs.onClickPerformed += OnClickStarts;
-            Inputs.onClickCancel += OnClickEnds;
+            Inputs.onClickPerformed -= OnClickStarts;
+            Inputs.onClickCancel -= OnClickEnds;
         }
     }
 
