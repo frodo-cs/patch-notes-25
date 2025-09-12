@@ -11,12 +11,25 @@ namespace Player.Inventory {
         [SerializeField] UIDocument UI;
         [SerializeField] List<InventoryData> objects;
         public static Action<GameObject> PickUpItem;
-        public static InventoryData? SelectedItem { get; private set; }
         private int? selectedIndex = null;
+
+        public InventoryData? SelectedItem
+        {
+            get
+            {
+                if (selectedIndex.HasValue && selectedIndex.Value >= 0 && selectedIndex.Value < objects.Count)
+                {
+                    return objects[selectedIndex.Value];
+                }
+                return null;
+            }
+        }
+
+        private const int COLUMNS = 9;
 
 
         private void Start() {
-            for (int x = 1; x <= 6; x++)
+            for (int x = 1; x <= COLUMNS; x++)
             {
                 int index = (x - 1);
                 VisualElement e = UI.rootVisualElement.Q($"H1S{x}");
@@ -29,7 +42,6 @@ namespace Player.Inventory {
                     if (index < objects.Count)
                     {
                         selectedIndex = index;
-                        SelectedItem = objects[index];
                         Debug.Log($"Selected item: {SelectedItem.Value.obj.name}");
                         UpdateUI();
                     }
@@ -52,38 +64,31 @@ namespace Player.Inventory {
         }
 
         void UpdateUI() {
-            for(int y = 1; y < 2; y++)
+            for (int index = 0; index <= COLUMNS; index++)
             {
-                for (int x = 1; x <= 6; x++)
+                VisualElement e = UI.rootVisualElement.Q($"H1S{index + 1}");
+
+                if (e == null)
+                    continue;
+                Texture2D portrait = null;
+                string description = "";
+
+                if (index < objects.Count)
                 {
-                    VisualElement e = UI.rootVisualElement.Q($"H{y}S{x}");
-                    int index = (x - 1) + ((y - 1) * 6);
-
-                    if (e == null)
-                        continue;
-                    Texture2D portrait = null;
-                    string description = "";
-
-                    if (index < objects.Count)
-                    {
-                        InventoryData obj = objects[index];
-                        description = $"{obj.amount}/{obj.obj.maxAmount}";
-                        portrait = obj.obj.Portrait;
-                    }
-
-                    e.Q("Icon").style.backgroundImage = portrait;
-
-                    if (index == selectedIndex)
-                        e.Q("Slot").AddToClassList("selected");
-                    else
-                        e.Q("Slot").RemoveFromClassList("selected");
-
-                    Label t = e.Q("Amount") as Label;
-                    t.text = description;
+                    InventoryData obj = objects[index];
+                    description = $"{obj.amount}/{obj.obj.maxAmount}";
+                    portrait = obj.obj.Portrait;
                 }
+
+                e.Q("Icon").style.backgroundImage = portrait;
+
+                if (index == selectedIndex)
+                    e.Q("Slot").AddToClassList("selected");
+                else
+                    e.Q("Slot").RemoveFromClassList("selected");
             }
- 
         }
+
 
         private void OnPickUpItem(GameObject gameObject)
         {
