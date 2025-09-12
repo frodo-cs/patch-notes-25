@@ -128,6 +128,8 @@ namespace Player.Inventory {
 
             DialogBoxController.OnDialogEnds -= ShowUI;
             DialogBoxController.OnQuestionEnds -= ShowUI;
+
+            PickUpItem -= OnPickUpItem;
         }
     }
 
