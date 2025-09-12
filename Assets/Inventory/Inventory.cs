@@ -173,6 +173,8 @@ namespace Player.Inventory
             DialogBoxController.OnDialogStars -= HideUI;
             DialogBoxController.OnDialogEnds -= ShowUI;
             DialogBoxController.OnQuestionEnds -= ShowUI;
+
+            PickUpItem -= OnPickUpItem;
         }
     }
 }
