@@ -15,4 +15,3 @@ MonoBehaviour:
   Portrait: {fileID: 2800000, guid: 112967169ab21264bb59e9600d765206, type: 3}
   highlightText: This is a <color=cyan>KEY</color>
   maxAmount: 1
-  id: 1

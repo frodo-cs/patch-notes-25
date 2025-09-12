@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DescriptionObject : MouseReaction
 {
-    [SerializeField] Dialog dialog;
+    [SerializeField] protected Dialog dialog;
 
     public override void OnInteractStart() {
 

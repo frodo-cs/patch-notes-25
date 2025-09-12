@@ -1,16 +1,14 @@
 using Cinematics;
 using UnityEngine;
+using Player;
 
-namespace Player
+public class InventoryItem : MouseReaction
 {
-    public class InventoryItem : MouseReaction
+    public Player.Inventory.Object obj;
+
+    public override void OnInteractStart()
     {
-        public Inventory.Object obj;
-
-        public override void OnInteractStart()
-        {
-            Inventory.Inventory.PickUpItem?.Invoke(gameObject);
-        }
-
+        Player.Inventory.Inventory.PickUpItem?.Invoke(gameObject);
     }
+
 }

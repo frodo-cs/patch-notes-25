@@ -11,8 +11,31 @@ namespace Player.Inventory {
         [SerializeField] UIDocument UI;
         [SerializeField] List<InventoryData> objects;
         public static Action<GameObject> PickUpItem;
+        public static InventoryData? SelectedItem { get; private set; }
+        private int? selectedIndex = null;
+
 
         private void Start() {
+            for (int x = 1; x <= 6; x++)
+            {
+                int index = (x - 1);
+                VisualElement e = UI.rootVisualElement.Q($"H1S{x}");
+
+                if (e == null)
+                    continue;
+
+                e.RegisterCallback<ClickEvent>(evt =>
+                {
+                    if (index < objects.Count)
+                    {
+                        selectedIndex = index;
+                        SelectedItem = objects[index];
+                        Debug.Log($"Selected item: {SelectedItem.Value.obj.name}");
+                        UpdateUI();
+                    }
+                });
+            }
+
             UpdateUI();
 
             DialogBoxController.OnDialogStars += HideUI;
@@ -23,34 +46,43 @@ namespace Player.Inventory {
         }
 
         [System.Serializable]
-        struct InventoryData {
+        public struct InventoryData {
             public Object obj;
             public int amount;
         }
 
         void UpdateUI() {
-            for(int y = 1; y < 1; y++) {
-                for(int x = 1; x <= 6; x++) {
+            for(int y = 1; y < 2; y++)
+            {
+                for (int x = 1; x <= 6; x++)
+                {
                     VisualElement e = UI.rootVisualElement.Q($"H{y}S{x}");
                     int index = (x - 1) + ((y - 1) * 6);
 
+                    if (e == null)
+                        continue;
                     Texture2D portrait = null;
                     string description = "";
 
-                    if(index < objects.Count) {
+                    if (index < objects.Count)
+                    {
                         InventoryData obj = objects[index];
-
                         description = $"{obj.amount}/{obj.obj.maxAmount}";
                         portrait = obj.obj.Portrait;
                     }
 
                     e.Q("Icon").style.backgroundImage = portrait;
+
+                    if (index == selectedIndex)
+                        e.Q("Slot").AddToClassList("selected");
+                    else
+                        e.Q("Slot").RemoveFromClassList("selected");
+
                     Label t = e.Q("Amount") as Label;
-
                     t.text = description;
-
                 }
             }
+ 
         }
 
         private void OnPickUpItem(GameObject gameObject)
