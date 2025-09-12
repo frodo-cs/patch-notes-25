@@ -417,17 +417,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 662502133}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75c9d6bb0faaae54c91e98a9e1d35791, type: 3}
+  m_Script: {fileID: 11500000, guid: 0b6f247e11a624746baa90957977ecb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialog:
-    introAnim: {fileID: 0}
-    text: I'm also a description!
-    characterSpeaking:
-      expresionKey: 
-      character: {fileID: 0}
-    textSpeed: 2
-    hideOnDialogEnds: 1
+  renderer: {fileID: 662502136}
+  color: 0
+  colors:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 1, b: 0.417248, a: 1}
+  - {r: 0.066278934, g: 0, b: 1, a: 1}
 --- !u!1 &1369017251
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,6 +586,58 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 4217275529697617807, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
+      propertyPath: m_NotificationBehavior
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217275529697617807, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217275529697617807, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_ActionId
+      value: d74de4ed-f049-4946-813f-74b7fe28451f
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217275529697617807, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_ActionId
+      value: 570d3924-893b-4b1e-b7a1-99fdf347c775
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217275529697617807, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_ActionName
+      value: 'Gameplay/Interact[/Mouse/leftButton]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217275529697617807, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_ActionName
+      value: Gameplay/Cursor
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217275529697617807, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217275529697617807, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217275529697617807, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 118096855763969078}
+    - target: {fileID: 4217275529697617807, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217275529697617807, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: onClickPerformedCallback
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217275529697617807, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Player.Inputs, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4217275529697617807, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4248252162900250354, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -633,6 +683,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
+--- !u!114 &118096855763969078 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3488184929270611691, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
+  m_PrefabInstance: {fileID: 118096855763969077}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dda233a8a69ef5448ae903f7014774b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1102175783452985223
 PrefabInstance:
   m_ObjectHideFlags: 0
