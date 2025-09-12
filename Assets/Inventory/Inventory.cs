@@ -11,6 +11,9 @@ namespace Player.Inventory {
         [SerializeField] UIDocument UI;
         [SerializeField] List<InventoryData> objects;
         public static Action<GameObject> PickUpItem;
+        public static InventoryData? SelectedItem { get; private set; }
+        private int? selectedIndex = null;
+
 
         private void Start() {
             UpdateUI();
@@ -22,7 +25,7 @@ namespace Player.Inventory {
         }
 
         [System.Serializable]
-        struct InventoryData {
+        public struct InventoryData {
             public Object obj;
             public int amount;
         }
@@ -44,7 +47,25 @@ namespace Player.Inventory {
                     }
 
                     e.Q("Icon").style.backgroundImage = portrait;
+                    if(index == selectedIndex)
+                    {
+                        e.Q("Slot").AddToClassList("selected");
+                    } else
+                    {
+                        e.Q("Slot").RemoveFromClassList("selected");
+                    }
+
+                        
                     Label t = e.Q("Amount") as Label;
+                    e.RegisterCallback<ClickEvent>(evt => {
+                        if (index < objects.Count)
+                        {
+                            selectedIndex = index;
+                            SelectedItem = objects[index];
+                            Debug.Log($"Selected item: {SelectedItem.Value.obj.name}");
+                            UpdateUI();
+                        }
+                    });
 
                     t.text = description;
 
