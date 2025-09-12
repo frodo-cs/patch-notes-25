@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Stick
   m_EditorClassIdentifier: 
   Portrait: {fileID: 2800000, guid: 10c86c31dd55f204f9eccd8ab36286a0, type: 3}
-  highlightText: Stick
+  highlightText: stick
   maxAmount: 1
