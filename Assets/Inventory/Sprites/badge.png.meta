@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 058111cb0ab64d24a80f1634c332951e
+guid: 7dcd05fb0a0281144a61660b04b568d8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5892255647947965407
-    second: coat wire_0
+      213: 546123822483701620
+    second: badge_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: coat wire_0
+      name: badge_0
       rect:
         serializedVersion: 2
         x: 0
@@ -108,15 +108,15 @@ TextureImporter:
         width: 90
         height: 90
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fd34ab51b4f75c150800000000000000
-      internalID: 5892255647947965407
+      spriteID: 47ff48a19b8349700800000000000000
+      internalID: 546123822483701620
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: e94521b4d4d08324d89a3f02da60fbf3
+    spriteID: 91aae7045b973ca4e9077e66da68d8b8
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      coat wire_0: 5892255647947965407
+      badge_0: 546123822483701620
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

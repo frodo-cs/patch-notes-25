@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 058111cb0ab64d24a80f1634c332951e
+guid: 08807f0055d34054ba8ac7826a87be75
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5892255647947965407
-    second: coat wire_0
+      213: 3213693858764107005
+    second: comic book_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: coat wire_0
+      name: comic book_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 90
-        height: 90
+        x: 14
+        y: 9
+        width: 67
+        height: 73
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fd34ab51b4f75c150800000000000000
-      internalID: 5892255647947965407
+      spriteID: dfc2d74a985599c20800000000000000
+      internalID: 3213693858764107005
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: e94521b4d4d08324d89a3f02da60fbf3
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      coat wire_0: 5892255647947965407
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

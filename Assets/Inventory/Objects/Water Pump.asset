@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c47ecad09edc9948bdac6969fa38a81, type: 3}
-  m_Name: Crowbar
+  m_Name: Water Pump
   m_EditorClassIdentifier: 
-  Portrait: {fileID: 2800000, guid: 7f928197278714c4698f5caa86900c1f, type: 3}
-  PortraitHover: {fileID: 2800000, guid: a912336493a6a6849bdd750ab662d88f, type: 3}
-  objectName: crowbar
+  Portrait: {fileID: 2800000, guid: 3c2bb9f3abd580f42bec4f63d34ef532, type: 3}
+  PortraitHover: {fileID: 2800000, guid: 9939e465c5c5692469fc28f4b38301a5, type: 3}
+  objectName: water pump
   highlightText: 
   maxAmount: 1

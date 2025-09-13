@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Portrait: {fileID: 2800000, guid: 058111cb0ab64d24a80f1634c332951e, type: 3}
   PortraitHover: {fileID: 2800000, guid: 8822bd972cf18f047b4054634714ad7a, type: 3}
-  highlightText: coat wire
+  objectName: coat wire
+  highlightText: 
   maxAmount: 1

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 058111cb0ab64d24a80f1634c332951e
+guid: 0d0c5d3ea5257674a9e2892ea1be8b13
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5892255647947965407
-    second: coat wire_0
+      213: 61326075098690404
+    second: snack selected_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: coat wire_0
+      name: snack selected_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 90
-        height: 90
+        x: 14
+        y: 24
+        width: 71
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fd34ab51b4f75c150800000000000000
-      internalID: 5892255647947965407
+      spriteID: 463f9b98dbfd9d000800000000000000
+      internalID: 61326075098690404
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: e94521b4d4d08324d89a3f02da60fbf3
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      coat wire_0: 5892255647947965407
+      snack selected_0: 61326075098690404
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
