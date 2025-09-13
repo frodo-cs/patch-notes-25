@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Crowbar
   m_EditorClassIdentifier: 
   Portrait: {fileID: 2800000, guid: 7f928197278714c4698f5caa86900c1f, type: 3}
+  PortraitHover: {fileID: 2800000, guid: a912336493a6a6849bdd750ab662d88f, type: 3}
   highlightText: crowbar
   maxAmount: 1

@@ -327,7 +327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5880113555413819152, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
       propertyPath: objects.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5880113555413819152, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
       propertyPath: objects.Array.data[1].obj
@@ -637,8 +637,8 @@ Transform:
   m_GameObject: {fileID: 1691784689}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.74, y: 0.48, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 1}
+  m_LocalPosition: {x: -3.96, y: 0.65, z: 0}
+  m_LocalScale: {x: 2.16, y: 2.16, z: 0.36}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1252379472}
@@ -655,7 +655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d585725a33c93cf4f8534b12f5443beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj: {fileID: 11400000, guid: f308993fe25a1ef479941f4ec4ee10c6, type: 2}
+  obj: {fileID: 11400000, guid: e057d9f45c20c934084d980bb2cedeb8, type: 2}
 --- !u!212 &1691784692
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -700,12 +700,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -7907951331658488048, guid: 10c86c31dd55f204f9eccd8ab36286a0, type: 3}
+  m_Sprite: {fileID: 5892255647947965407, guid: 058111cb0ab64d24a80f1634c332951e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.27, y: 0.28}
+  m_Size: {x: 0.7, y: 0.89}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -749,13 +749,13 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.27, y: 0.28}
-    newSize: {x: 0.27, y: 0.28}
+    oldSize: {x: 0.7, y: 0.89}
+    newSize: {x: 0.7, y: 0.89}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.27, y: 0.28}
+  m_Size: {x: 0.7, y: 0.89}
   m_EdgeRadius: 0
 --- !u!1 &1971703343 stripped
 GameObject:
@@ -774,7 +774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9736b75d39b3de4fa9ff4a268ded9c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSelected: {fileID: 0}
+  ItemSelected: {fileID: 0}
 --- !u!1001 &1974296125
 PrefabInstance:
   m_ObjectHideFlags: 0
