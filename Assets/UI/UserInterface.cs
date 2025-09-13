@@ -110,6 +110,7 @@ namespace Player.UI
         private void UpdateInventory()
         {
             var root = UI.rootVisualElement;
+            var description = root.Q<Label>("Description");
             var items = inventory.GetItems();
             int selectedIndex = inventory.GetSelectedIndex();
 
@@ -123,12 +124,16 @@ namespace Player.UI
                 var name = slotContainer.Q<Label>("Name");
                 var amount = slotContainer.Q<Label>("Amount");
 
+
                 if (index < items.Count)
                 {
                     var data = items[index];
                     icon.style.backgroundImage = index == selectedIndex ? data.obj.PortraitHover : data.obj.Portrait;
                     name.text = data.obj.objectName;
                     amount.text = data.amount > 1 ? data.amount.ToString() : "";
+                    Debug.Log($"Updating slot {index}: {data.obj.objectName} x{data.amount} | selected: {selectedIndex}");
+                    if (index == selectedIndex)
+                        description.text = data.obj.highlightText;
                 } else
                 {
                     icon.style.backgroundImage = null;
@@ -142,6 +147,16 @@ namespace Player.UI
                 else
                     slot.RemoveFromClassList("selected");
             }
+
+
+            if (selectedIndex >= 0)
+            {
+                description.text = items[selectedIndex].obj.highlightText;
+            } else
+            {
+                description.text = "";
+            }
+
         }
 
         private void SetContainerDimensions(VisualElement root, VisualElement row, VisualElement store)
