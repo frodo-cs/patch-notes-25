@@ -131,8 +131,6 @@ namespace Player.UI
                     icon.style.backgroundImage = index == selectedIndex ? data.obj.PortraitHover : data.obj.Portrait;
                     name.text = data.obj.objectName;
                     amount.text = data.amount > 1 ? data.amount.ToString() : "";
-                    if (index == selectedIndex)
-                        description.text = data.obj.highlightText;
                 } else
                 {
                     icon.style.backgroundImage = null;
