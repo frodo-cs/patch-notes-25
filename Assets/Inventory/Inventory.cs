@@ -15,8 +15,6 @@ namespace Player.Inventory
         public static Action<GameObject> PickUpItem;
         public static Action<Object> ItemSelected;
 
-        private InventoryUI inventoryUI;
-
         private int selectedIndex = -1;
         private const int COLUMNS = 9;
 
@@ -29,11 +27,6 @@ namespace Player.Inventory
 
         public InventoryData? SelectedItem =>
             selectedIndex >= 0 && selectedIndex < objects.Count ? objects[selectedIndex] : null;
-
-        private void Awake()
-        {
-            inventoryUI = new InventoryUI(UI, this);
-        }
 
         private void Start()
         {
@@ -62,7 +55,7 @@ namespace Player.Inventory
                 Destroy(gameObject);
             }
 
-            inventoryUI.UpdateUI();
+            Player.UI.UserInterface.OnUIUpdated?.Invoke();
         }
 
         private void OnDestroy()
@@ -73,7 +66,7 @@ namespace Player.Inventory
         public void SetSelectedIndex(int index)
         {
             selectedIndex = (selectedIndex == index) ? -1 : index;
-            inventoryUI.UpdateUI();
+            Player.UI.UserInterface.OnUIUpdated?.Invoke();
             ItemSelected?.Invoke(selectedIndex >= 0 ? objects[selectedIndex].obj : null);
         }
 
