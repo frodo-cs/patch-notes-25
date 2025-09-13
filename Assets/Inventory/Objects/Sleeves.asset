@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Portrait: {fileID: 2800000, guid: 83ec1fa719abcf344a6b17ecd8aaec2e, type: 3}
   PortraitHover: {fileID: 2800000, guid: db7c135f98209624aabdd7dc942f330e, type: 3}
+  PortraitMerge: {fileID: 2800000, guid: f8f145d1fc81b974bba656e10c6cb54f, type: 3}
   objectName: sleeves
   highlightText: preserve
   maxAmount: 1
+  combinableWith:
+  - {fileID: 11400000, guid: 68bd9cd54971d914ea1c8e99a02cf546, type: 2}
+  canMerge: 1

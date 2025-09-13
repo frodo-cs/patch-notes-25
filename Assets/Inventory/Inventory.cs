@@ -12,12 +12,10 @@ namespace Player.Inventory
         [SerializeField] private List<InventoryData> objects;
         public static Action<GameObject> PickUpFromWorld;
         public static Action<Object> RemoveItem;
-        public static Action<Object> ItemSelected;
         public static Action<GameObject> ItemAdded;
         public static Action<Object[]> AddItems;
         public static int SpaceLeft => COLUMNS - Instance.objects.Count;
 
-        private int selectedIndex = -1;
         private const int COLUMNS = 9;
 
         [System.Serializable]
@@ -26,9 +24,6 @@ namespace Player.Inventory
             public Object obj;
             public int amount;
         }
-
-        public InventoryData? SelectedItem =>
-            selectedIndex >= 0 && selectedIndex < objects.Count ? objects[selectedIndex] : null;
 
         private void Awake()
         {
@@ -48,16 +43,6 @@ namespace Player.Inventory
             RemoveItem += OnRemoveItem;
             AddItems += OnAddItems;
         }
-
-
-        public void SetSelectedIndex(int index)
-        {
-            selectedIndex = (selectedIndex == index) ? -1 : index;
-            UI.UserInterface.OnInventoryUpdated?.Invoke();
-            ItemSelected?.Invoke(selectedIndex >= 0 ? objects[selectedIndex].obj : null);
-        }
-
-        public int GetSelectedIndex() => selectedIndex;
 
         public List<InventoryData> GetItems() => objects;
 
@@ -130,8 +115,6 @@ namespace Player.Inventory
                 objects[index] = item;
             }
 
-            selectedIndex = -1;
-            ItemSelected?.Invoke(null);
             UI.UserInterface.OnInventoryUpdated?.Invoke();
         }
 

@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Portrait: {fileID: 2800000, guid: 1a063802d54671f45b337bcf3e24a1e5, type: 3}
   PortraitHover: {fileID: 2800000, guid: f0b068a55174ca64690147da7dcaf2a7, type: 3}
+  PortraitMerge: {fileID: 2800000, guid: faef03b413cd4754b9edac1f60e2633a, type: 3}
   objectName: paper scrap
   highlightText: torn paper reads <color=cyan>12</color>
   maxAmount: 1
+  canMerge: 0
