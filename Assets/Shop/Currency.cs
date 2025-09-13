@@ -1,3 +1,4 @@
+using Player.UI;
 using System;
 using UnityEngine;
 
@@ -30,6 +31,8 @@ public class Currency : MonoBehaviour
     public void AddMoneyEvent(int delta = 0) {
         money += delta;
         Save();
+
+        UserInterface.OnWalletUpdated?.Invoke();
     }
 
     public int GetMoneyEvent() { return money; }
