@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 namespace Player
 {
 
-    public class Password : MonoBehaviour
+    public class NumberInput : MonoBehaviour
     {
         private enum PasswordType { Safe, Door }
 
@@ -55,6 +55,7 @@ namespace Player
             inputField.RegisterCallback<ChangeEvent<string>>(evt =>
             {
                 submitButton.SetEnabled(evt.newValue.Length > 0);
+                evt.StopPropagation();
             });
             submitButton.SetEnabled(inputField.value.Length > 0);
         }
