@@ -46,7 +46,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.125979, g: 0.14669368, b: 0.1792453, a: 0}
+  m_BackGroundColor: {r: 0.1254902, g: 0.18039216, b: 0.14999145, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -199,8 +199,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2325794120097649030}
   - component: {fileID: 7895934889605816575}
+  - component: {fileID: 2222052948144048396}
   m_Layer: 0
-  m_Name: InventoryUI
+  m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -240,6 +241,20 @@ MonoBehaviour:
   m_WorldSpaceSizeMode: 1
   m_WorldSpaceWidth: 1920
   m_WorldSpaceHeight: 1080
+--- !u!114 &2222052948144048396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684610111081921755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 271cc9bae7706de4c93a7a75564eacd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI: {fileID: 7895934889605816575}
+  inventory: {fileID: 5880113555413819152}
 --- !u!1 &4223287024077899631
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,7 +267,7 @@ GameObject:
   - component: {fileID: 5880113555413819152}
   - component: {fileID: 8945439040553427904}
   - component: {fileID: 3488184929270611691}
-  - component: {fileID: 5491821163972548162}
+  - component: {fileID: 2302809272243072447}
   m_Layer: 0
   m_Name: PlayerComponents
   m_TagString: Untagged
@@ -289,9 +304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UI: {fileID: 7895934889605816575}
-  objects:
-  - obj: {fileID: 11400000, guid: e057d9f45c20c934084d980bb2cedeb8, type: 2}
-    amount: 1
+  objects: []
 --- !u!114 &8945439040553427904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,7 +334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 4217275529697617807}
---- !u!114 &5491821163972548162
+--- !u!114 &2302809272243072447
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -330,7 +343,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4223287024077899631}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29d099cfadfc865449c61892c8909f74, type: 3}
+  m_Script: {fileID: 11500000, guid: a9736b75d39b3de4fa9ff4a268ded9c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 0
+  ItemSelected: {fileID: 0}
