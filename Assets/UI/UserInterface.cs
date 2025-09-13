@@ -19,14 +19,16 @@ namespace Player.UI
         private const float SLOT_SCALE = 0.72f;
         private int selectedIndex = -1;
 
-        public static Action OnUIUpdated;
+        public static Action OnInventoryUpdated;
+        public static Action OnWalletUpdated;
 
         private void Start()
         {
             DialogBoxController.OnDialogStars += HideUI;
             DialogBoxController.OnDialogEnds += ShowUI;
             DialogBoxController.OnQuestionEnds += ShowUI;
-            OnUIUpdated += UpdateUI;
+            OnInventoryUpdated += UpdateInventory;
+            OnWalletUpdated += UpdateWallet;
             InitializeUI();
         }
 
@@ -67,7 +69,7 @@ namespace Player.UI
                         selectedIndex = index;
                         inventory.SetSelectedIndex(index);
                     }
-                    
+
                 });
 
                 slotContainer.RegisterCallback<MouseEnterEvent>(evt =>
@@ -93,7 +95,20 @@ namespace Player.UI
             UpdateUI();
         }
 
-        public void UpdateUI()
+        private void UpdateUI()
+        {
+            UpdateWallet();
+            UpdateInventory();
+        }
+
+        private void UpdateWallet()
+        {
+            var root = UI.rootVisualElement;
+            var walletLabel = root.Q("Store").Q<Label>("Wallet");
+            walletLabel.text = $"${10000}";
+        }
+
+        private void UpdateInventory()
         {
             var root = UI.rootVisualElement;
             var items = inventory.GetItems();
@@ -175,13 +190,15 @@ namespace Player.UI
         void ShowUI() { DisplayUI(true); }
         void ShowUI(byte a) { DisplayUI(true); }
 
-        void DisplayUI(bool t) {
+        void DisplayUI(bool t)
+        {
             UI.rootVisualElement.Q("Background").style.visibility = t ? Visibility.Visible : Visibility.Hidden;
         }
 
         private void OnDestroy()
         {
-            OnUIUpdated -= UpdateUI;
+            OnInventoryUpdated -= UpdateUI;
+            OnWalletUpdated -= UpdateWallet;
             DialogBoxController.OnDialogStars -= HideUI;
             DialogBoxController.OnDialogEnds -= ShowUI;
             DialogBoxController.OnQuestionEnds -= ShowUI;

@@ -55,7 +55,7 @@ namespace Player.Inventory
                 Destroy(gameObject);
             }
 
-            Player.UI.UserInterface.OnUIUpdated?.Invoke();
+            Player.UI.UserInterface.OnInventoryUpdated?.Invoke();
         }
 
         private void OnDestroy()
@@ -66,7 +66,7 @@ namespace Player.Inventory
         public void SetSelectedIndex(int index)
         {
             selectedIndex = (selectedIndex == index) ? -1 : index;
-            Player.UI.UserInterface.OnUIUpdated?.Invoke();
+            Player.UI.UserInterface.OnInventoryUpdated?.Invoke();
             ItemSelected?.Invoke(selectedIndex >= 0 ? objects[selectedIndex].obj : null);
         }
 
