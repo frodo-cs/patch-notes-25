@@ -43,27 +43,14 @@
     height: 100%;
 }
 
-.Slot .Icon {
-    -unity-background-image-tint-color: white;
-    padding: 2%;
-}
-
 .Slot .Label {
-    color: rgb(255, 255, 255);
-}
-
-.Slot.selected .Icon {
-    -unity-background-image-tint-color: rgb(237, 191, 104);
+    color: rgb(237, 191, 104);
 }
 
 .Slot.selected .Label {
-    color: rgb(237, 191, 104);
-}
-
-.Slot:hover .Icon {
-    -unity-background-image-tint-color: rgb(237, 191, 104);
+    color: rgb(255, 255, 255);
 }
 
 .Slot:hover .Label {
-    color: rgb(237, 191, 104);
+    color: rgb(255, 255, 255);
 }

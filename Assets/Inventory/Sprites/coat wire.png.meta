@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7f928197278714c4698f5caa86900c1f
+guid: 058111cb0ab64d24a80f1634c332951e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7398687956713181485
-    second: crowbar_0
+      213: 5892255647947965407
+    second: coat wire_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: crowbar_0
+      name: coat wire_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 90
-        height: 90
+        x: 1
+        y: 1
+        width: 70
+        height: 89
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d2199d72f7b6da660800000000000000
-      internalID: 7398687956713181485
+      spriteID: fd34ab51b4f75c150800000000000000
+      internalID: 5892255647947965407
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      crowbar_0: 7398687956713181485
+      coat wire_0: 5892255647947965407
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
