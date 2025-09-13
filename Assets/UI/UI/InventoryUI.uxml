@@ -1,7 +1,7 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <engine:Template name="Slot" src="project://database/Assets/Inventory/UI/Slot.uxml?fileID=9197481963319205126&amp;guid=da66c4aa85dc60240858f1437f36d560&amp;type=3#Slot" />
-    <Style src="project://database/Assets/Inventory/UI/InventoryUI.uss?fileID=7433441132597879392&amp;guid=9b9fec11f5ba1f947a1cd80dc2059df2&amp;type=3#InventoryUI" />
-    <engine:VisualElement name="Background" class="Background">
+    <engine:Template name="Slot" src="project://database/Assets/UI/UI/Slot.uxml?fileID=9197481963319205126&amp;guid=da66c4aa85dc60240858f1437f36d560&amp;type=3#Slot" />
+    <Style src="project://database/Assets/UI/UI/InventoryUI.uss?fileID=7433441132597879392&amp;guid=9b9fec11f5ba1f947a1cd80dc2059df2&amp;type=3#InventoryUI" />
+    <engine:VisualElement name="Background" class="Background" style="align-items: center;">
         <engine:VisualElement name="H1" class="Row">
             <engine:Instance template="Slot" name="H1S1" class="SlotContainer" style="width: auto; height: auto; position: relative; left: auto; top: auto;">
                 <AttributeOverrides element-name="Slot" enabled="true" />
@@ -30,6 +30,11 @@
             <engine:Instance template="Slot" name="H1S9" class="SlotContainer" style="width: auto; height: auto; position: relative; left: auto; top: auto;">
                 <AttributeOverrides element-name="Slot" enabled="true" />
             </engine:Instance>
+        </engine:VisualElement>
+        <engine:VisualElement name="Store" class="Store" style="flex-grow: 0; position: absolute; bottom: 0; height: 69px; flex-direction: row; justify-content: flex-end; align-items: center; flex-wrap: nowrap; align-self: auto; align-content: flex-start; flex-basis: auto; flex-shrink: 1;">
+            <engine:Button name="StoreButton" class="StoreButton Button" />
+            <engine:Label text="$" name="Label" style="margin-top: 2px; margin-right: 0; margin-bottom: 2px; margin-left: 4px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 4px; background-color: rgba(0, 0, 0, 0); color: rgb(38, 35, 29); -unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=5bea87a57b4fbf34bb79f6d7e21ccad2&amp;type=3#NotInter-Regular&quot;); -unity-font-style: normal; -unity-text-align: upper-right;" />
+            <engine:Label text="Label" name="Cash" style="margin-top: 2px; margin-right: 4px; margin-bottom: 2px; margin-left: 0; padding-top: 2px; padding-right: 4px; padding-bottom: 2px; padding-left: 2px; background-color: rgba(0, 0, 0, 0); color: rgb(38, 35, 29); -unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=5bea87a57b4fbf34bb79f6d7e21ccad2&amp;type=3#NotInter-Regular&quot;); -unity-font-style: normal; -unity-text-align: upper-left; background-image: none;" />
         </engine:VisualElement>
     </engine:VisualElement>
 </engine:UXML>
