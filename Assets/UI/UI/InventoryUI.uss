@@ -1,0 +1,81 @@
+.Background {
+    flex-grow: 0;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.Row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    width: 80%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url("project://database/Assets/UI/Sprites/inventory-bg.png?fileID=2800000&guid=60c8aaf61afbed94483ab8b12eb74c0a&type=3#inventory-bg");
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.SlotContainer {
+    flex-grow: 0;
+    width: 9.375%;
+    max-width: 90px;
+    max-height: 90px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Slot {
+    width: 100%;
+    height: 100%;
+}
+
+.Slot .Label {
+    color: rgb(237, 191, 104);
+}
+
+.Slot.selected .Label {
+    color: rgb(255, 255, 255);
+}
+
+.Slot:hover .Label {
+    color: rgb(255, 255, 255);
+}
+
+.Store {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 80%;
+    max-width: 960px;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.StoreButton {
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+    border-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+    -unity-background-scale-mode: scale-to-fit;
+    background-image: url("project://database/Assets/UI/Sprites/button_shopping_idle.png?fileID=2800000&guid=6a0da63764af023449212634ce2d3d49&type=3#button_shopping_idle");
+}
+
+.StoreButton:active {
+    background-image: url("project://database/Assets/UI/Sprites/button_shopping_clicked.png?fileID=2800000&guid=7cadd560af40e88458f34fdad07c2b17&type=3#button_shopping_clicked");
+}
