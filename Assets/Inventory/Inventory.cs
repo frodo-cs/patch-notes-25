@@ -13,6 +13,7 @@ namespace Player.Inventory
         [SerializeField] private List<InventoryData> objects;
 
         public static Action<GameObject> PickUpItem;
+        public static Action<Object> PickUpObject;
         public static Action<Object> ItemSelected;
 
         private int selectedIndex = -1;
@@ -31,6 +32,7 @@ namespace Player.Inventory
         private void Start()
         {
             PickUpItem += OnPickUpItem;
+            PickUpObject = OnPickUpItem;
         }
 
         private void OnPickUpItem(GameObject gameObject)
@@ -53,6 +55,25 @@ namespace Player.Inventory
                 InventoryData newObj = new InventoryData { obj = obj.obj, amount = 1 };
                 objects.Add(newObj);
                 Destroy(gameObject);
+            }
+
+            Player.UI.UserInterface.OnInventoryUpdated?.Invoke();
+        }
+
+        private void OnPickUpItem(Object _obj) {
+            if(_obj == null)return;
+
+            var objectExists = objects.FirstOrDefault(o => o.obj.name == _obj.name);
+
+            if(objectExists.obj != null) {
+                if(objectExists.amount < objectExists.obj.maxAmount) {
+                    objectExists.amount++;
+                    int idx = objects.IndexOf(objectExists);
+                    objects[idx] = objectExists;
+                }
+            } else if(objects.Count < COLUMNS) {
+                InventoryData newObj = new InventoryData { obj = _obj, amount = 1 };
+                objects.Add(newObj);
             }
 
             Player.UI.UserInterface.OnInventoryUpdated?.Invoke();
