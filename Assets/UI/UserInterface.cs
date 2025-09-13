@@ -3,7 +3,6 @@ using Player.Inventory;
 using System;
 using UnityEngine;
 using UnityEngine.UIElements;
-using static UnityEngine.Rendering.DebugUI.Table;
 
 namespace Player.UI
 {
@@ -232,17 +231,20 @@ namespace Player.UI
                     continue;
 
                 var icon = slotContainer.Q("Icon");
-                var label = slotContainer.Q<Label>("Name");
+                var name = slotContainer.Q<Label>("Name");
+                var amount = slotContainer.Q<Label>("Amount");
 
                 if (index < items.Count)
                 {
                     var data = items[index];
                     icon.style.backgroundImage = index == selectedIndex ? data.obj.PortraitHover : data.obj.Portrait;
-                    label.text = data.obj.highlightText;
+                    name.text = data.obj.objectName;
+                    amount.text = data.amount > 1 ? data.amount.ToString() : "";
                 } else
                 {
                     icon.style.backgroundImage = null;
-                    label.text = "";
+                    name.text = "";
+                    amount.text = "";
                 }
 
                 var slot = slotContainer.Q("Slot");
@@ -292,6 +294,7 @@ namespace Player.UI
                 float slotSize = rowHeight * SLOT_SCALE;
                 slot.style.width = slotSize;
                 slot.style.height = slotSize;
+                label.style.width = slotSize;
 
                 slotContainer.style.marginLeft = (x > 1) ? row.resolvedStyle.width * SLOT_GAP : 0;
             }

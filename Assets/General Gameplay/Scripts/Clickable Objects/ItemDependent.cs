@@ -1,31 +1,36 @@
 using Cinematics;
-using Player;
-using Player.Inventory;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemDependent : DescriptionObject
+namespace Player.Gameplay
 {
-    [SerializeField] private Player.Inventory.Object[] neededObjects;
-    HashSet<Player.Inventory.Object> neededSet;
-
-    private void Awake()
+    public class ItemDependent : DescriptionObject
     {
-        neededSet = new HashSet<Player.Inventory.Object>(neededObjects);
-    }
+        [SerializeField] protected Inventory.Object[] neededObjects;
+        private HashSet<Inventory.Object> neededSet;
+        protected bool touched = false;
 
-    public override void OnInteractStart()
-    {
-        var selected = InteractionController.Instance.ItemSelected;
-        if (selected && neededSet.Contains(selected))
+        private void Awake()
         {
-            // Open door
-        } else
-        {
+            neededSet = new HashSet<Inventory.Object>(neededObjects);
+        }
 
+        protected bool HasItemNeeded(Inventory.Object selected)
+        {
+            return neededSet.Contains(selected);
+        }
+
+        protected void OpenDialog()
+        {
             var a = DialogBoxController.IsDialogRunning?.Invoke();
             if (a != null && !a.Value)
                 DialogBoxController.PlayDialog?.Invoke(dialog);
         }
+
+        protected void SetTouched()
+        {
+            touched = true;
+        }
     }
+
 }

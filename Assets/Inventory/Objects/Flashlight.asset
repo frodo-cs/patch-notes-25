@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c47ecad09edc9948bdac6969fa38a81, type: 3}
-  m_Name: Crowbar
+  m_Name: Flashlight
   m_EditorClassIdentifier: 
-  Portrait: {fileID: 2800000, guid: 7f928197278714c4698f5caa86900c1f, type: 3}
-  PortraitHover: {fileID: 2800000, guid: a912336493a6a6849bdd750ab662d88f, type: 3}
-  objectName: crowbar
+  Portrait: {fileID: 2800000, guid: c9a317bcb8d6c294f8e12d210dff74dc, type: 3}
+  PortraitHover: {fileID: 2800000, guid: 449e9b47a1065f346a9a98b647763d34, type: 3}
+  objectName: flashlight
   highlightText: 
   maxAmount: 1
