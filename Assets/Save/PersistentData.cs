@@ -5,8 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class PersistentData : MonoBehaviour {
     public Dictionary<int, SceneSaver> savedScenes;
+    public int savedCurrency = 0;
 
     public static Action<string, PropertyData> Save;
+    public static Action<int> SaveCurrency;
+
+    public delegate int getCurrency();
+    public static getCurrency GetCurrency;
 
     public delegate PropertyData getProperty(string objectName, string variableName);
     public static getProperty GetData;
@@ -18,11 +23,23 @@ public class PersistentData : MonoBehaviour {
             Save = OnSave;
             GetData = OnGetData;
 
+            GetCurrency = OnLoadCurrency;
+            SaveCurrency = OnSaveCurrency;
+
             savedScenes = new();
             instance = this;
         }
 
     }
+
+    public void OnSaveCurrency(int money) {
+        savedCurrency = money;
+    }
+
+    public int OnLoadCurrency() {
+        return savedCurrency;
+    }
+
 
     public void OnSave(string objectName, PropertyData data) {
         int scene = SceneManager.GetActiveScene().buildIndex;

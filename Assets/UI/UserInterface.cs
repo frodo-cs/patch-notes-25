@@ -1,4 +1,5 @@
 using Cinematics;
+using Player.Inventory;
 using System;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -9,6 +10,12 @@ namespace Player.UI
     {
         [SerializeField] private UIDocument UI;
 
+        //Shop
+        [Space(5)]
+        [SerializeField] UIDocument shopUI;
+        [SerializeField] ShopData shopData;
+
+        //Inventory Params
         private const float ROW_MAX_WIDTH = 960f;
         private const float ROW_MAX_HEIGHT = 125f;
         private const float STORE_BUTTON_MAX_WIDTH = 134f;
@@ -88,6 +95,57 @@ namespace Player.UI
             }
 
             UpdateUI();
+            InitShopUI();
+        }
+
+        void InitShopUI()
+        {
+
+            int SHOP_MAX_COLUMNS = 2;
+            int SHOP_MAX_ROWS = 3;
+
+            for (int x = 0; x < SHOP_MAX_COLUMNS; x++)
+            {
+                for (int y = 0; y < SHOP_MAX_ROWS; y++)
+                {
+
+                    int index = y + (x * SHOP_MAX_ROWS);
+                    VisualElement e = shopUI.rootVisualElement.Q($"C{x}S{y}");
+
+                    if (index < shopData.slots.Length)
+                    {
+
+                        Label c = e.Q("Cost") as Label;
+
+                        c.text = $"${shopData.slots[index].price}";
+                        c.style.display = DisplayStyle.Flex;
+
+                        e.Q("Image").style.backgroundImage = shopData.slots[index].obj.Portrait;
+
+                        e.RegisterCallback<ClickEvent>(evt =>
+                        {
+                            OnBuyShopItem(e, index);
+                        });
+                    }
+                }
+            }
+        }
+
+        void OnBuyShopItem(VisualElement e, int index)
+        {
+            int? money = Currency.GetMoney?.Invoke();
+            money = money == null ? 0 : money.Value;
+
+            int price = shopData.slots[index].price;
+
+            if (price > money)
+            { Debug.Log("Not enought money!"); return; }
+
+            e.AddToClassList("ShopItem_Sold");
+            e.Q("Cost").style.display = DisplayStyle.None;
+
+            Inventory.Inventory.PickUpObject?.Invoke(shopData.slots[index].obj);
+            Currency.AddMoney?.Invoke(-price);
         }
 
         private void UpdateUI()
@@ -128,7 +186,12 @@ namespace Player.UI
         {
             var root = UI.rootVisualElement;
             var walletLabel = root.Q("Store").Q<Label>("Wallet");
-            walletLabel.text = $"${10000}";
+
+            int? money = Currency.GetMoney?.Invoke();
+            if (money == null)
+                money = 0;
+
+            walletLabel.text = $"${money}";
         }
 
         private void UpdateInventory()

@@ -1,0 +1,6 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement name="C0S0" class="ShopItem">
+        <engine:VisualElement name="Image" class="ShopItem_Image" />
+        <engine:Label text="100" name="Cost" style="color: rgb(255, 255, 255); margin-top: 10px; margin-right: 10px; margin-bottom: 5px; margin-left: 60px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; display: flex; left: auto; right: auto; flex-shrink: 1; flex-grow: 1; -unity-text-align: middle-left; font-size: 28px;" />
+    </engine:VisualElement>
+</engine:UXML>

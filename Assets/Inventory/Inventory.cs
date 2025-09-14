@@ -14,6 +14,7 @@ namespace Player.Inventory
         public static Action<Object> RemoveItem;
         public static Action<GameObject> OnItemAdded;
         public static Action<Object[]> AddItems;
+        public static Action<Object> PickUpObject;
         public static int SpaceLeft => COLUMNS - Instance.objects.Count;
 
         private const int COLUMNS = 9;
@@ -40,6 +41,7 @@ namespace Player.Inventory
         private void Start()
         {
             PickUpFromWorld += OnPickUpItem;
+            PickUpObject += OnAddOneItem;
             RemoveItem += OnRemoveItem;
             AddItems += OnAddItems;
         }
@@ -52,6 +54,11 @@ namespace Player.Inventory
             {
                 TryAddItem(item);
             }
+        }
+
+        private void OnAddOneItem(Object obj)
+        {
+            TryAddItem(obj);
         }
 
         private void OnPickUpItem(GameObject obj)
@@ -122,6 +129,8 @@ namespace Player.Inventory
         {
             PickUpFromWorld -= OnPickUpItem;
             RemoveItem -= OnRemoveItem;
+            AddItems -= OnAddItems;
+            PickUpObject -= OnAddOneItem;
         }
     }
 }
