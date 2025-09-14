@@ -11,6 +11,7 @@ namespace Cinematics {
 
         VisualElement dialogBox;
         Label textElement;
+        Label ActorName;
 
         VisualElement responsesBox;
         Label[] Responses = new Label[4];
@@ -73,7 +74,8 @@ namespace Cinematics {
             IsDialogRunning = isDialogRunning;
 
             textElement = UI.rootVisualElement.Q("Text") as Label;
-            dialogBox = UI.rootVisualElement.Q("DialogBox");
+            ActorName = UI.rootVisualElement.Q("ActorName") as Label;
+            dialogBox = UI.rootVisualElement.Q("DialogContainer");
 
             //Responses variables
             responsesBox = UI.rootVisualElement.Q("Responses");
@@ -165,6 +167,8 @@ namespace Cinematics {
 
         private IEnumerator WriteSpeechInBox(Dialog d) {
             d.textSpeed = Mathf.Clamp(d.textSpeed, 1, 9999);
+            float lastSpeakSound = Time.time;
+            float speakDuration = 0;
 
             for(int i = 0; i < d.text.Length; i++) {
                 textElement.text += d.text[i];
@@ -172,13 +176,20 @@ namespace Cinematics {
 
                 Dialog.charData characterSpeaking = d.characterSpeaking;
 
-                if(!source.isPlaying && characterSpeaking != null && characterSpeaking.character != null) {
-                    source.pitch = UnityEngine.Random.Range(0.9f, 1.1f) * d.textSpeed;
-                    source.PlayOneShot(characterSpeaking.character.speechSounds[UnityEngine.Random.Range(0, characterSpeaking.character.speechSounds.Length)]);
+                if(Time.time - lastSpeakSound > speakDuration && characterSpeaking != null && characterSpeaking.character != null && characterSpeaking.character.speechSounds.Length > 0) {
+                    source.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
+
+                    int soundIndex = UnityEngine.Random.Range(0, characterSpeaking.character.speechSounds.Length);
+                    source.PlayOneShot(characterSpeaking.character.speechSounds[soundIndex]);
+
+                    lastSpeakSound = Time.time;
+                    speakDuration = characterSpeaking.character.speechSounds[soundIndex].length;
                 }
 
                 if(d.text[i] == '.' || d.text[i] == ' ') {
-                    source.Stop();
+                    //source.Stop();
+                    lastSpeakSound = Time.time;
+                    speakDuration = 0.2f;
                 }
             }
 
@@ -299,12 +310,12 @@ namespace Cinematics {
                 VisualElement actor = UI.rootVisualElement.Q("RightActor");
                 actor.style.display = DisplayStyle.Flex;
 
+                ActorName.text = d.characterSpeaking.character.name;
+
                 Sprite sprite = d.characterSpeaking.getExpresionSprite();
                 var expresion = actor.Q("Expresion");
-                var shadow = expresion.Q("Shadow");
 
                 expresion.style.backgroundImage = new(sprite);
-                shadow.style.backgroundImage = new(sprite);
             }
         }
 
@@ -320,7 +331,7 @@ namespace Cinematics {
     public class Dialog : DialogDataStruct {
 
         public PlayableAsset introAnim;
-        public string text = "TeST";
+        [Multiline]public string text = "TeST";
         public charData characterSpeaking;
 
         [Range(1, 5)]public float textSpeed = 2;

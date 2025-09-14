@@ -14,10 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Portrait: {fileID: 2800000, guid: c52ec19764936a14685e0fa2d8ac51bf, type: 3}
   PortraitHover: {fileID: 2800000, guid: c52ec19764936a14685e0fa2d8ac51bf, type: 3}
-  PortraitMerge: {fileID: 0}
   objectName: Junk 2
   highlightText: Just junk!
   maxAmount: 1
   combinableWith: []
-  canMerge: 0
-  sellingPrice: 80
+  sellingPrice: 120

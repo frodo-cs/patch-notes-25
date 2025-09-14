@@ -311,32 +311,32 @@ MonoBehaviour:
     introAnim: {fileID: 0}
     text: '[...]'
     characterSpeaking:
-      expresionKey: 
-      character: {fileID: 0}
+      expresionKey: idle
+      character: {fileID: 11400000, guid: d9459a0d867113640858b46b044d1417, type: 2}
     textSpeed: 2
     hideOnDialogEnds: 1
   notSellableItem:
     introAnim: {fileID: 0}
     text: No chance I'm gonna buy that...
     characterSpeaking:
-      expresionKey: 
-      character: {fileID: 0}
+      expresionKey: idle
+      character: {fileID: 11400000, guid: d9459a0d867113640858b46b044d1417, type: 2}
     textSpeed: 2
     hideOnDialogEnds: 1
   notEnoughtMoneyDialog:
     introAnim: {fileID: 0}
     text: You will need more money if you wanna buy that...
     characterSpeaking:
-      expresionKey: 
-      character: {fileID: 0}
+      expresionKey: idle
+      character: {fileID: 11400000, guid: d9459a0d867113640858b46b044d1417, type: 2}
     textSpeed: 2
     hideOnDialogEnds: 1
   alreadyBuyed:
     introAnim: {fileID: 0}
     text: You already have that...
     characterSpeaking:
-      expresionKey: 
-      character: {fileID: 0}
+      expresionKey: idle
+      character: {fileID: 11400000, guid: d9459a0d867113640858b46b044d1417, type: 2}
     textSpeed: 2
     hideOnDialogEnds: 1
   sellConfirm:
