@@ -7,10 +7,6 @@ namespace Player.Gameplay.ClickableItems
     {
         [SerializeField] GameObject puzzleObject;
 
-        public void Start()
-        {
-            puzzleObject.SetActive(false);
-        }
 
         public override void OnInteractStart()
         {
@@ -21,7 +17,12 @@ namespace Player.Gameplay.ClickableItems
 
             if (!HasItemNeeded(selected))
             {
-                puzzleObject.SetActive(true);
+                GameObject puzzle = Instantiate(
+                    puzzleObject,
+                    new Vector3(0, 0, 0),
+                    Quaternion.identity
+                );
+                puzzle.transform.parent = transform;
                 Puzzles.NumberInput.OnPasswordCorrect += OpenStorage;
             } else if (HasItemNeeded(selected))
             {
@@ -40,14 +41,12 @@ namespace Player.Gameplay.ClickableItems
             }
 
             gameObject.GetComponent<Collider2D>().enabled = false;
-            puzzleObject.SetActive(false);
             Inventory.Inventory.AddItems?.Invoke(droppables);
             droppables = new Inventory.Object[0];
         }
 
         private void OpenStorage()
         {
-            puzzleObject.SetActive(false);
             dialog.text = "You opened the safe";
             OpenDialog();
             DialogBoxController.OnDialogEnds += AddItems;

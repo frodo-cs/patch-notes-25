@@ -103,6 +103,9 @@ MonoBehaviour:
     hideOnDialogEnds: 1
   neededObjects:
   - {fileID: 11400000, guid: 4cdc1951897b21148922b5441835b758, type: 2}
+  onUnlock:
+    m_PersistentCalls:
+      m_Calls: []
   droppables:
   - {fileID: 11400000, guid: b643d2c98e746a44baa6d9d48d5fddf9, type: 2}
   puzzleObject: {fileID: 8983105639413051058}

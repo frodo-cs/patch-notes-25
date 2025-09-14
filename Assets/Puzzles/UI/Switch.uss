@@ -14,3 +14,21 @@
 
 .SwitchBoard {
 }
+
+.ToggleButton  {
+    background-color: rgb(163, 162, 162);
+}
+
+.ToggleButton:hover {
+    background-color: rgb(204, 202, 202);
+}
+
+.ToggleButton:active {
+    background-color: rgb(54, 54, 54);
+}
+
+.ToggleButton:checked {
+    background-color: rgb(54, 54, 54);
+}
+
+
