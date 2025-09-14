@@ -156,7 +156,7 @@ namespace Player.UI
                 Debug.Log("Objeto vendible");
 
                 SellableObject so = InteractionController.Instance.ItemSelected as SellableObject;
-                sellConfirm.question = new Dialog($"I can give you ${so.sellingPrice} for that!", null, 2);
+                sellConfirm.question = new Dialog($"I can give you ${so.sellingPrice} for that!", sellConfirm.question.characterSpeaking, 2);
 
                 DialogBoxController.PlayQuestion?.Invoke(sellConfirm);
                 DialogBoxController.OnQuestionEnds += OnSellItem;
