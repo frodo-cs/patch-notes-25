@@ -88,7 +88,7 @@ MonoBehaviour:
     characterSpeaking:
       expresionKey: 
       character: {fileID: 0}
-    textSpeed: 0
+    textSpeed: 1
     hideOnDialogEnds: 1
   neededObjects: []
   onUnlock:

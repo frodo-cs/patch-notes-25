@@ -27,13 +27,6 @@ namespace Player.Gameplay
             return neededSet.Contains(selected);
         }
 
-        protected void OpenDialog()
-        {
-            var a = DialogBoxController.IsDialogRunning?.Invoke();
-            if (a != null && !a.Value)
-                DialogBoxController.PlayDialog?.Invoke(dialog);
-        }
-
         protected void SetTouched()
         {
             touched = true;

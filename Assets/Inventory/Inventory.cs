@@ -1,3 +1,4 @@
+using Cinematics;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ namespace Player.Inventory
         public static Inventory Instance { get; private set; }
 
         [SerializeField] private List<InventoryData> objects;
+        [SerializeField] Dialog dialog;
 
         public delegate bool ObjectOperation(Object obj);
         public static ObjectOperation PickUpObject;
@@ -72,7 +74,10 @@ namespace Player.Inventory
                 return;
             var addedItem = TryAddItem(inventoryItem.obj);
             if (addedItem)
+            {
+                ShowMessage($"You picked up {inventoryItem.obj.objectName}");
                 OnItemAdded?.Invoke(obj);
+            }
         }
 
         private bool TryAddItem(Object obj)
@@ -91,7 +96,7 @@ namespace Player.Inventory
                     objects[index] = item;
                 } else
                 {
-                    Debug.Log("Item stack is full");
+                    ShowMessage($"You cannot carry any more {obj.objectName}");
                     return false;
                 }
             } else if (objects.Count < COLUMNS)
@@ -100,7 +105,7 @@ namespace Player.Inventory
                 objects.Add(newObj);
             } else
             {
-                Debug.Log("Inventory is full");
+                ShowMessage("Your inventory is full");
                 return false;
             }
 
@@ -127,6 +132,15 @@ namespace Player.Inventory
             }
 
             UI.UserInterface.OnInventoryUpdated?.Invoke();
+        }
+
+        private void ShowMessage(string message)
+        {
+            if (DialogBoxController.IsDialogRunning?.Invoke() != true)
+            {
+                dialog.text = message;
+                DialogBoxController.PlayDialog?.Invoke(dialog);
+            }
         }
 
         private void OnDestroy()
