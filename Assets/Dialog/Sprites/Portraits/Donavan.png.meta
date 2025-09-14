@@ -185,7 +185,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Donavan_0: -6816699035302240408
+      Donavan_1: 4214519763642198493
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -185,7 +185,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BUST_Eugene_0: -8261449938561878979
+      BUST_Eugene_1: -2530936173619318729
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

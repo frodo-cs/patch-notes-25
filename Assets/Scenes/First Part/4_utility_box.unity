@@ -118,79 +118,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &570911689
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2494658897837793290, guid: 2a388cb2a7bd7a34383dbf0987871dda, type: 3}
-      propertyPath: m_Name
-      value: 'Movement '
-      objectReference: {fileID: 0}
-    - target: {fileID: 4889165389690498052, guid: 2a388cb2a7bd7a34383dbf0987871dda, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4889165389690498052, guid: 2a388cb2a7bd7a34383dbf0987871dda, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4889165389690498052, guid: 2a388cb2a7bd7a34383dbf0987871dda, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4889165389690498052, guid: 2a388cb2a7bd7a34383dbf0987871dda, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4889165389690498052, guid: 2a388cb2a7bd7a34383dbf0987871dda, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4889165389690498052, guid: 2a388cb2a7bd7a34383dbf0987871dda, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4889165389690498052, guid: 2a388cb2a7bd7a34383dbf0987871dda, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4889165389690498052, guid: 2a388cb2a7bd7a34383dbf0987871dda, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4889165389690498052, guid: 2a388cb2a7bd7a34383dbf0987871dda, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4889165389690498052, guid: 2a388cb2a7bd7a34383dbf0987871dda, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5228879500557626587, guid: 2a388cb2a7bd7a34383dbf0987871dda, type: 3}
-      propertyPath: fields.Array.data[0].text
-      value: Vending Machine
-      objectReference: {fileID: 0}
-    - target: {fileID: 5228879500557626587, guid: 2a388cb2a7bd7a34383dbf0987871dda, type: 3}
-      propertyPath: fields.Array.data[2].text
-      value: Entry Bay
-      objectReference: {fileID: 0}
-    - target: {fileID: 5228879500557626587, guid: 2a388cb2a7bd7a34383dbf0987871dda, type: 3}
-      propertyPath: fields.Array.data[0].index
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5228879500557626587, guid: 2a388cb2a7bd7a34383dbf0987871dda, type: 3}
-      propertyPath: fields.Array.data[2].index
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2a388cb2a7bd7a34383dbf0987871dda, type: 3}
 --- !u!1001 &943724697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -248,6 +175,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
+--- !u!114 &943724698 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7895934889605816575, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
+  m_PrefabInstance: {fileID: 943724697}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1186419169
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -426,6 +364,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &2494658897334553539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4889165390261094349}
+  - component: {fileID: 5228879500053858066}
+  m_Layer: 0
+  m_Name: 'Movement '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!212 &2858986218595068320
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -496,6 +451,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5088071351078930774}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4889165390261094349
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2494658897334553539}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &5088071351078930774
 Transform:
   m_ObjectHideFlags: 0
@@ -512,6 +482,29 @@ Transform:
   - {fileID: 3063162737693996673}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5228879500053858066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2494658897334553539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa58103ec109f240bdf4cf139d5981b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI: {fileID: 943724698}
+  fields:
+  - alignment: 0
+    index: 3
+    text: Entry Bay
+  - alignment: 2
+    index: 1
+    text: Parking Lot
+  - alignment: 1
+    index: 4
+    text: Access Door
 --- !u!61 &7802408724660846941
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -566,4 +559,4 @@ SceneRoots:
   - {fileID: 1186419169}
   - {fileID: 1974296125}
   - {fileID: 5088071351078930774}
-  - {fileID: 570911689}
+  - {fileID: 4889165390261094349}

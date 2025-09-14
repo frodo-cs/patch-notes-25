@@ -523,14 +523,14 @@ MonoBehaviour:
   UI: {fileID: 943724698}
   fields:
   - alignment: 0
-    index: 3
+    index: 2
     text: Vending Machine
   - alignment: 2
-    index: 1
-    text: Parking Lot
-  - alignment: 1
-    index: 2
+    index: 3
     text: Utility Box
+  - alignment: 1
+    index: 0
+    text: Entry Bay
 --- !u!4 &6681502110281069485
 Transform:
   m_ObjectHideFlags: 0
