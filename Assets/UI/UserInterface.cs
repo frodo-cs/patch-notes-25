@@ -14,6 +14,7 @@ namespace Player.UI
         [Space(5)]
         [SerializeField] UIDocument shopUI;
         [SerializeField] ShopData shopData;
+        private bool shopOpen = false;
 
         //Inventory Params
         private const float ROW_MAX_WIDTH = 960f;
@@ -22,6 +23,8 @@ namespace Player.UI
         private const float STORE_BUTTON_MAX_HEIGHT = 22f;
         private const float SLOT_GAP = 0.01f;
         private const float SLOT_SCALE = 0.72f;
+
+
 
         public static Action OnInventoryUpdated;
         public static Action OnWalletUpdated;
@@ -52,8 +55,9 @@ namespace Player.UI
 
             store.Q("StoreButton").RegisterCallback<ClickEvent>(evt =>
             {
-                // Open store interface
-                Debug.Log("Store button clicked");
+                shopOpen = !shopOpen;
+                shopUI.rootVisualElement.Q("Background").style.visibility =
+                    shopOpen ? Visibility.Visible : Visibility.Hidden;
             });
 
             for (int x = 1; x <= 9; x++)
@@ -129,6 +133,8 @@ namespace Player.UI
                     }
                 }
             }
+
+            shopUI.rootVisualElement.Q("Background").style.visibility = Visibility.Hidden;
         }
 
         void OnBuyShopItem(VisualElement e, int index)
@@ -322,5 +328,6 @@ namespace Player.UI
             DialogBoxController.OnDialogEnds -= ShowUI;
             DialogBoxController.OnQuestionEnds -= ShowUI;
         }
+
     }
 }
