@@ -246,6 +246,8 @@ namespace Cinematics {
 
             void ShowResponses() {
                 //Show responses
+
+                dialogBox.style.display = DisplayStyle.None;
                 responsesBox.style.display = DisplayStyle.Flex;
                 for(int i = 0; i < q.responses.Length; i++) {
                     Responses[i].style.display = DisplayStyle.None;
