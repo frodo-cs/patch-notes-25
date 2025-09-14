@@ -2,6 +2,7 @@ using Cinematics;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static PersistentData;
 
 namespace Player.Gameplay.ClickableItems
 {
@@ -10,7 +11,17 @@ namespace Player.Gameplay.ClickableItems
         [SerializeField] SpriteRenderer spriteRenderer;
         [SerializeField] GameObject puzzlePrefab;
         private GameObject puzzleInstance;
-        private bool isOpen = false;
+        private bool lightsOn = false;
+
+        protected override void Start()
+        {
+            base.Start();
+            var data = GetData(itemId, "LightsOn") as BoolData;
+            if (data != null)
+            {
+                lightsOn = data.value;
+            }
+        }
 
         private List<Inventory.Inventory.InventoryData> GetItemsNeed()
         {
@@ -35,32 +46,39 @@ namespace Player.Gameplay.ClickableItems
             if (DialogBoxController.IsDialogRunning?.Invoke() == true)
                 return;
 
-            var selected = InteractionController.Instance.ItemSelected;
-
-            if (!isOpen && !HasItemsNeeded())
+            if (!lightsOn)
             {
-                dialog.text = "You don't have the required items";
-                OpenDialog();
-                return;
-            }
+                var selected = InteractionController.Instance.ItemSelected;
 
-            if (!isOpen)
+                if (!touched && !HasItemsNeeded())
+                {
+                    dialog.text = "You don't have the required items";
+                    OpenDialog();
+                    return;
+                }
+
+                if (!touched)
+                {
+                    dialog.text = "You opened the utility box";
+                    OpenDialog();
+                    DialogBoxController.OnDialogEnds += OpenUtilityBox;
+                    return;
+                }
+
+                dialog.text = "You find a switch board";
+                OpenDialog();
+                DialogBoxController.OnDialogEnds += InstantiatePuzzle;
+            } else
             {
-                dialog.text = "You opened the utility box";
+                dialog.text = "You alerady turned the lights on";
                 OpenDialog();
-                DialogBoxController.OnDialogEnds += OpenUtilityBox;
-                return;
             }
-
-            dialog.text = "You find a switch board";
-            OpenDialog();
-            DialogBoxController.OnDialogEnds += InstantiatePuzzle;
         }
 
         private void OpenUtilityBox()
         {
             spriteRenderer.color = new Color(170f / 255f, 90f / 255f, 90f / 255f, 0.4f);
-            isOpen = true;
+            SaveTouched();
             DialogBoxController.OnDialogEnds -= OpenUtilityBox;
         }
 
@@ -102,6 +120,7 @@ namespace Player.Gameplay.ClickableItems
             DialogBoxController.OnDialogEnds -= OnFinishPuzzle;
             Puzzles.SwitchBoardPuzzle.OnPasswordCorrect -= OnPasswordCorrect;
             Puzzles.SwitchBoardPuzzle.OnExitClicked -= OnDestroyPuzzle;
+            Save(itemId, new BoolData("LightsOn", true));
 
             if (puzzleInstance != null)
                 Destroy(puzzleInstance);

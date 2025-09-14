@@ -43,7 +43,8 @@ namespace Player.Gameplay.ClickableItems
             Inventory.Inventory.RemoveItem?.Invoke(selected);
             Inventory.Inventory.AddItems?.Invoke(droppables);
             droppables = new Inventory.Object[0];
-            SetTouched();
+            SaveDroppables();
+            SaveTouched();
         }
 
         private void OnDestroy()

@@ -111,11 +111,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c3ee104dca9825c459de94a064835971, type: 2}
   - {fileID: 11400000, guid: c3ee104dca9825c459de94a064835971, type: 2}
   - {fileID: 11400000, guid: c3ee104dca9825c459de94a064835971, type: 2}
-  - {fileID: 11400000, guid: c3ee104dca9825c459de94a064835971, type: 2}
-  - {fileID: 11400000, guid: c3ee104dca9825c459de94a064835971, type: 2}
-  - {fileID: 11400000, guid: c3ee104dca9825c459de94a064835971, type: 2}
-  - {fileID: 11400000, guid: c3ee104dca9825c459de94a064835971, type: 2}
-  - {fileID: 11400000, guid: c3ee104dca9825c459de94a064835971, type: 2}
+  itemId: vending_machine
 --- !u!1 &5746976248534170589
 GameObject:
   m_ObjectHideFlags: 0

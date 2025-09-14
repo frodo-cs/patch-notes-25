@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PersistentData : MonoBehaviour {
+public class PersistentData : MonoBehaviour
+{
     public Dictionary<int, SceneSaver> savedScenes;
     public Dictionary<string, bool> shopData;
     public int savedCurrency = 0;
@@ -24,8 +25,10 @@ public class PersistentData : MonoBehaviour {
 
     public static PersistentData instance;
 
-    private void Awake() {
-        if(instance == null) {
+    private void Awake()
+    {
+        if (instance == null)
+        {
             Save = OnSave;
             GetData = OnGetData;
 
@@ -43,36 +46,49 @@ public class PersistentData : MonoBehaviour {
 
     #region ShopData
 
-    void OnSaveShop(string slot, bool t) {
-        if(shopData == null) shopData = new();
+    void OnSaveShop(string slot, bool t)
+    {
+        if (shopData == null)
+            shopData = new();
 
-        if(!shopData.ContainsKey(slot)) shopData.Add(slot, t);
-        else shopData[slot] = t;
+        if (!shopData.ContainsKey(slot))
+            shopData.Add(slot, t);
+        else
+            shopData[slot] = t;
     }
 
-    bool OnLoadShop(string slot) {
-        if(shopData == null) shopData = new();
+    bool OnLoadShop(string slot)
+    {
+        if (shopData == null)
+            shopData = new();
 
-        if(!shopData.ContainsKey(slot)) return false;
-        else return shopData[slot];
+        if (!shopData.ContainsKey(slot))
+            return false;
+        else
+            return shopData[slot];
     }
 
     #endregion
 
-    public void OnSaveCurrency(int money) {
+    public void OnSaveCurrency(int money)
+    {
         savedCurrency = money;
     }
 
-    public int OnLoadCurrency() {
+    public int OnLoadCurrency()
+    {
         return savedCurrency;
     }
 
 
-    public void OnSave(string objectName, PropertyData data) {
+    public void OnSave(string objectName, PropertyData data)
+    {
         int scene = SceneManager.GetActiveScene().buildIndex;
 
-        if(!savedScenes.ContainsKey(scene)) {
-            var saver = new SceneSaver {
+        if (!savedScenes.ContainsKey(scene))
+        {
+            var saver = new SceneSaver
+            {
                 savedObjects = new()
             };
 
@@ -80,76 +96,99 @@ public class PersistentData : MonoBehaviour {
             //Debug.Log("New scene saved!");
         }
 
-        if(!savedScenes[scene].savedObjects.ContainsKey(objectName)) {
+        if (!savedScenes[scene].savedObjects.ContainsKey(objectName))
+        {
             savedScenes[scene].savedObjects.Add(objectName, new ObjectData(objectName));
             //Debug.Log("New object saved!");
         }
 
-        if(savedScenes[scene].savedObjects.TryGetValue(objectName, out ObjectData obj)) { 
+        if (savedScenes[scene].savedObjects.TryGetValue(objectName, out ObjectData obj))
+        {
             obj.Save(data);
             //Debug.Log("New property!");
         }
     }
 
-    public PropertyData OnGetData(string objectName, string variableName) {
+    public PropertyData OnGetData(string objectName, string variableName)
+    {
         int scene = SceneManager.GetActiveScene().buildIndex;
-        if(!savedScenes.ContainsKey(scene)) return null;
+        if (!savedScenes.ContainsKey(scene))
+            return null;
         //Debug.Log("Scene data recovered!");
 
-        if(savedScenes[scene].savedObjects.TryGetValue(objectName, out ObjectData obj)) {
+        if (savedScenes[scene].savedObjects.TryGetValue(objectName, out ObjectData obj))
+        {
             //Debug.Log("Obj data recovered!");
 
-            if(obj.savedData.TryGetValue(variableName, out PropertyData v)) {
+            if (obj.savedData.TryGetValue(variableName, out PropertyData v))
+            {
                 //Debug.Log("Property data recovered!");
-                return v; 
+                return v;
             }
         }
 
         return null;
     }
 
-    public struct SceneSaver { 
-        public Dictionary<string, ObjectData> savedObjects; 
+    public struct SceneSaver
+    {
+        public Dictionary<string, ObjectData> savedObjects;
 
-        public void UpdateObj(ObjectData obj) {
-            if(savedObjects == null) savedObjects = new Dictionary<string, ObjectData>();
+        public void UpdateObj(ObjectData obj)
+        {
+            if (savedObjects == null)
+                savedObjects = new Dictionary<string, ObjectData>();
 
-            if(!savedObjects.ContainsKey(obj.objectName)) savedObjects.Add(obj.objectName, obj);
-            else savedObjects[obj.objectName] = obj;
+            if (!savedObjects.ContainsKey(obj.objectName))
+                savedObjects.Add(obj.objectName, obj);
+            else
+                savedObjects[obj.objectName] = obj;
         }
     }
 
     //Object
-    public struct ObjectData {
+    public struct ObjectData
+    {
         public string objectName;
         public Dictionary<string, PropertyData> savedData;
 
-        public ObjectData(string _objectName) {
+        public ObjectData(string _objectName)
+        {
             objectName = _objectName;
             savedData = new();
         }
 
-        public void Save(string _objectName, PropertyData data) {
+        public void Save(string _objectName, PropertyData data)
+        {
             objectName = _objectName;
-            if(savedData == null) savedData = new Dictionary<string, PropertyData>();
+            if (savedData == null)
+                savedData = new Dictionary<string, PropertyData>();
 
-            if(!savedData.ContainsKey(data.keyName)) savedData.Add(data.keyName, data);
-            else savedData[data.keyName] = data;
+            if (!savedData.ContainsKey(data.keyName))
+                savedData.Add(data.keyName, data);
+            else
+                savedData[data.keyName] = data;
         }
 
-        public void Save(PropertyData data) {
-            if(savedData == null) savedData = new Dictionary<string, PropertyData>();
+        public void Save(PropertyData data)
+        {
+            if (savedData == null)
+                savedData = new Dictionary<string, PropertyData>();
 
-            if(!savedData.ContainsKey(data.keyName)) savedData.Add(data.keyName, data);
-            else savedData[data.keyName] = data;
+            if (!savedData.ContainsKey(data.keyName))
+                savedData.Add(data.keyName, data);
+            else
+                savedData[data.keyName] = data;
         }
     }
 
     //Propierties
-    public class PropertyData {
+    public class PropertyData
+    {
         public string keyName;
 
-        public PropertyData(string variableName) {
+        public PropertyData(string variableName)
+        {
             keyName = variableName;
         }
 
@@ -157,7 +196,8 @@ public class PersistentData : MonoBehaviour {
         public virtual object getData() { return null; }
     }
 
-    public class IntData : PropertyData {
+    public class IntData : PropertyData
+    {
         public int value;
 
         public IntData(string variableName, int v) : base(variableName) { value = v; }
@@ -166,7 +206,18 @@ public class PersistentData : MonoBehaviour {
         public override void setData(object obj) { value = (int)obj; }
     }
 
-    public class BoolData : PropertyData {
+    public class ObjectArrayData : PropertyData
+    {
+        public Player.Inventory.Object[] value;
+
+        public ObjectArrayData(string variableName, Player.Inventory.Object[] v) : base(variableName) { value = v; }
+
+        public override object getData() { return value; }
+        public override void setData(object obj) { value = (Player.Inventory.Object[])obj; }
+    }
+
+    public class BoolData : PropertyData
+    {
         public bool value;
 
         public BoolData(string variableName, bool v) : base(variableName) { value = v; }
@@ -175,7 +226,8 @@ public class PersistentData : MonoBehaviour {
         public override void setData(object obj) { value = (bool)obj; }
     }
 
-    public class StringData : PropertyData {
+    public class StringData : PropertyData
+    {
         public string value;
 
         public StringData(string variableName, string v) : base(variableName) { value = v; }

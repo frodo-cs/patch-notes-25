@@ -9,7 +9,5 @@ namespace Player.Inventory {
         [Multiline] public string highlightText;
         public int maxAmount = 1;
         public Object[] combinableWith;
-        public bool canMerge = false;
     }
-
 }

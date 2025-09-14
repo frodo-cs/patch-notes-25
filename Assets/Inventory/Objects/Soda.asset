@@ -16,6 +16,5 @@ MonoBehaviour:
   PortraitHover: {fileID: 2800000, guid: 3663afbf4a704194aaf1d0fd2d556a3e, type: 3}
   objectName: soda
   highlightText: 
-  maxAmount: 10
+  maxAmount: 4
   combinableWith: []
-  canMerge: 0

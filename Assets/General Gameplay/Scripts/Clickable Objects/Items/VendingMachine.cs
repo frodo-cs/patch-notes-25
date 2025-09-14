@@ -46,11 +46,11 @@ namespace Player.Gameplay.ClickableItems
             var selected = InteractionController.Instance.ItemSelected;
             var selectedItem = new Inventory.Object[] { droppables[0] };
             droppables = droppables.Skip(1).ToArray();
-
+            SaveDroppables();
             InteractionController.Instance.ClearSelection();
             Inventory.Inventory.RemoveItem?.Invoke(selected);
             Inventory.Inventory.AddItems?.Invoke(selectedItem);
-            SetTouched();
+            SaveTouched();
         }
     }
 }
