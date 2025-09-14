@@ -25,12 +25,15 @@ namespace Player.UI
         [Space(2)]
         [SerializeField] Question sellConfirm;
 
+        //Inventory Params
         private const float ROW_MAX_WIDTH = 960f;
         private const float ROW_MAX_HEIGHT = 125f;
         private const float STORE_BUTTON_MAX_WIDTH = 134f;
         private const float STORE_BUTTON_MAX_HEIGHT = 22f;
         private const float SLOT_GAP = 0.01f;
         private const float SLOT_SCALE = 0.72f;
+
+
 
         public static Action OnInventoryUpdated;
         public static Action OnWalletUpdated;
@@ -59,12 +62,6 @@ namespace Player.UI
                 AdjustSlotSizes(row);
             });
 
-            store.Q("StoreButton").RegisterCallback<ClickEvent>(evt =>
-            {
-                // Open store interface
-                Debug.Log("Store button clicked");
-            });
-
             for (int x = 1; x <= 9; x++)
             {
                 int index = x - 1;
@@ -91,14 +88,14 @@ namespace Player.UI
                 slotContainer.RegisterCallback<MouseEnterEvent>(evt => {
                     if (index < Inventory.Inventory.Instance.GetItems().Count)
                     {
-                        UpdateHoveIcon(index, icon, true);
+                        UpdateHoverIcon(index, icon, true);
                     }
                 });
 
                 slotContainer.RegisterCallback<MouseLeaveEvent>(evt => {
                     if (index < Inventory.Inventory.Instance.GetItems().Count)
                     {
-                        UpdateHoveIcon(index, icon, false);
+                        UpdateHoverIcon(index, icon, false);
                     }
                 });
             }
@@ -114,13 +111,16 @@ namespace Player.UI
             int SHOP_MAX_COLUMNS = 2;
             int SHOP_MAX_ROWS = 3;
 
-            for(int x = 0; x < SHOP_MAX_COLUMNS; x++) {
-                for(int y = 0; y < SHOP_MAX_ROWS; y++) {
+            for (int x = 0; x < SHOP_MAX_COLUMNS; x++)
+            {
+                for (int y = 0; y < SHOP_MAX_ROWS; y++)
+                {
 
                     int index = y + (x * SHOP_MAX_ROWS);
                     VisualElement e = shopUI.rootVisualElement.Q($"C{x}S{y}");
 
-                    if(index < shopData.slots.Length) {
+                    if (index < shopData.slots.Length)
+                    {
 
                         Label c = e.Q("Cost") as Label;
 
@@ -220,13 +220,14 @@ namespace Player.UI
 
         #endregion
 
+        #region Inventory
         private void UpdateUI()
         {
             UpdateWallet();
             UpdateInventory();
         }
 
-        private void UpdateHoveIcon(int index, VisualElement icon, bool isEnter)
+        private void UpdateHoverIcon(int index, VisualElement icon, bool isEnter)
         {
             var data = Inventory.Inventory.Instance.GetItems()[index];
             var controller = InteractionController.Instance;
@@ -259,7 +260,8 @@ namespace Player.UI
             var walletLabel = root.Q("Store").Q<Label>("Wallet");
 
             int? money = Currency.GetMoney?.Invoke();
-            if(money == null) money = 0;
+            if (money == null)
+                money = 0;
 
             walletLabel.text = $"${money}";
         }
@@ -373,6 +375,8 @@ namespace Player.UI
             }
         }
 
+        #endregion
+
         void HideUI() => DisplayUI(false);
         void ShowUI() => DisplayUI(true);
         void ShowUI(byte a) => DisplayUI(true);
@@ -392,5 +396,6 @@ namespace Player.UI
             DialogBoxController.OnDialogEnds -= ShowUI;
             DialogBoxController.OnQuestionEnds -= ShowUI;
         }
+
     }
 }

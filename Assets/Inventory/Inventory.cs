@@ -16,7 +16,7 @@ namespace Player.Inventory
 
         public static Action<GameObject> PickUpFromWorld;
         public static Action<Object> RemoveItem;
-        public static Action<GameObject> ItemAdded;
+        public static Action<GameObject> OnItemAdded;
         public static Action<Object[]> AddItems;
         public static int SpaceLeft => COLUMNS - Instance.objects.Count;
 
@@ -44,9 +44,9 @@ namespace Player.Inventory
         private void Start()
         {
             PickUpFromWorld += OnPickUpItem;
+            PickUpObject += OnAddOneItem;
             RemoveItem += OnRemoveItem;
             AddItems += OnAddItems;
-            PickUpObject += TryAddItem;
         }
 
         public List<InventoryData> GetItems() => objects;
@@ -59,6 +59,12 @@ namespace Player.Inventory
             }
         }
 
+        private bool OnAddOneItem(Object obj)
+        {
+            bool added = TryAddItem(obj);
+            return added;
+        }
+
         private void OnPickUpItem(GameObject obj)
         {
             var inventoryItem = obj.GetComponent<InventoryItem>();
@@ -66,7 +72,7 @@ namespace Player.Inventory
                 return;
             var addedItem = TryAddItem(inventoryItem.obj);
             if (addedItem)
-                ItemAdded?.Invoke(obj);
+                OnItemAdded?.Invoke(obj);
         }
 
         private bool TryAddItem(Object obj)
@@ -128,7 +134,7 @@ namespace Player.Inventory
             PickUpFromWorld -= OnPickUpItem;
             RemoveItem -= OnRemoveItem;
             AddItems -= OnAddItems;
-            PickUpObject -= TryAddItem;
+            PickUpObject -= OnAddOneItem;
         }
     }
 }

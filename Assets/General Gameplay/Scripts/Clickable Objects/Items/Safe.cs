@@ -22,7 +22,7 @@ namespace Player.Gameplay.ClickableItems
             if (!HasItemNeeded(selected))
             {
                 puzzleObject.SetActive(true);
-                NumberInput.OnPasswordCorrect += OpenStorage;
+                Puzzles.NumberInput.OnPasswordCorrect += OpenStorage;
             } else if (HasItemNeeded(selected))
             {
                 OpenStorage();
@@ -57,7 +57,7 @@ namespace Player.Gameplay.ClickableItems
         private void OnDestroy()
         {
             DialogBoxController.OnDialogEnds -= AddItems;
-            NumberInput.OnPasswordCorrect -= OpenStorage;
+            Puzzles.NumberInput.OnPasswordCorrect -= OpenStorage;
         }
 
 
