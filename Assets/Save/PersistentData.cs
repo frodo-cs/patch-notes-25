@@ -5,10 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class PersistentData : MonoBehaviour {
     public Dictionary<int, SceneSaver> savedScenes;
+    public Dictionary<string, bool> shopData;
     public int savedCurrency = 0;
 
     public static Action<string, PropertyData> Save;
     public static Action<int> SaveCurrency;
+
+    //Shop
+    public delegate bool getBool(string objectName);
+    public static getBool LoadShop;
+    public static Action<string, bool> SaveShop;
 
     public delegate int getCurrency();
     public static getCurrency GetCurrency;
@@ -26,11 +32,32 @@ public class PersistentData : MonoBehaviour {
             GetCurrency = OnLoadCurrency;
             SaveCurrency = OnSaveCurrency;
 
+            SaveShop = OnSaveShop;
+            LoadShop = OnLoadShop;
+
             savedScenes = new();
             instance = this;
         }
 
     }
+
+    #region ShopData
+
+    void OnSaveShop(string slot, bool t) {
+        if(shopData == null) shopData = new();
+
+        if(!shopData.ContainsKey(slot)) shopData.Add(slot, t);
+        else shopData[slot] = t;
+    }
+
+    bool OnLoadShop(string slot) {
+        if(shopData == null) shopData = new();
+
+        if(!shopData.ContainsKey(slot)) return false;
+        else return shopData[slot];
+    }
+
+    #endregion
 
     public void OnSaveCurrency(int money) {
         savedCurrency = money;

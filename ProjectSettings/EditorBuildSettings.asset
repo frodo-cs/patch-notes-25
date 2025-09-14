@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Test3.unity
     guid: f86eb0d713483ac40a59646bcd3a1785
+  - enabled: 1
+    path: Assets/Scenes/Inventory.unity
+    guid: e8f062128e582ae4798ebeb3caa546b4
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

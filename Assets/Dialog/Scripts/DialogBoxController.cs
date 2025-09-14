@@ -172,7 +172,7 @@ namespace Cinematics {
 
                 Dialog.charData characterSpeaking = d.characterSpeaking;
 
-                if(!source.isPlaying && characterSpeaking.character != null) {
+                if(!source.isPlaying && characterSpeaking != null && characterSpeaking.character != null) {
                     source.pitch = UnityEngine.Random.Range(0.9f, 1.1f) * d.textSpeed;
                     source.PlayOneShot(characterSpeaking.character.speechSounds[UnityEngine.Random.Range(0, characterSpeaking.character.speechSounds.Length)]);
                 }
@@ -328,6 +328,8 @@ namespace Cinematics {
         public Dialog(string _text, charData _characterSpeakingData = null, float _textSpeed = 1) { 
             text = _text;
             characterSpeaking = _characterSpeakingData;
+
+            hideOnDialogEnds = true;
 
             if(_textSpeed == 0) _textSpeed = 1;
             textSpeed = _textSpeed;

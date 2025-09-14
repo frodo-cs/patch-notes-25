@@ -12,9 +12,18 @@ namespace Player.UI
 
         //Shop
         [Space(5)]
+        [Header("Shop")]
         [SerializeField] UIDocument shopUI;
         [SerializeField] ShopData shopData;
-        private bool shopOpen = false;
+
+        [SerializeField] Dialog notSelectedItem;
+        [SerializeField] Dialog notSellableItem;
+        [SerializeField] Dialog notEnoughtMoneyDialog;
+        [SerializeField] Dialog fullInventoryDialog;
+        [SerializeField] Dialog alreadyBuyed;
+
+        [Space(2)]
+        [SerializeField] Question sellConfirm;
 
         //Inventory Params
         private const float ROW_MAX_WIDTH = 960f;
@@ -53,13 +62,6 @@ namespace Player.UI
                 AdjustSlotSizes(row);
             });
 
-            store.Q("StoreButton").RegisterCallback<ClickEvent>(evt =>
-            {
-                shopOpen = !shopOpen;
-                shopUI.rootVisualElement.Q("Background").style.visibility =
-                    shopOpen ? Visibility.Visible : Visibility.Hidden;
-            });
-
             for (int x = 1; x <= 9; x++)
             {
                 int index = x - 1;
@@ -86,14 +88,14 @@ namespace Player.UI
                 slotContainer.RegisterCallback<MouseEnterEvent>(evt => {
                     if (index < Inventory.Inventory.Instance.GetItems().Count)
                     {
-                        UpdateHoveIcon(index, icon, true);
+                        UpdateHoverIcon(index, icon, true);
                     }
                 });
 
                 slotContainer.RegisterCallback<MouseLeaveEvent>(evt => {
                     if (index < Inventory.Inventory.Instance.GetItems().Count)
                     {
-                        UpdateHoveIcon(index, icon, false);
+                        UpdateHoverIcon(index, icon, false);
                     }
                 });
             }
@@ -102,8 +104,9 @@ namespace Player.UI
             InitShopUI();
         }
 
-        void InitShopUI()
-        {
+        #region Shop
+
+        void InitShopUI() {
 
             int SHOP_MAX_COLUMNS = 2;
             int SHOP_MAX_ROWS = 3;
@@ -126,41 +129,105 @@ namespace Player.UI
 
                         e.Q("Image").style.backgroundImage = shopData.slots[index].obj.Portrait;
 
-                        e.RegisterCallback<ClickEvent>(evt =>
-                        {
+                        bool? isBuyed = PersistentData.LoadShop?.Invoke(e.name);
+                        if(isBuyed != null && isBuyed.Value) {
+                            e.AddToClassList("ShopItem_Sold");
+                            c.style.display = DisplayStyle.None;
+                        }
+
+                        e.RegisterCallback<ClickEvent>(evt => {
                             OnBuyShopItem(e, index);
                         });
+                    } else {
+                        e.style.display = DisplayStyle.None;
                     }
                 }
             }
 
-            shopUI.rootVisualElement.Q("Background").style.visibility = Visibility.Hidden;
+            shopUI.rootVisualElement.Q("Close").RegisterCallback<ClickEvent>(evt => {
+                DisplayShop(false);
+            });
+
+            UI.rootVisualElement.Q("StoreButton").RegisterCallback<ClickEvent>(evt => {
+                DisplayShop();
+            });
+
+            shopUI.rootVisualElement.Q("Sell").RegisterCallback<ClickEvent>(evt => {
+                SellItem();
+            });
+
+            DisplayShop(false);
         }
 
-        void OnBuyShopItem(VisualElement e, int index)
-        {
+        void SellItem() {
+            if(InteractionController.Instance.ItemSelected == null) { DialogBoxController.PlayDialog?.Invoke(notSelectedItem); return; }
+
+            if(InteractionController.Instance.ItemSelected is SellableObject) {
+                Debug.Log("Objeto vendible");
+
+                SellableObject so = InteractionController.Instance.ItemSelected as SellableObject;
+                sellConfirm.question = new Dialog($"I can give you ${so.sellingPrice} for that!", null, 2);
+
+                DialogBoxController.PlayQuestion?.Invoke(sellConfirm);
+                DialogBoxController.OnQuestionEnds += OnSellItem;
+
+                void OnSellItem(byte r) {
+                    if(r == 0) {
+                        Inventory.Inventory.RemoveItem?.Invoke(so);
+                        Currency.AddMoney?.Invoke(so.sellingPrice);
+                        DialogBoxController.OnQuestionEnds -= OnSellItem;
+                    }
+                }
+            } else {
+                DialogBoxController.PlayDialog?.Invoke(notSellableItem);
+            }
+        }
+
+        void OnBuyShopItem(VisualElement e, int index) {
             int? money = Currency.GetMoney?.Invoke();
             money = money == null ? 0 : money.Value;
 
+            if(e.ClassListContains("ShopItem_Sold")){
+                DialogBoxController.PlayDialog?.Invoke(alreadyBuyed);
+                return;
+            }
+
             int price = shopData.slots[index].price;
 
-            if (price > money)
-            { Debug.Log("Not enought money!"); return; }
+            if(price > money) { DialogBoxController.PlayDialog?.Invoke(notEnoughtMoneyDialog); return; }
+
+            var result = Inventory.Inventory.PickUpObject?.Invoke(shopData.slots[index].obj);
+            if(result == null || !result.Value) { DialogBoxController.PlayDialog?.Invoke(fullInventoryDialog); return; }
 
             e.AddToClassList("ShopItem_Sold");
             e.Q("Cost").style.display = DisplayStyle.None;
 
-            Inventory.Inventory.PickUpObject?.Invoke(shopData.slots[index].obj);
             Currency.AddMoney?.Invoke(-price);
+            PersistentData.SaveShop?.Invoke(e.name, true);
         }
 
+        void DisplayShop() {
+            VisualElement e = shopUI.rootVisualElement.Q("Background");
+            bool t = e.style.visibility == Visibility.Hidden;
+
+            e.style.visibility = t ? Visibility.Visible : Visibility.Hidden;
+            Interactable.ChangeState?.Invoke(!t ? Interactable.CurrentState.Normal : Interactable.CurrentState.Paused);
+        }
+        void DisplayShop(bool t) { 
+            shopUI.rootVisualElement.Q("Background").style.visibility = t ? Visibility.Visible : Visibility.Hidden;
+            Interactable.ChangeState?.Invoke(!t ? Interactable.CurrentState.Normal : Interactable.CurrentState.Paused); 
+        }
+
+        #endregion
+
+        #region Inventory
         private void UpdateUI()
         {
             UpdateWallet();
             UpdateInventory();
         }
 
-        private void UpdateHoveIcon(int index, VisualElement icon, bool isEnter)
+        private void UpdateHoverIcon(int index, VisualElement icon, bool isEnter)
         {
             var data = Inventory.Inventory.Instance.GetItems()[index];
             var controller = InteractionController.Instance;
@@ -188,8 +255,7 @@ namespace Player.UI
             }
         }
 
-        private void UpdateWallet()
-        {
+        private void UpdateWallet() {
             var root = UI.rootVisualElement;
             var walletLabel = root.Q("Store").Q<Label>("Wallet");
 
@@ -254,7 +320,7 @@ namespace Player.UI
 
 
             var selectedIndex = controller.GetLastIndexSelected();
-            if (selectedIndex >= 0)
+            if (selectedIndex >= 0 && selectedIndex < items.Count)
             {
                 description.text = items[selectedIndex].obj.highlightText;
             } else
@@ -308,6 +374,8 @@ namespace Player.UI
                 slotContainer.style.marginLeft = (x > 1) ? row.resolvedStyle.width * SLOT_GAP : 0;
             }
         }
+
+        #endregion
 
         void HideUI() => DisplayUI(false);
         void ShowUI() => DisplayUI(true);

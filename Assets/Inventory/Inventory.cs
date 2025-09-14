@@ -10,11 +10,14 @@ namespace Player.Inventory
         public static Inventory Instance { get; private set; }
 
         [SerializeField] private List<InventoryData> objects;
+
+        public delegate bool ObjectOperation(Object obj);
+        public static ObjectOperation PickUpObject;
+
         public static Action<GameObject> PickUpFromWorld;
         public static Action<Object> RemoveItem;
         public static Action<GameObject> OnItemAdded;
         public static Action<Object[]> AddItems;
-        public static Action<Object> PickUpObject;
         public static int SpaceLeft => COLUMNS - Instance.objects.Count;
 
         private const int COLUMNS = 9;
@@ -56,9 +59,10 @@ namespace Player.Inventory
             }
         }
 
-        private void OnAddOneItem(Object obj)
+        private bool OnAddOneItem(Object obj)
         {
-            TryAddItem(obj);
+            bool added = TryAddItem(obj);
+            return added;
         }
 
         private void OnPickUpItem(GameObject obj)
