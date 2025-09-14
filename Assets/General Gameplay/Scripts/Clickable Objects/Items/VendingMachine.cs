@@ -1,0 +1,59 @@
+using Cinematics;
+using System.Linq;
+using UnityEngine;
+
+namespace Player.Gameplay.ClickableItems
+{
+    public class VendingMachine : ItemDroppables
+    {
+        public override void OnInteractStart()
+        {
+            if (DialogBoxController.IsDialogRunning?.Invoke() == true)
+                return;
+
+            var selected = InteractionController.Instance.ItemSelected;
+
+            if (!HasItemNeeded(selected))
+            {
+                dialog.text = "You need a token to use the vending machine";
+                OpenDialog();
+                return;
+            }
+
+            if (touched && droppables.Length == 0)
+            {
+                dialog.text = "No more items";
+                OpenDialog();
+                return;
+            }
+
+            if (!CanAddItems())
+            {
+                dialog.text = "Your inventory doesn't have enough spac";
+                OpenDialog();
+                return;
+            }
+
+            dialog.text = "Vending machine dispenses an item";
+            OpenDialog();
+            DialogBoxController.OnDialogEnds += AddItems;
+        }
+
+        protected override void AddItems()
+        {
+            if(droppables.Length == 0) return;
+
+            var selected = InteractionController.Instance.ItemSelected;
+            int randomIndex = Random.Range(0, droppables.Length);
+            Debug.Log("Selected item index: " + randomIndex);
+
+            var selectedItem = new Inventory.Object[] { droppables[randomIndex] };
+            droppables = droppables.Where((val, idx) => idx != randomIndex).ToArray();
+
+            InteractionController.Instance.ClearSelection();
+            Inventory.Inventory.RemoveItem?.Invoke(selected);
+            Inventory.Inventory.AddItems?.Invoke(selectedItem);
+            SetTouched();
+        }
+    }
+}

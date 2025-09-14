@@ -1,23 +1,43 @@
 using Cinematics;
-using Player;
-using Player.Inventory;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ItemDependent : DescriptionObject 
+namespace Player.Gameplay
 {
-    Dialog lockedDialog;
-
-    [Space(5)]
-    [SerializeField] private Player.Inventory.Object neededObject;
-
-    [Space(5)]
-    [SerializeField] UnityEvent onUnlock;
-
-    public override void OnInteractStart()
+    public class ItemDependent : DescriptionObject
     {
-        var a = DialogBoxController.IsDialogRunning?.Invoke();
-        if (a != null && !a.Value)
-            DialogBoxController.PlayDialog?.Invoke(dialog);
+        Dialog lockedDialog;
+
+        [Space(5)]
+        [SerializeField] protected Inventory.Object[] neededObjects;
+
+        [Space(5)]
+        [SerializeField] UnityEvent onUnlock;
+        private HashSet<Inventory.Object> neededSet;
+        protected bool touched = false;
+
+        private void Awake()
+        {
+            neededSet = new HashSet<Inventory.Object>(neededObjects);
+        }
+
+        protected bool HasItemNeeded(Inventory.Object selected)
+        {
+            return neededSet.Contains(selected);
+        }
+
+        protected void OpenDialog()
+        {
+            var a = DialogBoxController.IsDialogRunning?.Invoke();
+            if (a != null && !a.Value)
+                DialogBoxController.PlayDialog?.Invoke(dialog);
+        }
+
+        protected void SetTouched()
+        {
+            touched = true;
+        }
     }
+
 }

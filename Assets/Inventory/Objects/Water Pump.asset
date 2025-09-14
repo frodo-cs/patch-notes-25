@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c47ecad09edc9948bdac6969fa38a81, type: 3}
+  m_Name: Water Pump
+  m_EditorClassIdentifier: 
+  Portrait: {fileID: 2800000, guid: 3c2bb9f3abd580f42bec4f63d34ef532, type: 3}
+  PortraitHover: {fileID: 2800000, guid: 9939e465c5c5692469fc28f4b38301a5, type: 3}
+  PortraitMerge: {fileID: 2800000, guid: bd283b46440a0a147931b5b9d73ce649, type: 3}
+  objectName: water pump
+  highlightText: 
+  maxAmount: 1
+  canMerge: 0

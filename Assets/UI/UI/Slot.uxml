@@ -1,7 +1,8 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/Inventory/UI/InventoryUI.uss?fileID=7433441132597879392&amp;guid=9b9fec11f5ba1f947a1cd80dc2059df2&amp;type=3#InventoryUI" />
+    <Style src="project://database/Assets/UI/UI/InventoryUI.uss?fileID=7433441132597879392&amp;guid=9b9fec11f5ba1f947a1cd80dc2059df2&amp;type=3#InventoryUI" />
     <engine:VisualElement name="Slot" class="Slot" style="padding-top: 5%; padding-right: 5%; padding-bottom: 5%; padding-left: 5%;">
         <engine:VisualElement name="Icon" class="Icon" style="flex-grow: 1; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; background-image: none; -unity-background-scale-mode: scale-to-fit; position: relative; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
-        <engine:Label text="Label" name="Name" class="Label" style="align-items: center; justify-content: center; align-self: center; align-content: center; background-color: rgba(0, 0, 0, 0); position: absolute; bottom: 0;" />
+        <engine:Label text="Label" name="Name" class="Label" style="align-items: center; justify-content: center; align-self: center; align-content: center; background-color: rgba(0, 0, 0, 0); position: absolute; bottom: 0; white-space: pre-wrap; -unity-text-align: upper-center;" />
+        <engine:Label text="Label" name="Amount" class="Label" style="align-items: center; justify-content: center; align-self: center; align-content: center; background-color: rgba(0, 0, 0, 0); position: absolute; bottom: auto; top: 0; right: 0;" />
     </engine:VisualElement>
 </engine:UXML>

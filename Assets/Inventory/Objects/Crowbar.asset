@@ -14,5 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Portrait: {fileID: 2800000, guid: 7f928197278714c4698f5caa86900c1f, type: 3}
   PortraitHover: {fileID: 2800000, guid: a912336493a6a6849bdd750ab662d88f, type: 3}
-  highlightText: crowbar
+  PortraitMerge: {fileID: 2800000, guid: 70e3e05ea45b27e41a25e801ac9f354a, type: 3}
+  objectName: crowbar
+  highlightText: 
   maxAmount: 1
+  combinableWith:
+  - {fileID: 11400000, guid: b651b9db917088a439900c6bfa019f44, type: 2}
