@@ -30,12 +30,12 @@ namespace Player.Gameplay.ClickableItems
             dialog.text = "You received x amount of money";
             OpenDialog();
             Inventory.Inventory.RemoveItem?.Invoke(selected);
-            DialogBoxController.OnDialogEnds += SetTouched;
+            DialogBoxController.OnDialogEnds += SaveTouched;
         }
 
         private void OnDestroy()
         {
-            DialogBoxController.OnDialogEnds -= SetTouched;
+            DialogBoxController.OnDialogEnds -= SaveTouched;
         }
     }
 }

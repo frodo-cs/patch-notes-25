@@ -44,16 +44,13 @@ namespace Player.Gameplay.ClickableItems
             if(droppables.Length == 0) return;
 
             var selected = InteractionController.Instance.ItemSelected;
-            int randomIndex = Random.Range(0, droppables.Length);
-            Debug.Log("Selected item index: " + randomIndex);
-
-            var selectedItem = new Inventory.Object[] { droppables[randomIndex] };
-            droppables = droppables.Where((val, idx) => idx != randomIndex).ToArray();
-
+            var selectedItem = new Inventory.Object[] { droppables[0] };
+            droppables = droppables.Skip(1).ToArray();
+            SaveDroppables();
             InteractionController.Instance.ClearSelection();
             Inventory.Inventory.RemoveItem?.Invoke(selected);
             Inventory.Inventory.AddItems?.Invoke(selectedItem);
-            SetTouched();
+            SaveTouched();
         }
     }
 }

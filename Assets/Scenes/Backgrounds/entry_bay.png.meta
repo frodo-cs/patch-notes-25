@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: b0bc6b4a3c038b64b8bf06ce55d80d55
+guid: 26c3523bc2b5d6e4f83d2060560cb086
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5568017881885833785
-    second: soda merge_0
-  - first:
-      213: -2153688596618623818
-    second: soda merge_1
-  - first:
-      213: 3378375806541925288
-    second: soda merge_2
+      213: 5268723295963425292
+    second: entry_bay_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -106,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: soda merge_0
+      name: entry_bay_0
       rect:
         serializedVersion: 2
-        x: 18
-        y: 16
-        width: 44
-        height: 69
+        x: 0
+        y: 0
+        width: 960
+        height: 415
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,52 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7c50c2fac3d6ab2b0800000000000000
-      internalID: -5568017881885833785
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: soda merge_1
-      rect:
-        serializedVersion: 2
-        x: 22
-        y: 1
-        width: 47
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6b4ccb1d1af8c12e0800000000000000
-      internalID: -2153688596618623818
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: soda merge_2
-      rect:
-        serializedVersion: 2
-        x: 61
-        y: 16
-        width: 10
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8ab84ba85e662ee20800000000000000
-      internalID: 3378375806541925288
+      spriteID: c0aa9bb3ce34e1940800000000000000
+      internalID: 5268723295963425292
       vertices: []
       indices: 
       edges: []
@@ -185,9 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      soda merge_0: -5568017881885833785
-      soda merge_1: -2153688596618623818
-      soda merge_2: 3378375806541925288
+      entry_bay_0: 5268723295963425292
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

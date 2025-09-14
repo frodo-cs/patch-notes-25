@@ -14,9 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Portrait: {fileID: 2800000, guid: 4a761c9fe9e3e8643b537d79ad98b77a, type: 3}
   PortraitHover: {fileID: 2800000, guid: 3663afbf4a704194aaf1d0fd2d556a3e, type: 3}
-  PortraitMerge: {fileID: 2800000, guid: b0bc6b4a3c038b64b8bf06ce55d80d55, type: 3}
   objectName: soda
   highlightText: 
-  maxAmount: 1
+  maxAmount: 4
   combinableWith: []
-  canMerge: 0

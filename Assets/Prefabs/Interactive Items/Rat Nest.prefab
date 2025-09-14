@@ -149,6 +149,7 @@ MonoBehaviour:
   droppables:
   - {fileID: 11400000, guid: 796065db5294bff4ebe328a81d69c03a, type: 2}
   - {fileID: 11400000, guid: 3aa224b202a2a4a4cab59412bafb26dc, type: 2}
+  itemId: rat_nest
 --- !u!60 &2080209025154418848
 PolygonCollider2D:
   m_ObjectHideFlags: 0

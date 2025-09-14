@@ -8,7 +8,6 @@ namespace Player.Gameplay.ClickableItems
     {
         [SerializeField] GameObject puzzleObject;
         private GameObject puzzleInstance;
-        private bool isOpen = false;
 
         public override void OnInteractStart()
         {
@@ -17,24 +16,13 @@ namespace Player.Gameplay.ClickableItems
 
             var selected = InteractionController.Instance.ItemSelected;
 
-            if (!HasItemNeeded(selected) && !isOpen)
+            if (!HasItemNeeded(selected))
             {
-                puzzleInstance = Instantiate(
-                    puzzleObject,
-                    new Vector3(0, 0, 0),
-                    Quaternion.identity
-                );
-                puzzleInstance.transform.parent = transform;
-
-                Puzzles.NumberInput.OnPasswordCorrect += OpenSafe;
-                Puzzles.NumberInput.OnExitPuzzle += OnExitClicked;
-            } else if (HasItemNeeded(selected) && !isOpen)
+                puzzleObject.SetActive(true);
+                Puzzles.NumberInput.OnPasswordCorrect += OpenStorage;
+            } else if (HasItemNeeded(selected))
             {
-                OpenSafe();
-            } else if (isOpen)
-            {
-                dialog.text = "The safe is already open and empty";
-                OpenDialog();
+                OpenStorage();
             }
         }
 
@@ -59,12 +47,13 @@ namespace Player.Gameplay.ClickableItems
 
             Inventory.Inventory.AddItems?.Invoke(droppables);
             droppables = new Inventory.Object[0];
+            SaveDroppables();
+            SaveTouched();
         }
 
         private void OpenSafe()
         {
-            isOpen = true;
-
+            puzzleObject.SetActive(false);
             dialog.text = "You opened the safe";
             OpenDialog();
 

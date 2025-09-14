@@ -100,6 +100,7 @@ MonoBehaviour:
       character: {fileID: 0}
     textSpeed: 1
     hideOnDialogEnds: 1
+  itemId: utility_box
   neededObjects:
   - {fileID: 11400000, guid: b651b9db917088a439900c6bfa019f44, type: 2}
   - {fileID: 11400000, guid: 177c422dca8e28b48a12da752443602e, type: 2}

@@ -1,13 +1,16 @@
 using Cinematics;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
+using static PersistentData;
 
 namespace Player.Gameplay
 {
     public class ItemDependent : DescriptionObject
     {
-        Dialog lockedDialog;
+        [Space(5)]
+        [SerializeField] protected string itemId;
 
         [Space(5)]
         [SerializeField] protected Inventory.Object[] neededObjects;
@@ -22,22 +25,31 @@ namespace Player.Gameplay
             neededSet = new HashSet<Inventory.Object>(neededObjects);
         }
 
+        protected virtual void Start()
+        {
+            LoadTouched();
+        }
+
         protected bool HasItemNeeded(Inventory.Object selected)
         {
             return neededSet.Contains(selected);
         }
 
-        protected void OpenDialog()
+        protected void SaveTouched()
         {
-            var a = DialogBoxController.IsDialogRunning?.Invoke();
-            if (a != null && !a.Value)
-                DialogBoxController.PlayDialog?.Invoke(dialog);
+            Save(itemId, new BoolData("Touched", touched));
         }
 
-        protected void SetTouched()
+        protected void LoadTouched()
         {
-            touched = true;
+            var data = GetData(itemId, "Touched") as BoolData;
+            if (data != null)
+            {
+                touched = data.value;
+            }
+
         }
+
     }
 
 }
