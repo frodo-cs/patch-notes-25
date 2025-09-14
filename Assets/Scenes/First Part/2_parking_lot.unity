@@ -572,10 +572,9 @@ MonoBehaviour:
     index: 0
     text: Entry Bay
   - alignment: 2
-    index: 3
     text: Vending Machine
   - alignment: 1
-    index: 2
+    index: 3
     text: Utility Box
 --- !u!4 &6001602067444048693
 Transform:

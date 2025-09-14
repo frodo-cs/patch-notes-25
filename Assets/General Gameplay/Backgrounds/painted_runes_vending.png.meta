@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      painted_runes_vending_0: -1419452753940087790
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

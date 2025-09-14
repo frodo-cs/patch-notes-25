@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BUST_Lola_0: 7207046561035158348
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

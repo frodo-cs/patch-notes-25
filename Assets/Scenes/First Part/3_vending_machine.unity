@@ -450,9 +450,12 @@ MonoBehaviour:
   - alignment: 2
     index: 1
     text: Parking Lot
-  - alignment: 1
-    index: 2
+  - alignment: 2
+    index: 3
     text: Utility Box
+  - alignment: 1
+    index: 4
+    text: Access Door
 --- !u!1 &8453368393195886191
 GameObject:
   m_ObjectHideFlags: 0

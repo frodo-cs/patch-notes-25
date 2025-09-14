@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      parking_slot_car_0: -5858259860777534738
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
