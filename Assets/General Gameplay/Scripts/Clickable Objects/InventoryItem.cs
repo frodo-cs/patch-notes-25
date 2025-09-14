@@ -7,7 +7,7 @@ public class InventoryItem : MouseReaction
 
     private void Start()
     {
-        Player.Inventory.Inventory.ItemAdded += OnItemAddedToInventory;
+        Player.Inventory.Inventory.OnItemAdded += OnItemAddedToInventory;
     }
 
     private void OnItemAddedToInventory(GameObject addedObject)
@@ -23,6 +23,6 @@ public class InventoryItem : MouseReaction
 
     private void OnDestroy()
     {
-        Player.Inventory.Inventory.ItemAdded -= OnItemAddedToInventory;
+        Player.Inventory.Inventory.OnItemAdded -= OnItemAddedToInventory;
     }
 }

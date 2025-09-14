@@ -12,7 +12,7 @@ namespace Player.Inventory
         [SerializeField] private List<InventoryData> objects;
         public static Action<GameObject> PickUpFromWorld;
         public static Action<Object> RemoveItem;
-        public static Action<GameObject> ItemAdded;
+        public static Action<GameObject> OnItemAdded;
         public static Action<Object[]> AddItems;
         public static int SpaceLeft => COLUMNS - Instance.objects.Count;
 
@@ -61,7 +61,7 @@ namespace Player.Inventory
                 return;
             var addedItem = TryAddItem(inventoryItem.obj);
             if (addedItem)
-                ItemAdded?.Invoke(obj);
+                OnItemAdded?.Invoke(obj);
         }
 
         private bool TryAddItem(Object obj)
