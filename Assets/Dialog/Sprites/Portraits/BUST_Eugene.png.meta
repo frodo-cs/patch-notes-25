@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 86feb2d503c5d544eb5b231a974e11f5
+guid: f87f3144e6f8032429cdfabd20407cba
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4253796627638789969
-    second: charactersBUST_0
+      213: -8261449938561878979
+    second: BUST_Eugene_0
+  - first:
+      213: -2530936173619318729
+    second: BUST_Eugene_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +40,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,7 +78,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -126,13 +129,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: charactersBUST_0
+      name: BUST_Eugene_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 267
-        height: 333
+        width: 255
+        height: 175
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +144,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fa8d5d6318a77f4c0800000000000000
-      internalID: -4253796627638789969
+      spriteID: d34b85a4d0f695d80800000000000000
+      internalID: -8261449938561878979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BUST_Eugene_1
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 151
+        width: 129
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 730fb36a5fe40ecd0800000000000000
+      internalID: -2530936173619318729
       vertices: []
       indices: 
       edges: []
@@ -160,8 +185,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      charactersBUST_0: -4253796627638789969
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

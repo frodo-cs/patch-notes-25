@@ -10,9 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 426d1000e2e62a1408f3c9fbf11375e2, type: 3}
-  m_Name: Shopkeeper
+  m_Name: Gabe
   m_EditorClassIdentifier: 
-  speechSounds: []
+  speechSounds:
+  - {fileID: 8300000, guid: 7f2ad88acb05a5a44b30c53dc834486b, type: 3}
+  - {fileID: 8300000, guid: 207b56d6613a7124fbb1155e6901d10a, type: 3}
+  - {fileID: 8300000, guid: 80e012a8f327be748923ceb290c37204, type: 3}
   expresions:
   - key: idle
-    sprite: {fileID: -4253796627638789969, guid: 86feb2d503c5d544eb5b231a974e11f5, type: 3}
+    sprite: {fileID: 6221130157647751367, guid: 60004aa6617213c4fa02e0f3fe6a4606, type: 3}
