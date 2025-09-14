@@ -33,7 +33,6 @@ namespace Player.Puzzles
 
         private void ExitPuzzleInvoke()
         {
-            Debug.Log("Exit clicked");
             OnExitClicked?.Invoke();
         }
 

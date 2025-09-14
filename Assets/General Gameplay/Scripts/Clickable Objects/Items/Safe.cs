@@ -1,4 +1,5 @@
 using Cinematics;
+using System;
 using UnityEngine;
 
 namespace Player.Gameplay.ClickableItems
@@ -6,7 +7,8 @@ namespace Player.Gameplay.ClickableItems
     public class Safe : ItemDroppables
     {
         [SerializeField] GameObject puzzleObject;
-
+        private GameObject puzzleInstance;
+        private bool isOpen = false;
 
         public override void OnInteractStart()
         {
@@ -15,19 +17,34 @@ namespace Player.Gameplay.ClickableItems
 
             var selected = InteractionController.Instance.ItemSelected;
 
-            if (!HasItemNeeded(selected))
+            if (!HasItemNeeded(selected) && !isOpen)
             {
-                GameObject puzzle = Instantiate(
+                puzzleInstance = Instantiate(
                     puzzleObject,
                     new Vector3(0, 0, 0),
                     Quaternion.identity
                 );
-                puzzle.transform.parent = transform;
-                Puzzles.NumberInput.OnPasswordCorrect += OpenStorage;
-            } else if (HasItemNeeded(selected))
+                puzzleInstance.transform.parent = transform;
+
+                Puzzles.NumberInput.OnPasswordCorrect += OpenSafe;
+                Puzzles.NumberInput.OnExitPuzzle += OnExitClicked;
+            } else if (HasItemNeeded(selected) && !isOpen)
             {
-                OpenStorage();
+                OpenSafe();
+            } else if (isOpen)
+            {
+                dialog.text = "The safe is already open and empty";
+                OpenDialog();
             }
+        }
+
+        private void OnExitClicked()
+        {
+            Puzzles.NumberInput.OnPasswordCorrect -= OpenSafe;
+            Puzzles.NumberInput.OnExitPuzzle -= OnExitClicked;
+
+            if (puzzleInstance != null)
+                Destroy(puzzleInstance);
         }
 
         protected override void AddItems()
@@ -40,26 +57,31 @@ namespace Player.Gameplay.ClickableItems
                 Inventory.Inventory.RemoveItem?.Invoke(selected);
             }
 
-            gameObject.GetComponent<Collider2D>().enabled = false;
             Inventory.Inventory.AddItems?.Invoke(droppables);
             droppables = new Inventory.Object[0];
         }
 
-        private void OpenStorage()
+        private void OpenSafe()
         {
+            isOpen = true;
+
             dialog.text = "You opened the safe";
             OpenDialog();
-            DialogBoxController.OnDialogEnds += AddItems;
-        }
 
+            DialogBoxController.OnDialogEnds += AddItems;
+
+            if (puzzleInstance != null)
+                Destroy(puzzleInstance);
+
+            Puzzles.NumberInput.OnPasswordCorrect -= OpenSafe;
+            Puzzles.NumberInput.OnExitPuzzle -= OnExitClicked;
+        }
 
         private void OnDestroy()
         {
             DialogBoxController.OnDialogEnds -= AddItems;
-            Puzzles.NumberInput.OnPasswordCorrect -= OpenStorage;
+            Puzzles.NumberInput.OnPasswordCorrect -= OpenSafe;
+            Puzzles.NumberInput.OnExitPuzzle -= OnExitClicked;
         }
-
-
     }
-
 }

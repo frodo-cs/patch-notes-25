@@ -15,12 +15,14 @@ namespace Player.Puzzles
         [SerializeField] private PasswordType passwordType;
 
         public static Action OnPasswordCorrect;
+        public static Action OnExitPuzzle;
         private readonly Dictionary<Button, Action> digitButtonHandlers = new();
 
         private VisualElement container;
         private TextField inputField;
         private Button submitButton;
         private Button resetButton;
+        private Button exitButton;
 
         private void OnEnable()
         {
@@ -40,6 +42,7 @@ namespace Player.Puzzles
             submitButton = container.Q<Button>("Submit");
             resetButton = container.Q<Button>("Reset");
             inputField.isReadOnly = true;
+            exitButton = container.Q<Button>("Exit");
             SetPlaceHolderText();
             var keypad = container.Q<VisualElement>("Keypad");
             var rows = keypad?.Query<VisualElement>("Row").ToList() ?? new List<VisualElement>();
@@ -61,6 +64,7 @@ namespace Player.Puzzles
 
             submitButton.clicked += SubmitPassword;
             resetButton.clicked += ClearPassword;
+            exitButton.clicked += ExitPuzzleInvoke;
 
             inputField.RegisterCallback<ChangeEvent<string>>(evt =>
             {
@@ -68,6 +72,11 @@ namespace Player.Puzzles
                 evt.StopPropagation();
             });
             submitButton.SetEnabled(inputField.value.Length > 0);
+        }
+
+        private void ExitPuzzleInvoke()
+        {
+            OnExitPuzzle?.Invoke();
         }
 
         private void AppendDigit(string digit)
