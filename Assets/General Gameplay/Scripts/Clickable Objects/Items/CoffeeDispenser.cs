@@ -9,6 +9,9 @@ namespace Player.Gameplay.ClickableItems
     {
         public override void OnInteractStart()
         {
+            if (DialogBoxController.IsDialogRunning?.Invoke() == true)
+                return;
+
             var selected = InteractionController.Instance.ItemSelected;
 
             if (touched)

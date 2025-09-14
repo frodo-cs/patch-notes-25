@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      water pump merge_0: 6682040120721719222
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

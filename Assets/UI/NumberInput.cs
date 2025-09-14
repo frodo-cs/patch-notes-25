@@ -6,7 +6,6 @@ using UnityEngine.UIElements;
 
 namespace Player
 {
-
     public class NumberInput : MonoBehaviour
     {
         private enum PasswordType { Safe, Door }
@@ -23,7 +22,18 @@ namespace Player
         private Button submitButton;
         private Button resetButton;
 
-        void Start()
+        private void OnEnable()
+        {
+            if (UI == null || UI.rootVisualElement == null)
+                return;
+
+            UI.rootVisualElement.RegisterCallback<GeometryChangedEvent>(evt =>
+            {
+                SetupUI();
+            });
+        }
+
+        private void SetupUI()
         {
             container = UI.rootVisualElement.Q<VisualElement>("Container");
             inputField = container.Q<TextField>("Password");
@@ -32,7 +42,7 @@ namespace Player
             inputField.isReadOnly = true;
             SetPlaceHolderText();
             var keypad = container.Q<VisualElement>("Keypad");
-            var rows = keypad.Query<VisualElement>("Row").ToList();
+            var rows = keypad?.Query<VisualElement>("Row").ToList() ?? new List<VisualElement>();
 
             foreach (var row in rows)
             {
@@ -98,19 +108,29 @@ namespace Player
         {
             SetPlaceHolderText();
             inputField.AddToClassList(className);
-            Invoke(nameof(ResetClass), 1f);
+            Invoke(nameof(Clear), 1f);
+        }
+
+        private void Clear()
+        {
+            ResetClass();
+            inputField.value = string.Empty;
         }
 
         private void ResetClass()
         {
             inputField.RemoveFromClassList("Correct");
             inputField.RemoveFromClassList("Incorrect");
+            inputField.textEdition.placeholder = new string('*', valueToMatch.Length);
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
-            submitButton.clicked -= SubmitPassword;
-            resetButton.clicked -= ClearPassword;
+            if (submitButton != null)
+                submitButton.clicked -= SubmitPassword;
+            if (resetButton != null)
+                resetButton.clicked -= ClearPassword;
+
             foreach (var buttonHandler in digitButtonHandlers)
             {
                 buttonHandler.Key.clicked -= buttonHandler.Value;

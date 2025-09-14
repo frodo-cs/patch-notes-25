@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      badge merge_0: 1418055827179707175
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

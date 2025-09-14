@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c47ecad09edc9948bdac6969fa38a81, type: 3}
+  m_Name: Master Keycard
+  m_EditorClassIdentifier: 
+  Portrait: {fileID: 2800000, guid: 014ddd660ff69f14ba709243e8094659, type: 3}
+  PortraitHover: {fileID: 2800000, guid: 4ed5ea103e3c14c4bb0a8409aa03b4d7, type: 3}
+  PortraitMerge: {fileID: 2800000, guid: 15bf1594893aa8a4c9a80583229907e3, type: 3}
+  objectName: master keycard
+  highlightText: 
+  maxAmount: 1
+  combinableWith: []
+  canMerge: 0

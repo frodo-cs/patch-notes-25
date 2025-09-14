@@ -1,5 +1,4 @@
 using Cinematics;
-using System;
 
 namespace Player.Gameplay.ClickableItems
 {
@@ -7,6 +6,9 @@ namespace Player.Gameplay.ClickableItems
     {
         public override void OnInteractStart()
         {
+            if (DialogBoxController.IsDialogRunning?.Invoke() == true)
+                return;
+
             var selected = InteractionController.Instance.ItemSelected;
 
             if (!HasItemNeeded(selected))
@@ -37,6 +39,7 @@ namespace Player.Gameplay.ClickableItems
         protected override void AddItems()
         {
             var selected = InteractionController.Instance.ItemSelected;
+            InteractionController.Instance.ClearSelection();
             Inventory.Inventory.RemoveItem?.Invoke(selected);
             Inventory.Inventory.AddItems?.Invoke(droppables);
             droppables = new Inventory.Object[0];

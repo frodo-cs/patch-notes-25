@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      coat wire merge_0: 2852028247297511599
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

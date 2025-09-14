@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      comic book merge_0: 5809647088487927678
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

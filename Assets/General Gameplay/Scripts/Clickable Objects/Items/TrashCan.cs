@@ -1,5 +1,4 @@
 using Cinematics;
-using UnityEngine;
 
 namespace Player.Gameplay.ClickableItems
 {
@@ -7,7 +6,10 @@ namespace Player.Gameplay.ClickableItems
     {
         public override void OnInteractStart()
         {
-            if(touched && droppables.Length == 0)
+            if (DialogBoxController.IsDialogRunning?.Invoke() == true)
+                return;
+
+            if (touched && droppables.Length == 0)
             {
                 dialog.text = "The trash can is already empty";
                 OpenDialog();
