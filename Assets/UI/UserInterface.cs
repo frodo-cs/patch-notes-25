@@ -14,8 +14,16 @@ namespace Player.UI
 
         //Shop
         [Space(5)]
+        [Header("Shop")]
         [SerializeField] UIDocument shopUI;
         [SerializeField] ShopData shopData;
+
+        [SerializeField] Dialog notSelectedItem;
+        [SerializeField] Dialog notSellableItem;
+        [SerializeField] Dialog notEnoughtMoneyDialog;
+
+        [Space(2)]
+        [SerializeField] Question sellConfirm;
 
         //Inventory Params
         private const float ROW_MAX_WIDTH = 960f;
@@ -103,6 +111,8 @@ namespace Player.UI
             InitShopUI();
         }
 
+        #region Shop
+
         void InitShopUI() {
 
             int SHOP_MAX_COLUMNS = 2;
@@ -127,8 +137,45 @@ namespace Player.UI
                         {
                             OnBuyShopItem(e, index);
                         });
+                    } else {
+                        e.style.display = DisplayStyle.None;
                     }
                 }
+            }
+
+            shopUI.rootVisualElement.Q("Close").RegisterCallback<ClickEvent>(evt => {
+                DisplayShop(false);
+            });
+
+            UI.rootVisualElement.Q("StoreButton").RegisterCallback<ClickEvent>(evt => {
+                DisplayShop();
+            });
+
+            shopUI.rootVisualElement.Q("Sell").RegisterCallback<ClickEvent>(evt => {
+                SellItem();
+            });
+        }
+
+        void SellItem() {
+            if(InteractionController.Instance.ItemSelected == null) { DialogBoxController.PlayDialog?.Invoke(notSelectedItem); return; }
+
+            if(InteractionController.Instance.ItemSelected is SellableObject) {
+                Debug.Log("Objeto vendible");
+
+                SellableObject so = InteractionController.Instance.ItemSelected as SellableObject;
+                sellConfirm.question = new Dialog($"I can give you ${so.sellingPrice} for that!", null, 2);
+
+                DialogBoxController.PlayQuestion?.Invoke(sellConfirm);
+                DialogBoxController.OnQuestionEnds += OnSellItem;
+
+                void OnSellItem(byte r) {
+                    if(r == 0) {
+                        Currency.AddMoney?.Invoke(so.sellingPrice);
+                        DialogBoxController.OnQuestionEnds -= OnSellItem;
+                    }
+                }
+            } else {
+                DialogBoxController.PlayDialog?.Invoke(notSellableItem);
             }
         }
 
@@ -138,7 +185,7 @@ namespace Player.UI
 
             int price = shopData.slots[index].price;
 
-            if(price > money) { Debug.Log("Not enought money!"); return; }
+            if(price > money) { DialogBoxController.PlayDialog?.Invoke(notEnoughtMoneyDialog); return; }
 
             e.AddToClassList("ShopItem_Sold");
             e.Q("Cost").style.display = DisplayStyle.None;
@@ -146,6 +193,14 @@ namespace Player.UI
             Inventory.Inventory.PickUpObject?.Invoke(shopData.slots[index].obj);
             Currency.AddMoney?.Invoke(-price);
         }
+
+        void DisplayShop() {
+            VisualElement e = shopUI.rootVisualElement.Q("Background");
+            e.style.visibility = e.style.visibility == Visibility.Hidden ? Visibility.Visible : Visibility.Hidden; 
+        }
+        void DisplayShop(bool t) { shopUI.rootVisualElement.Q("Background").style.visibility = t ? Visibility.Visible : Visibility.Hidden; }
+
+        #endregion
 
         private void UpdateUI()
         {

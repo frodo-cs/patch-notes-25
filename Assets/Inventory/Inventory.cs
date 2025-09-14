@@ -12,6 +12,7 @@ namespace Player.Inventory
         [SerializeField] private UIDocument UI;
         [SerializeField] private List<InventoryData> objects;
 
+
         public static Action<GameObject> PickUpItem;
         public static Action<Object> PickUpObject;
         public static Action<Object> ItemSelected;
