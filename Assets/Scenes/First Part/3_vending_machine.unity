@@ -445,6 +445,9 @@ MonoBehaviour:
   UI: {fileID: 943724698}
   fields:
   - alignment: 0
+    index: 0
+    text: Entry Bay
+  - alignment: 2
     index: 1
     text: Parking Lot
   - alignment: 2

@@ -572,7 +572,6 @@ MonoBehaviour:
     index: 0
     text: Entry Bay
   - alignment: 2
-    index: 2
     text: Vending Machine
   - alignment: 1
     index: 3
