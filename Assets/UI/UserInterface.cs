@@ -1,4 +1,5 @@
 using Cinematics;
+using Player.Inventory;
 using System;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -8,6 +9,21 @@ namespace Player.UI
     public class UserInterface : MonoBehaviour
     {
         [SerializeField] private UIDocument UI;
+
+        //Shop
+        [Space(5)]
+        [Header("Shop")]
+        [SerializeField] UIDocument shopUI;
+        [SerializeField] ShopData shopData;
+
+        [SerializeField] Dialog notSelectedItem;
+        [SerializeField] Dialog notSellableItem;
+        [SerializeField] Dialog notEnoughtMoneyDialog;
+        [SerializeField] Dialog fullInventoryDialog;
+        [SerializeField] Dialog alreadyBuyed;
+
+        [Space(2)]
+        [SerializeField] Question sellConfirm;
 
         private const float ROW_MAX_WIDTH = 960f;
         private const float ROW_MAX_HEIGHT = 125f;
@@ -88,7 +104,121 @@ namespace Player.UI
             }
 
             UpdateUI();
+            InitShopUI();
         }
+
+        #region Shop
+
+        void InitShopUI() {
+
+            int SHOP_MAX_COLUMNS = 2;
+            int SHOP_MAX_ROWS = 3;
+
+            for(int x = 0; x < SHOP_MAX_COLUMNS; x++) {
+                for(int y = 0; y < SHOP_MAX_ROWS; y++) {
+
+                    int index = y + (x * SHOP_MAX_ROWS);
+                    VisualElement e = shopUI.rootVisualElement.Q($"C{x}S{y}");
+
+                    if(index < shopData.slots.Length) {
+
+                        Label c = e.Q("Cost") as Label;
+
+                        c.text = $"${shopData.slots[index].price}";
+                        c.style.display = DisplayStyle.Flex;
+
+                        e.Q("Image").style.backgroundImage = shopData.slots[index].obj.Portrait;
+
+                        bool? isBuyed = PersistentData.LoadShop?.Invoke(e.name);
+                        if(isBuyed != null && isBuyed.Value) {
+                            e.AddToClassList("ShopItem_Sold");
+                            c.style.display = DisplayStyle.None;
+                        }
+
+                        e.RegisterCallback<ClickEvent>(evt => {
+                            OnBuyShopItem(e, index);
+                        });
+                    } else {
+                        e.style.display = DisplayStyle.None;
+                    }
+                }
+            }
+
+            shopUI.rootVisualElement.Q("Close").RegisterCallback<ClickEvent>(evt => {
+                DisplayShop(false);
+            });
+
+            UI.rootVisualElement.Q("StoreButton").RegisterCallback<ClickEvent>(evt => {
+                DisplayShop();
+            });
+
+            shopUI.rootVisualElement.Q("Sell").RegisterCallback<ClickEvent>(evt => {
+                SellItem();
+            });
+
+            DisplayShop(false);
+        }
+
+        void SellItem() {
+            if(InteractionController.Instance.ItemSelected == null) { DialogBoxController.PlayDialog?.Invoke(notSelectedItem); return; }
+
+            if(InteractionController.Instance.ItemSelected is SellableObject) {
+                Debug.Log("Objeto vendible");
+
+                SellableObject so = InteractionController.Instance.ItemSelected as SellableObject;
+                sellConfirm.question = new Dialog($"I can give you ${so.sellingPrice} for that!", null, 2);
+
+                DialogBoxController.PlayQuestion?.Invoke(sellConfirm);
+                DialogBoxController.OnQuestionEnds += OnSellItem;
+
+                void OnSellItem(byte r) {
+                    if(r == 0) {
+                        Inventory.Inventory.RemoveItem?.Invoke(so);
+                        Currency.AddMoney?.Invoke(so.sellingPrice);
+                        DialogBoxController.OnQuestionEnds -= OnSellItem;
+                    }
+                }
+            } else {
+                DialogBoxController.PlayDialog?.Invoke(notSellableItem);
+            }
+        }
+
+        void OnBuyShopItem(VisualElement e, int index) {
+            int? money = Currency.GetMoney?.Invoke();
+            money = money == null ? 0 : money.Value;
+
+            if(e.ClassListContains("ShopItem_Sold")){
+                DialogBoxController.PlayDialog?.Invoke(alreadyBuyed);
+                return;
+            }
+
+            int price = shopData.slots[index].price;
+
+            if(price > money) { DialogBoxController.PlayDialog?.Invoke(notEnoughtMoneyDialog); return; }
+
+            var result = Inventory.Inventory.PickUpObject?.Invoke(shopData.slots[index].obj);
+            if(result == null || !result.Value) { DialogBoxController.PlayDialog?.Invoke(fullInventoryDialog); return; }
+
+            e.AddToClassList("ShopItem_Sold");
+            e.Q("Cost").style.display = DisplayStyle.None;
+
+            Currency.AddMoney?.Invoke(-price);
+            PersistentData.SaveShop?.Invoke(e.name, true);
+        }
+
+        void DisplayShop() {
+            VisualElement e = shopUI.rootVisualElement.Q("Background");
+            bool t = e.style.visibility == Visibility.Hidden;
+
+            e.style.visibility = t ? Visibility.Visible : Visibility.Hidden;
+            Interactable.ChangeState?.Invoke(!t ? Interactable.CurrentState.Normal : Interactable.CurrentState.Paused);
+        }
+        void DisplayShop(bool t) { 
+            shopUI.rootVisualElement.Q("Background").style.visibility = t ? Visibility.Visible : Visibility.Hidden;
+            Interactable.ChangeState?.Invoke(!t ? Interactable.CurrentState.Normal : Interactable.CurrentState.Paused); 
+        }
+
+        #endregion
 
         private void UpdateUI()
         {
@@ -124,11 +254,14 @@ namespace Player.UI
             }
         }
 
-        private void UpdateWallet()
-        {
+        private void UpdateWallet() {
             var root = UI.rootVisualElement;
             var walletLabel = root.Q("Store").Q<Label>("Wallet");
-            walletLabel.text = $"${10000}";
+
+            int? money = Currency.GetMoney?.Invoke();
+            if(money == null) money = 0;
+
+            walletLabel.text = $"${money}";
         }
 
         private void UpdateInventory()
@@ -185,7 +318,7 @@ namespace Player.UI
 
 
             var selectedIndex = controller.GetLastIndexSelected();
-            if (selectedIndex >= 0)
+            if (selectedIndex >= 0 && selectedIndex < items.Count)
             {
                 description.text = items[selectedIndex].obj.highlightText;
             } else

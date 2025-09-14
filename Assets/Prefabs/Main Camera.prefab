@@ -189,6 +189,57 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &1444940093250464110
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4473135206148977721}
+  - component: {fileID: 5590577468739918547}
+  m_Layer: 0
+  m_Name: ShopUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4473135206148977721
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444940093250464110}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 785057684536574421}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5590577468739918547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444940093250464110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 74d210be186c62843a52ae64bbd160c2, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: e985122000e40ba408cb600d8d9563ef, type: 3}
+  m_SortingOrder: 0
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
 --- !u!1 &1684610111081921755
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,7 +305,62 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UI: {fileID: 7895934889605816575}
-  inventory: {fileID: 5880113555413819152}
+  shopUI: {fileID: 5590577468739918547}
+  shopData: {fileID: 11400000, guid: f8b302da77b36184fa29be2e2c2b4424, type: 2}
+  notSelectedItem:
+    introAnim: {fileID: 0}
+    text: '[...]'
+    characterSpeaking:
+      expresionKey: 
+      character: {fileID: 0}
+    textSpeed: 2
+    hideOnDialogEnds: 1
+  notSellableItem:
+    introAnim: {fileID: 0}
+    text: No chance I'm gonna buy that...
+    characterSpeaking:
+      expresionKey: 
+      character: {fileID: 0}
+    textSpeed: 2
+    hideOnDialogEnds: 1
+  notEnoughtMoneyDialog:
+    introAnim: {fileID: 0}
+    text: You will need more money if you wanna buy that...
+    characterSpeaking:
+      expresionKey: 
+      character: {fileID: 0}
+    textSpeed: 2
+    hideOnDialogEnds: 1
+  fullInventoryDialog:
+    introAnim: {fileID: 0}
+    text: '* You don''t have more space in your inventory'
+    characterSpeaking:
+      expresionKey: 
+      character: {fileID: 0}
+    textSpeed: 0
+    hideOnDialogEnds: 1
+  alreadyBuyed:
+    introAnim: {fileID: 0}
+    text: You already have that...
+    characterSpeaking:
+      expresionKey: 
+      character: {fileID: 0}
+    textSpeed: 2
+    hideOnDialogEnds: 1
+  sellConfirm:
+    question:
+      introAnim: {fileID: 0}
+      text: 
+      characterSpeaking:
+        expresionKey: 
+        character: {fileID: 0}
+      textSpeed: 1
+      hideOnDialogEnds: 1
+    responses:
+    - Yes.
+    - No.
+    - 
+    - 
 --- !u!1 &4223287024077899631
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,6 +374,7 @@ GameObject:
   - component: {fileID: 8945439040553427904}
   - component: {fileID: 3488184929270611691}
   - component: {fileID: 2302809272243072447}
+  - component: {fileID: 7283750316359183627}
   m_Layer: 0
   m_Name: PlayerComponents
   m_TagString: Untagged
@@ -289,6 +396,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2325794120097649030}
+  - {fileID: 4473135206148977721}
   m_Father: {fileID: 4248252162900250354}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5880113555413819152
@@ -303,7 +411,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c0c24ef89039b248bd3fb5067f6703a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI: {fileID: 7895934889605816575}
   objects: []
 --- !u!114 &8945439040553427904
 MonoBehaviour:
@@ -346,4 +453,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9736b75d39b3de4fa9ff4a268ded9c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemSelected: {fileID: 0}
+--- !u!114 &7283750316359183627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4223287024077899631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29d099cfadfc865449c61892c8909f74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  money: 0

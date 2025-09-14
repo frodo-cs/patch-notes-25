@@ -10,6 +10,10 @@ namespace Player.Inventory
         public static Inventory Instance { get; private set; }
 
         [SerializeField] private List<InventoryData> objects;
+
+        public delegate bool ObjectOperation(Object obj);
+        public static ObjectOperation PickUpObject;
+
         public static Action<GameObject> PickUpFromWorld;
         public static Action<Object> RemoveItem;
         public static Action<GameObject> ItemAdded;
@@ -42,6 +46,7 @@ namespace Player.Inventory
             PickUpFromWorld += OnPickUpItem;
             RemoveItem += OnRemoveItem;
             AddItems += OnAddItems;
+            PickUpObject += TryAddItem;
         }
 
         public List<InventoryData> GetItems() => objects;
@@ -122,6 +127,8 @@ namespace Player.Inventory
         {
             PickUpFromWorld -= OnPickUpItem;
             RemoveItem -= OnRemoveItem;
+            AddItems -= OnAddItems;
+            PickUpObject -= TryAddItem;
         }
     }
 }
