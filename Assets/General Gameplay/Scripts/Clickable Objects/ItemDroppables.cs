@@ -3,14 +3,21 @@ using static PersistentData;
 
 namespace Player.Gameplay.ClickableItems
 {
-
     public class ItemDroppables : ItemDependent
     {
         [SerializeField] protected Inventory.Object[] droppables;
 
-        public void Start()
+
+        protected override void Start()
         {
-            LoadDroppables();
+            base.Start();
+            if (touched && droppables.Length > 0)
+            {
+                gameObject.GetComponent<Collider2D>().enabled = true;
+            } else if (touched || droppables.Length == 0)
+            {
+                gameObject.GetComponent<Collider2D>().enabled = false;
+            }
         }
 
         protected virtual void AddItems() { }
