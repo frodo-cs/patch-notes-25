@@ -1,12 +1,21 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Dialog/UI/DialogBox.uss?fileID=7433441132597879392&amp;guid=4d76726ab428d2d4d95e8d89a59751e0&amp;type=3#DialogBox" />
     <ui:VisualElement name="UI" style="flex-grow: 1; bottom: 0; align-self: auto; align-content: auto; justify-content: flex-end; align-items: stretch; width: 100%; flex-direction: column; display: flex; visibility: hidden;">
-        <ui:VisualElement name="DialogBox" class="Panel" style="align-content: auto; display: none; visibility: visible;">
-            <ui:VisualElement name="RightActor" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-3753015318093942961&amp;guid=5bea87a57b4fbf34bb79f6d7e21ccad2&amp;type=3#arrow-left&quot;); align-self: stretch;" />
-            <ui:VisualElement name="Dialog" style="align-content: auto; flex-direction: row; padding-right: 0; padding-left: 0; bottom: auto; align-self: stretch; width: 90%; padding-top: 0; padding-bottom: 0;">
-                <ui:VisualElement name="TextContainer" style="flex-grow: 1;">
-                    <ui:Label name="ActorName" enable-rich-text="true" selectable="false" language-direction="Inherit" focusable="false" emoji-fallback-support="true" parse-escape-sequences="false" text="Npc Talking (optional):" class="DialogActor" style="align-content: auto;" />
-                    <ui:Label name="Text" enable-rich-text="true" selectable="false" language-direction="Inherit" focusable="false" emoji-fallback-support="true" parse-escape-sequences="false" text="* ( You notice a text box appearing!  )" class="DialogText" />
+        <ui:VisualElement name="DialogContainer" style="flex-grow: 0; flex-direction: column; padding-top: 0; padding-right: 0; padding-bottom: 10px; padding-left: 0; display: none; visibility: visible;">
+            <ui:VisualElement name="UpperBox" style="flex-grow: 0; height: 300px; display: flex; flex-direction: row-reverse; padding-top: 5px; padding-right: 15px; padding-bottom: 5px; padding-left: 15px; width: 90%; align-self: center;">
+                <ui:VisualElement name="RightActor" style="flex-grow: 0; flex-shrink: 0; width: 300px; -unity-background-scale-mode: scale-to-fit;">
+                    <ui:VisualElement name="Expresion" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Dialog/Sprites/Portraits/charactersBUST.png?fileID=2800000&amp;guid=86feb2d503c5d544eb5b231a974e11f5&amp;type=3#charactersBUST&quot;); align-self: stretch; -unity-background-scale-mode: scale-to-fit; visibility: visible; flex-direction: column-reverse;">
+                        <ui:VisualElement name="TextContainer" class="Panel" style="flex-grow: 0; background-color: rgb(161, 161, 161); height: 50px;">
+                            <ui:Label name="ActorName" enable-rich-text="true" selectable="false" language-direction="Inherit" focusable="false" emoji-fallback-support="true" parse-escape-sequences="false" text="Npc Talking (optional):" class="DialogActor" style="align-content: auto; visibility: visible; color: rgb(0, 0, 0); padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-text-align: middle-center; font-size: 18px;" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="DialogBox" class="Panel" style="align-content: auto; display: flex; visibility: visible; flex-direction: column;">
+                <ui:VisualElement name="Dialog" style="align-content: auto; flex-direction: row; padding-right: 0; padding-left: 0; bottom: auto; align-self: stretch; width: 90%; padding-top: 0; padding-bottom: 0;">
+                    <ui:VisualElement name="TextContainer" style="flex-grow: 1;">
+                        <ui:Label name="Text" enable-rich-text="true" selectable="false" language-direction="Inherit" focusable="false" emoji-fallback-support="true" parse-escape-sequences="false" text="* ( You notice a text box appearing!  )" class="DialogText" />
+                    </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>

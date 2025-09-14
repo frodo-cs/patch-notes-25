@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 426d1000e2e62a1408f3c9fbf11375e2, type: 3}
+  m_Name: Shopkeeper
+  m_EditorClassIdentifier: 
+  speechSounds: []
+  expresions:
+  - key: idle
+    sprite: {fileID: -4253796627638789969, guid: 86feb2d503c5d544eb5b231a974e11f5, type: 3}

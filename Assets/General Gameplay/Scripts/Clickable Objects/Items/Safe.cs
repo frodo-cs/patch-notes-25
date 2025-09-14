@@ -19,10 +19,10 @@ namespace Player.Gameplay.ClickableItems
             if (!HasItemNeeded(selected))
             {
                 puzzleObject.SetActive(true);
-                Puzzles.NumberInput.OnPasswordCorrect += OpenStorage;
+                Puzzles.NumberInput.OnPasswordCorrect += OpenSafe;
             } else if (HasItemNeeded(selected))
             {
-                OpenStorage();
+                OpenSafe();
             }
         }
 

@@ -6,16 +6,16 @@ using UnityEngine.SceneManagement;
 public class PersistentData : MonoBehaviour
 {
     public Dictionary<int, SceneSaver> savedScenes;
-    public Dictionary<string, bool> shopData;
+    public Dictionary<string, PropertyData> generalData;
     public int savedCurrency = 0;
 
     public static Action<string, PropertyData> Save;
     public static Action<int> SaveCurrency;
 
-    //Shop
-    public delegate bool getBool(string objectName);
-    public static getBool LoadShop;
-    public static Action<string, bool> SaveShop;
+    //GeneralData
+    public delegate PropertyData getBool(string objectName);
+    public static getBool LoadGeneralData;
+    public static Action<PropertyData> SaveGeneralData;
 
     public delegate int getCurrency();
     public static getCurrency GetCurrency;
@@ -35,8 +35,8 @@ public class PersistentData : MonoBehaviour
             GetCurrency = OnLoadCurrency;
             SaveCurrency = OnSaveCurrency;
 
-            SaveShop = OnSaveShop;
-            LoadShop = OnLoadShop;
+            SaveGeneralData = OnSaveShop;
+            LoadGeneralData = OnLoadShop;
 
             savedScenes = new();
             instance = this;
@@ -46,26 +46,26 @@ public class PersistentData : MonoBehaviour
 
     #region ShopData
 
-    void OnSaveShop(string slot, bool t)
+    void OnSaveShop(PropertyData t)
     {
-        if (shopData == null)
-            shopData = new();
+        if (generalData == null)
+            generalData = new();
 
-        if (!shopData.ContainsKey(slot))
-            shopData.Add(slot, t);
+        if (!generalData.ContainsKey(t.keyName))
+            generalData.Add(t.keyName, t);
         else
-            shopData[slot] = t;
+            generalData[t.keyName] = t;
     }
 
-    bool OnLoadShop(string slot)
+    PropertyData OnLoadShop(string slot)
     {
-        if (shopData == null)
-            shopData = new();
+        if (generalData == null)
+            generalData = new();
 
-        if (!shopData.ContainsKey(slot))
-            return false;
+        if (!generalData.ContainsKey(slot))
+            return null;
         else
-            return shopData[slot];
+            return generalData[slot];
     }
 
     #endregion

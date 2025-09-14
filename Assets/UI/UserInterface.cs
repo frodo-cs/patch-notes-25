@@ -114,8 +114,8 @@ namespace Player.UI
 
                         e.Q("Image").style.backgroundImage = shopData.slots[index].obj.Portrait;
 
-                        bool? isBuyed = PersistentData.LoadShop?.Invoke(e.name);
-                        if (isBuyed != null && isBuyed.Value)
+                        PersistentData.BoolData isBuyed = PersistentData.LoadGeneralData?.Invoke(e.name) as PersistentData.BoolData;
+                        if (isBuyed != null && isBuyed.value)
                         {
                             e.AddToClassList("ShopItem_Sold");
                             c.style.display = DisplayStyle.None;
@@ -200,7 +200,7 @@ namespace Player.UI
             e.Q("Cost").style.display = DisplayStyle.None;
 
             Currency.AddMoney?.Invoke(-price);
-            PersistentData.SaveShop?.Invoke(e.name, true);
+            PersistentData.SaveGeneralData?.Invoke(new PersistentData.BoolData(e.name, true));
         }
 
         void DisplayShop()

@@ -11,6 +11,7 @@ namespace Cinematics {
 
         VisualElement dialogBox;
         Label textElement;
+        Label ActorName;
 
         VisualElement responsesBox;
         Label[] Responses = new Label[4];
@@ -73,7 +74,8 @@ namespace Cinematics {
             IsDialogRunning = isDialogRunning;
 
             textElement = UI.rootVisualElement.Q("Text") as Label;
-            dialogBox = UI.rootVisualElement.Q("DialogBox");
+            ActorName = UI.rootVisualElement.Q("ActorName") as Label;
+            dialogBox = UI.rootVisualElement.Q("DialogContainer");
 
             //Responses variables
             responsesBox = UI.rootVisualElement.Q("Responses");
@@ -172,7 +174,7 @@ namespace Cinematics {
 
                 Dialog.charData characterSpeaking = d.characterSpeaking;
 
-                if(!source.isPlaying && characterSpeaking != null && characterSpeaking.character != null) {
+                if(!source.isPlaying && characterSpeaking != null && characterSpeaking.character != null && characterSpeaking.character.speechSounds.Length > 0) {
                     source.pitch = UnityEngine.Random.Range(0.9f, 1.1f) * d.textSpeed;
                     source.PlayOneShot(characterSpeaking.character.speechSounds[UnityEngine.Random.Range(0, characterSpeaking.character.speechSounds.Length)]);
                 }
@@ -299,12 +301,12 @@ namespace Cinematics {
                 VisualElement actor = UI.rootVisualElement.Q("RightActor");
                 actor.style.display = DisplayStyle.Flex;
 
+                ActorName.text = d.characterSpeaking.character.name;
+
                 Sprite sprite = d.characterSpeaking.getExpresionSprite();
                 var expresion = actor.Q("Expresion");
-                var shadow = expresion.Q("Shadow");
 
                 expresion.style.backgroundImage = new(sprite);
-                shadow.style.backgroundImage = new(sprite);
             }
         }
 
