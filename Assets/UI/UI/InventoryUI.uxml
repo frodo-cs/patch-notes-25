@@ -1,7 +1,18 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <engine:Template name="Slot" src="project://database/Assets/UI/UI/Slot.uxml?fileID=9197481963319205126&amp;guid=da66c4aa85dc60240858f1437f36d560&amp;type=3#Slot" />
     <Style src="project://database/Assets/UI/UI/InventoryUI.uss?fileID=7433441132597879392&amp;guid=9b9fec11f5ba1f947a1cd80dc2059df2&amp;type=3#InventoryUI" />
-    <engine:VisualElement name="Background" class="Background" style="align-items: center; width: 960px; height: 125px; background-image: url(&quot;project://database/Assets/UI/Sprites/inventory-bg.png?fileID=2800000&amp;guid=60c8aaf61afbed94483ab8b12eb74c0a&amp;type=3#inventory-bg&quot;);">
+    <engine:VisualElement name="Background" class="Background" style="align-items: center; width: 960px; height: 145px; background-image: none;">
+        <engine:VisualElement style="flex-grow: 1; height: 20px; width: 960px; flex-direction: row; background-color: rgb(0, 0, 0);">
+            <engine:VisualElement name="Left" style="flex-grow: 1;">
+                <engine:Button class="TransButton" style="flex-grow: 1;" />
+            </engine:VisualElement>
+            <engine:VisualElement name="Down" style="flex-grow: 1;">
+                <engine:Button class="TransButton" style="flex-grow: 1;" />
+            </engine:VisualElement>
+            <engine:VisualElement name="Right" style="flex-grow: 1;">
+                <engine:Button class="TransButton" style="flex-grow: 1;" />
+            </engine:VisualElement>
+        </engine:VisualElement>
         <engine:VisualElement name="H1" class="Row" style="width: 960px; height: 125px; padding-top: 4px;">
             <engine:Instance template="Slot" name="H1S1" class="SlotContainer" style="width: auto; height: auto; position: relative; left: auto; top: auto; margin-right: 9px;">
                 <AttributeOverrides element-name="Slot" enabled="true" />

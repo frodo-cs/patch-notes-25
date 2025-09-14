@@ -24,6 +24,11 @@ namespace Player.Puzzles
         private Button resetButton;
         private Button exitButton;
 
+        public void SetValueToMatch(string valueToMatch)
+        {
+            this.valueToMatch = valueToMatch;
+        }
+
         private void OnEnable()
         {
             if (UI == null || UI.rootVisualElement == null)

@@ -11,6 +11,11 @@ public static class Utilities
         return getExpresionSprite(data.character, data.expresionKey);
     }
 
+    public static Sprite ToSprite(Texture2D tex)
+    {
+        return Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
+    }
+
     public static void LookAt2D(this UnityEngine.Transform t, Vector3 position, float offset = 0) {
         Vector3 diff = position - t.position;
         diff.Normalize();

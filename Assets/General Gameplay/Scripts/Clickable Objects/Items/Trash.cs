@@ -1,4 +1,5 @@
 using Cinematics;
+using UnityEngine;
 
 namespace Player.Gameplay.ClickableItems
 {
@@ -9,29 +10,26 @@ namespace Player.Gameplay.ClickableItems
             if (DialogBoxController.IsDialogRunning?.Invoke() == true)
                 return;
 
-            if (touched && droppables.Length == 0)
+            if (!touched || droppables.Length > 0)
             {
-                dialog.text = "You dont find anything else";
-                OpenDialog();
-                return;
-            }
+                if (!CanAddItems())
+                {
+                    dialog.text = "Your inventory doesn't have enough space";
+                    OpenDialog();
+                    return;
+                }
 
-            if (!CanAddItems())
-            {
-                dialog.text = "Your inventory doesn't have enough space";
+                dialog.text = "You found some trash";
                 OpenDialog();
-                return;
+                DialogBoxController.OnDialogEnds += AddItems;
             }
-
-            dialog.text = "You found some trash";
-            OpenDialog();
-            DialogBoxController.OnDialogEnds += AddItems;
         }
 
         protected override void AddItems()
         {
             Inventory.Inventory.AddItems?.Invoke(droppables);
             droppables = new Inventory.Object[0];
+            gameObject.GetComponent<Collider2D>().enabled = false;
             SaveDroppables();
             SaveTouched();
         }
