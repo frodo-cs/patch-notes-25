@@ -478,7 +478,7 @@ MonoBehaviour:
         expresionKey: idle
         character: {fileID: 11400000, guid: 51582566b5b392343b9a4c862712a779, type: 2}
       textSpeed: 4
-      hideOnDialogEnds: 0
+      hideOnDialogEnds: 1
     - introAnim: {fileID: 0}
       text: If this guy is willing to sell such an infinitely big shack for so much
         money, he is definitely bound to have some infinitely valuable stuff in there

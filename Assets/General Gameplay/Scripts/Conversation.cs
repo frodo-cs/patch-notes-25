@@ -8,6 +8,12 @@ public class Conversation : MonoBehaviour
     int currentDialog = 0;
 
     private void Start() {
+        for(int i = 0; i < conversations.Length; i++) {
+            for(int j = 0; j < conversations[i].dialogs.Length; j++) {
+                conversations[i].dialogs[j].hideOnDialogEnds = j >= conversations[i].dialogs.Length - 1;
+            }
+        }
+
         StartDialog();
     }
 
