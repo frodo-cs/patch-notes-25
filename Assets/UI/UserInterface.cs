@@ -25,15 +25,6 @@ namespace Player.UI
         [SerializeField] Question sellConfirm;
 
         //Inventory Params
-        private const float ROW_MAX_WIDTH = 960f;
-        private const float ROW_MAX_HEIGHT = 125f;
-        private const float STORE_BUTTON_MAX_WIDTH = 134f;
-        private const float STORE_BUTTON_MAX_HEIGHT = 22f;
-        private const float SLOT_GAP = 0.01f;
-        private const float SLOT_SCALE = 0.72f;
-
-
-
         public static Action OnInventoryUpdated;
         public static Action OnWalletUpdated;
 
@@ -54,12 +45,6 @@ namespace Player.UI
             var root = UI.rootVisualElement;
             var row = root.Q("H1");
             var store = root.Q("Store");
-
-            row.RegisterCallback<GeometryChangedEvent>(evt =>
-            {
-                SetContainerDimensions(root, row, store);
-                AdjustSlotSizes(row);
-            });
 
             for (int x = 1; x <= 9; x++)
             {
@@ -322,51 +307,6 @@ namespace Player.UI
                 description.text = "";
             }
 
-        }
-
-        private void SetContainerDimensions(VisualElement root, VisualElement row, VisualElement store)
-        {
-            // Interface row sizing
-            float rowWidth = Mathf.Min(row.resolvedStyle.width, ROW_MAX_WIDTH);
-            float rowHeight = rowWidth * (ROW_MAX_HEIGHT / ROW_MAX_WIDTH);
-            row.style.height = rowHeight;
-            row.style.width = rowWidth;
-
-            // Store info and button sizing
-            store.style.width = rowWidth;
-            store.style.height = Mathf.Min(STORE_BUTTON_MAX_HEIGHT, rowHeight * (STORE_BUTTON_MAX_HEIGHT / rowHeight));
-            store.style.paddingRight = rowWidth * 0.1f;
-
-            var newMax = 125f;
-            var storeButton = root.Q("StoreButton");
-            storeButton.style.width = Mathf.Min(newMax, rowWidth * (newMax / ROW_MAX_WIDTH));
-            storeButton.style.height = storeButton.resolvedStyle.width / (STORE_BUTTON_MAX_WIDTH / STORE_BUTTON_MAX_HEIGHT);
-        }
-
-        private void AdjustSlotSizes(VisualElement row)
-        {
-            float rowHeight = row.resolvedStyle.height;
-
-            for (int x = 1; x <= 9; x++)
-            {
-                var slotContainer = row.Q($"H1S{x}");
-                if (slotContainer == null)
-                    continue;
-
-                var slot = slotContainer.Q("Slot");
-                if (slot == null)
-                    continue;
-
-                var label = slotContainer.Q<Label>("Name");
-                label.style.fontSize = rowHeight * 0.15f;
-
-                float slotSize = rowHeight * SLOT_SCALE;
-                slot.style.width = slotSize;
-                slot.style.height = slotSize;
-                label.style.width = slotSize;
-
-                slotContainer.style.marginLeft = (x > 1) ? row.resolvedStyle.width * SLOT_GAP : 0;
-            }
         }
 
         #endregion

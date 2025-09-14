@@ -1,40 +1,40 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <engine:Template name="Slot" src="project://database/Assets/UI/UI/Slot.uxml?fileID=9197481963319205126&amp;guid=da66c4aa85dc60240858f1437f36d560&amp;type=3#Slot" />
     <Style src="project://database/Assets/UI/UI/InventoryUI.uss?fileID=7433441132597879392&amp;guid=9b9fec11f5ba1f947a1cd80dc2059df2&amp;type=3#InventoryUI" />
-    <engine:VisualElement name="Background" class="Background" style="align-items: center;">
-        <engine:VisualElement name="H1" class="Row">
-            <engine:Instance template="Slot" name="H1S1" class="SlotContainer" style="width: auto; height: auto; position: relative; left: auto; top: auto;">
+    <engine:VisualElement name="Background" class="Background" style="align-items: center; width: 960px; height: 125px; background-image: url(&quot;project://database/Assets/UI/Sprites/inventory-bg.png?fileID=2800000&amp;guid=60c8aaf61afbed94483ab8b12eb74c0a&amp;type=3#inventory-bg&quot;);">
+        <engine:VisualElement name="H1" class="Row" style="width: 960px; height: 125px; padding-top: 4px;">
+            <engine:Instance template="Slot" name="H1S1" class="SlotContainer" style="width: auto; height: auto; position: relative; left: auto; top: auto; margin-right: 9px;">
                 <AttributeOverrides element-name="Slot" enabled="true" />
             </engine:Instance>
-            <engine:Instance template="Slot" name="H1S2" class="SlotContainer" style="width: auto; height: auto; position: relative; left: auto; top: auto;">
+            <engine:Instance template="Slot" name="H1S2" class="SlotContainer" style="width: auto; height: auto; position: relative; left: auto; top: auto; margin-right: 9px;">
                 <AttributeOverrides element-name="Slot" enabled="true" />
             </engine:Instance>
-            <engine:Instance template="Slot" name="H1S3" class="SlotContainer" style="width: auto; height: auto; position: relative; left: auto; top: auto;">
+            <engine:Instance template="Slot" name="H1S3" class="SlotContainer" style="width: auto; height: auto; position: relative; left: auto; top: auto; margin-right: 9px;">
                 <AttributeOverrides element-name="Slot" enabled="true" />
             </engine:Instance>
-            <engine:Instance template="Slot" name="H1S4" class="SlotContainer" style="width: auto; height: auto; position: relative; left: auto; top: auto;">
+            <engine:Instance template="Slot" name="H1S4" class="SlotContainer" style="width: auto; height: auto; position: relative; left: auto; top: auto; margin-right: 9px;">
                 <AttributeOverrides element-name="Slot" enabled="true" />
             </engine:Instance>
-            <engine:Instance template="Slot" name="H1S5" class="SlotContainer" style="width: auto; height: auto; position: relative; left: auto; top: auto;">
+            <engine:Instance template="Slot" name="H1S5" class="SlotContainer" style="width: auto; height: auto; position: relative; left: auto; top: auto; margin-right: 9px;">
                 <AttributeOverrides element-name="Slot" enabled="true" />
             </engine:Instance>
-            <engine:Instance template="Slot" name="H1S6" class="SlotContainer" style="width: auto; height: auto; position: relative; left: auto; top: auto;">
+            <engine:Instance template="Slot" name="H1S6" class="SlotContainer" style="width: auto; height: auto; position: relative; left: auto; top: auto; margin-right: 9px;">
                 <AttributeOverrides element-name="Slot" enabled="true" />
             </engine:Instance>
-            <engine:Instance template="Slot" name="H1S7" class="SlotContainer" style="width: auto; height: auto; position: relative; left: auto; top: auto;">
+            <engine:Instance template="Slot" name="H1S7" class="SlotContainer" style="width: auto; height: auto; position: relative; left: auto; top: auto; margin-right: 9px;">
                 <AttributeOverrides element-name="Slot" enabled="true" />
             </engine:Instance>
-            <engine:Instance template="Slot" name="H1S8" class="SlotContainer" style="width: auto; height: auto; position: relative; left: auto; top: auto;">
+            <engine:Instance template="Slot" name="H1S8" class="SlotContainer" style="width: auto; height: auto; position: relative; left: auto; top: auto; margin-right: 9px;">
                 <AttributeOverrides element-name="Slot" enabled="true" />
             </engine:Instance>
             <engine:Instance template="Slot" name="H1S9" class="SlotContainer" style="width: auto; height: auto; position: relative; left: auto; top: auto;">
                 <AttributeOverrides element-name="Slot" enabled="true" />
             </engine:Instance>
         </engine:VisualElement>
-        <engine:VisualElement name="Store" class="Store" style="flex-grow: 0; position: absolute; bottom: 0; height: 69px; flex-direction: row; justify-content: space-evenly; align-items: center; flex-wrap: nowrap; align-self: auto; align-content: flex-start; flex-basis: auto; flex-shrink: 1;">
+        <engine:VisualElement name="Store" class="Store" style="flex-grow: 0; position: absolute; bottom: 0; height: 22px; flex-direction: row; justify-content: space-evenly; align-items: center; flex-wrap: nowrap; align-self: auto; align-content: flex-start; flex-basis: auto; flex-shrink: 1; width: 74%;">
             <engine:Label text="Label" name="Description" style="margin-top: 2px; margin-right: 2px; margin-bottom: 2px; margin-left: 4px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px;" />
             <engine:VisualElement style="flex-grow: 1; flex-direction: row; justify-content: flex-end; align-items: center;">
-                <engine:Button name="StoreButton" class="StoreButton Button" />
+                <engine:Button name="StoreButton" class="StoreButton Button" style="width: 134px; height: 22px;" />
                 <engine:Label text="Label" name="Wallet" style="margin-top: 2px; margin-right: 4px; margin-bottom: 2px; margin-left: 2px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px; background-color: rgba(0, 0, 0, 0); color: rgb(38, 35, 29); -unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=5bea87a57b4fbf34bb79f6d7e21ccad2&amp;type=3#NotInter-Regular&quot;); -unity-font-style: normal; -unity-text-align: upper-left; background-image: none;" />
             </engine:VisualElement>
         </engine:VisualElement>
