@@ -1,22 +1,23 @@
+using Cinematics;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Player.Inventory
 {
     public class Inventory : MonoBehaviour
     {
-
-        public static Inventory Instance { get; private set; }
-
+        [SerializeField] private UIDocument UI;
         [SerializeField] private List<InventoryData> objects;
-        public static Action<GameObject> PickUpFromWorld;
-        public static Action<Object> RemoveItem;
-        public static Action<GameObject> OnItemAdded;
-        public static Action<Object[]> AddItems;
-        public static Action<Object> PickUpObject;
-        public static int SpaceLeft => COLUMNS - Instance.objects.Count;
 
+
+        public static Action<GameObject> PickUpItem;
+        public static Action<Object> PickUpObject;
+        public static Action<Object> ItemSelected;
+
+        private int selectedIndex = -1;
         private const int COLUMNS = 9;
 
         [System.Serializable]
@@ -26,111 +27,73 @@ namespace Player.Inventory
             public int amount;
         }
 
-        private void Awake()
-        {
-            if (Instance != null && Instance != this)
-            {
-                Destroy(gameObject);
-                return;
-            }
-
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
+        public InventoryData? SelectedItem =>
+            selectedIndex >= 0 && selectedIndex < objects.Count ? objects[selectedIndex] : null;
 
         private void Start()
         {
-            PickUpFromWorld += OnPickUpItem;
-            PickUpObject += OnAddOneItem;
-            RemoveItem += OnRemoveItem;
-            AddItems += OnAddItems;
+            PickUpItem += OnPickUpItem;
+            PickUpObject = OnPickUpItem;
         }
 
-        public List<InventoryData> GetItems() => objects;
-
-        private void OnAddItems(Object[] obj)
+        private void OnPickUpItem(GameObject gameObject)
         {
-            foreach (var item in obj)
-            {
-                TryAddItem(item);
-            }
-        }
-
-        private void OnAddOneItem(Object obj)
-        {
-            TryAddItem(obj);
-        }
-
-        private void OnPickUpItem(GameObject obj)
-        {
-            var inventoryItem = obj.GetComponent<InventoryItem>();
-            if (inventoryItem == null || inventoryItem.obj == null)
+            if (!gameObject.TryGetComponent(out InventoryItem obj))
                 return;
-            var addedItem = TryAddItem(inventoryItem.obj);
-            if (addedItem)
-                OnItemAdded?.Invoke(obj);
-        }
 
-        private bool TryAddItem(Object obj)
-        {
-            if (obj == null)
-                return false;
+            var objectExists = objects.FirstOrDefault(o => o.obj.name == obj.obj.name);
 
-            int index = objects.FindIndex(o => o.obj != null && o.obj.name == obj.name);
-
-            if (index >= 0)
+            if (objectExists.obj != null)
             {
-                var item = objects[index];
-                if (item.amount < item.obj.maxAmount)
+                if (objectExists.amount < objectExists.obj.maxAmount)
                 {
-                    item.amount++;
-                    objects[index] = item;
-                } else
-                {
-                    Debug.Log("Item stack is full");
-                    return false;
+                    objectExists.amount++;
+                    int idx = objects.IndexOf(objectExists);
+                    objects[idx] = objectExists;
                 }
             } else if (objects.Count < COLUMNS)
             {
-                var newObj = new InventoryData { obj = obj, amount = 1 };
+                InventoryData newObj = new InventoryData { obj = obj.obj, amount = 1 };
                 objects.Add(newObj);
-            } else
-            {
-                Debug.Log("Inventory is full");
-                return false;
+                Destroy(gameObject);
             }
 
-            UI.UserInterface.OnInventoryUpdated?.Invoke();
-            return true;
+            Player.UI.UserInterface.OnInventoryUpdated?.Invoke();
         }
 
+        private void OnPickUpItem(Object _obj) {
+            if(_obj == null)return;
 
-        private void OnRemoveItem(Object obj)
-        {
-            int index = objects.FindIndex(o => o.obj != null && o.obj.name == obj.name);
-            if (index < 0)
-                return;
+            var objectExists = objects.FirstOrDefault(o => o.obj.name == _obj.name);
 
-            var item = objects[index];
-            item.amount--;
-
-            if (item.amount <= 0)
-            {
-                objects.RemoveAt(index);
-            } else
-            {
-                objects[index] = item;
+            if(objectExists.obj != null) {
+                if(objectExists.amount < objectExists.obj.maxAmount) {
+                    objectExists.amount++;
+                    int idx = objects.IndexOf(objectExists);
+                    objects[idx] = objectExists;
+                }
+            } else if(objects.Count < COLUMNS) {
+                InventoryData newObj = new InventoryData { obj = _obj, amount = 1 };
+                objects.Add(newObj);
             }
 
-            UI.UserInterface.OnInventoryUpdated?.Invoke();
+            Player.UI.UserInterface.OnInventoryUpdated?.Invoke();
         }
 
         private void OnDestroy()
         {
-            PickUpFromWorld -= OnPickUpItem;
-            RemoveItem -= OnRemoveItem;
-            AddItems -= OnAddItems;
-            PickUpObject -= OnAddOneItem;
+            PickUpItem -= OnPickUpItem;
         }
+
+        public void SetSelectedIndex(int index)
+        {
+            selectedIndex = (selectedIndex == index) ? -1 : index;
+            Player.UI.UserInterface.OnInventoryUpdated?.Invoke();
+            ItemSelected?.Invoke(selectedIndex >= 0 ? objects[selectedIndex].obj : null);
+        }
+
+        public int GetSelectedIndex() => selectedIndex;
+
+        public List<InventoryData> GetItems() => objects;
     }
 }

@@ -3,17 +3,27 @@ using Player.Inventory;
 using System;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEngine.Rendering.DebugUI.Table;
 
 namespace Player.UI
 {
     public class UserInterface : MonoBehaviour
     {
         [SerializeField] private UIDocument UI;
+        [SerializeField] private Inventory.Inventory inventory;
 
         //Shop
         [Space(5)]
+        [Header("Shop")]
         [SerializeField] UIDocument shopUI;
         [SerializeField] ShopData shopData;
+
+        [SerializeField] Dialog notSelectedItem;
+        [SerializeField] Dialog notSellableItem;
+        [SerializeField] Dialog notEnoughtMoneyDialog;
+
+        [Space(2)]
+        [SerializeField] Question sellConfirm;
 
         //Inventory Params
         private const float ROW_MAX_WIDTH = 960f;
@@ -22,6 +32,7 @@ namespace Player.UI
         private const float STORE_BUTTON_MAX_HEIGHT = 22f;
         private const float SLOT_GAP = 0.01f;
         private const float SLOT_SCALE = 0.72f;
+        private int selectedIndex = -1;
 
         public static Action OnInventoryUpdated;
         public static Action OnWalletUpdated;
@@ -33,8 +44,6 @@ namespace Player.UI
             DialogBoxController.OnQuestionEnds += ShowUI;
             OnInventoryUpdated += UpdateInventory;
             OnWalletUpdated += UpdateWallet;
-            InteractionController.OnSelectionChanged += UpdateInventory;
-
             InitializeUI();
         }
 
@@ -65,31 +74,35 @@ namespace Player.UI
 
                 var icon = slotContainer.Q("Icon");
 
-                slotContainer.RegisterCallback<PointerDownEvent>(evt => {
-                    if (index < Inventory.Inventory.Instance.GetItems().Count)
+                slotContainer.RegisterCallback<ClickEvent>(evt =>
+                {
+                    if (index < inventory.GetItems().Count)
                     {
-                        if (evt.button == (int)MouseButton.LeftMouse)
-                        {
-                            InteractionController.Instance.OnLeftClick(index);
-                        } else if (evt.button == (int)MouseButton.RightMouse)
-                        {
-                            InteractionController.Instance.OnRightClick(index);
-                        }
+                        var data = inventory.GetItems()[index];
+                        if (data.obj.PortraitHover != null)
+                            icon.style.backgroundImage = data.obj.PortraitHover;
+                        selectedIndex = index;
+                        inventory.SetSelectedIndex(index);
                     }
 
                 });
 
-                slotContainer.RegisterCallback<MouseEnterEvent>(evt => {
-                    if (index < Inventory.Inventory.Instance.GetItems().Count)
+                slotContainer.RegisterCallback<MouseEnterEvent>(evt =>
+                {
+                    if (index < inventory.GetItems().Count)
                     {
-                        UpdateHoveIcon(index, icon, true);
+                        var data = inventory.GetItems()[index];
+                        if (data.obj.PortraitHover != null)
+                            icon.style.backgroundImage = data.obj.PortraitHover;
                     }
                 });
 
-                slotContainer.RegisterCallback<MouseLeaveEvent>(evt => {
-                    if (index < Inventory.Inventory.Instance.GetItems().Count)
+                slotContainer.RegisterCallback<MouseLeaveEvent>(evt =>
+                {
+                    if (index < inventory.GetItems().Count && index != selectedIndex)
                     {
-                        UpdateHoveIcon(index, icon, false);
+                        var data = inventory.GetItems()[index];
+                        icon.style.backgroundImage = data.obj.Portrait;
                     }
                 });
             }
@@ -98,22 +111,20 @@ namespace Player.UI
             InitShopUI();
         }
 
-        void InitShopUI()
-        {
+        #region Shop
+
+        void InitShopUI() {
 
             int SHOP_MAX_COLUMNS = 2;
             int SHOP_MAX_ROWS = 3;
 
-            for (int x = 0; x < SHOP_MAX_COLUMNS; x++)
-            {
-                for (int y = 0; y < SHOP_MAX_ROWS; y++)
-                {
+            for(int x = 0; x < SHOP_MAX_COLUMNS; x++) {
+                for(int y = 0; y < SHOP_MAX_ROWS; y++) {
 
                     int index = y + (x * SHOP_MAX_ROWS);
                     VisualElement e = shopUI.rootVisualElement.Q($"C{x}S{y}");
 
-                    if (index < shopData.slots.Length)
-                    {
+                    if(index < shopData.slots.Length) {
 
                         Label c = e.Q("Cost") as Label;
 
@@ -126,20 +137,55 @@ namespace Player.UI
                         {
                             OnBuyShopItem(e, index);
                         });
+                    } else {
+                        e.style.display = DisplayStyle.None;
                     }
                 }
             }
+
+            shopUI.rootVisualElement.Q("Close").RegisterCallback<ClickEvent>(evt => {
+                DisplayShop(false);
+            });
+
+            UI.rootVisualElement.Q("StoreButton").RegisterCallback<ClickEvent>(evt => {
+                DisplayShop();
+            });
+
+            shopUI.rootVisualElement.Q("Sell").RegisterCallback<ClickEvent>(evt => {
+                SellItem();
+            });
         }
 
-        void OnBuyShopItem(VisualElement e, int index)
-        {
+        void SellItem() {
+            if(InteractionController.Instance.ItemSelected == null) { DialogBoxController.PlayDialog?.Invoke(notSelectedItem); return; }
+
+            if(InteractionController.Instance.ItemSelected is SellableObject) {
+                Debug.Log("Objeto vendible");
+
+                SellableObject so = InteractionController.Instance.ItemSelected as SellableObject;
+                sellConfirm.question = new Dialog($"I can give you ${so.sellingPrice} for that!", null, 2);
+
+                DialogBoxController.PlayQuestion?.Invoke(sellConfirm);
+                DialogBoxController.OnQuestionEnds += OnSellItem;
+
+                void OnSellItem(byte r) {
+                    if(r == 0) {
+                        Currency.AddMoney?.Invoke(so.sellingPrice);
+                        DialogBoxController.OnQuestionEnds -= OnSellItem;
+                    }
+                }
+            } else {
+                DialogBoxController.PlayDialog?.Invoke(notSellableItem);
+            }
+        }
+
+        void OnBuyShopItem(VisualElement e, int index) {
             int? money = Currency.GetMoney?.Invoke();
             money = money == null ? 0 : money.Value;
 
             int price = shopData.slots[index].price;
 
-            if (price > money)
-            { Debug.Log("Not enought money!"); return; }
+            if(price > money) { DialogBoxController.PlayDialog?.Invoke(notEnoughtMoneyDialog); return; }
 
             e.AddToClassList("ShopItem_Sold");
             e.Q("Cost").style.display = DisplayStyle.None;
@@ -148,38 +194,18 @@ namespace Player.UI
             Currency.AddMoney?.Invoke(-price);
         }
 
+        void DisplayShop() {
+            VisualElement e = shopUI.rootVisualElement.Q("Background");
+            e.style.visibility = e.style.visibility == Visibility.Hidden ? Visibility.Visible : Visibility.Hidden; 
+        }
+        void DisplayShop(bool t) { shopUI.rootVisualElement.Q("Background").style.visibility = t ? Visibility.Visible : Visibility.Hidden; }
+
+        #endregion
+
         private void UpdateUI()
         {
             UpdateWallet();
             UpdateInventory();
-        }
-
-        private void UpdateHoveIcon(int index, VisualElement icon, bool isEnter)
-        {
-            var data = Inventory.Inventory.Instance.GetItems()[index];
-            var controller = InteractionController.Instance;
-
-            if (isEnter)
-            {
-                if (controller.MultipleSelection &&
-                    controller.SelectedIndexes.Count < 2 &&
-                    data.obj.PortraitMerge != null)
-                {
-                    icon.style.backgroundImage = data.obj.PortraitMerge;
-                } else if (data.obj.PortraitHover != null)
-                {
-                    icon.style.backgroundImage = data.obj.PortraitHover;
-                }
-            } else
-            {
-                if (!controller.SelectedIndexes.Contains(index))
-                {
-                    icon.style.backgroundImage = data.obj.Portrait;
-                } else if (controller.MultipleSelection && data.obj.PortraitMerge != null)
-                {
-                    icon.style.backgroundImage = data.obj.PortraitMerge;
-                }
-            }
         }
 
         private void UpdateWallet()
@@ -188,8 +214,7 @@ namespace Player.UI
             var walletLabel = root.Q("Store").Q<Label>("Wallet");
 
             int? money = Currency.GetMoney?.Invoke();
-            if (money == null)
-                money = 0;
+            if(money == null) money = 0;
 
             walletLabel.text = $"${money}";
         }
@@ -197,9 +222,8 @@ namespace Player.UI
         private void UpdateInventory()
         {
             var root = UI.rootVisualElement;
-            var description = root.Q<Label>("Description");
-            var items = Inventory.Inventory.Instance.GetItems();
-            var controller = InteractionController.Instance;
+            var items = inventory.GetItems();
+            int selectedIndex = inventory.GetSelectedIndex();
 
             for (int index = 0; index < 9; index++)
             {
@@ -208,54 +232,25 @@ namespace Player.UI
                     continue;
 
                 var icon = slotContainer.Q("Icon");
-                var name = slotContainer.Q<Label>("Name");
-                var amount = slotContainer.Q<Label>("Amount");
+                var label = slotContainer.Q<Label>("Name");
 
                 if (index < items.Count)
                 {
                     var data = items[index];
-
-                    if (controller.SelectedIndexes.Contains(index))
-                    {
-                        if (controller.MultipleSelection && data.obj.PortraitMerge != null)
-                            icon.style.backgroundImage = data.obj.PortraitMerge;
-                        else if (data.obj.PortraitHover != null)
-                            icon.style.backgroundImage = data.obj.PortraitHover;
-                        else
-                            icon.style.backgroundImage = data.obj.Portrait;
-                    } else
-                    {
-                        icon.style.backgroundImage = data.obj.Portrait;
-                    }
-
-                    name.text = data.obj.objectName;
-                    amount.text = data.amount > 1 ? data.amount.ToString() : "";
+                    icon.style.backgroundImage = index == selectedIndex ? data.obj.PortraitHover : data.obj.Portrait;
+                    label.text = data.obj.highlightText;
                 } else
                 {
                     icon.style.backgroundImage = null;
-                    name.text = "";
-                    amount.text = "";
+                    label.text = "";
                 }
 
                 var slot = slotContainer.Q("Slot");
-                if (controller.SelectedIndexes.Contains(index))
+                if (index == selectedIndex)
                     slot.AddToClassList("selected");
-
                 else
                     slot.RemoveFromClassList("selected");
-
             }
-
-
-            var selectedIndex = controller.GetLastIndexSelected();
-            if (selectedIndex >= 0)
-            {
-                description.text = items[selectedIndex].obj.highlightText;
-            } else
-            {
-                description.text = "";
-            }
-
         }
 
         private void SetContainerDimensions(VisualElement root, VisualElement row, VisualElement store)
@@ -297,27 +292,24 @@ namespace Player.UI
                 float slotSize = rowHeight * SLOT_SCALE;
                 slot.style.width = slotSize;
                 slot.style.height = slotSize;
-                label.style.width = slotSize;
 
                 slotContainer.style.marginLeft = (x > 1) ? row.resolvedStyle.width * SLOT_GAP : 0;
             }
         }
 
-        void HideUI() => DisplayUI(false);
-        void ShowUI() => DisplayUI(true);
-        void ShowUI(byte a) => DisplayUI(true);
+        void HideUI() { DisplayUI(false); }
+        void ShowUI() { DisplayUI(true); }
+        void ShowUI(byte a) { DisplayUI(true); }
 
-        void DisplayUI(bool visible)
+        void DisplayUI(bool t)
         {
-            UI.rootVisualElement.Q("Background").style.visibility =
-                visible ? Visibility.Visible : Visibility.Hidden;
+            UI.rootVisualElement.Q("Background").style.visibility = t ? Visibility.Visible : Visibility.Hidden;
         }
 
         private void OnDestroy()
         {
-            OnInventoryUpdated -= UpdateInventory;
+            OnInventoryUpdated -= UpdateUI;
             OnWalletUpdated -= UpdateWallet;
-            InteractionController.OnSelectionChanged -= UpdateInventory;
             DialogBoxController.OnDialogStars -= HideUI;
             DialogBoxController.OnDialogEnds -= ShowUI;
             DialogBoxController.OnQuestionEnds -= ShowUI;

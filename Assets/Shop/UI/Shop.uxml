@@ -1,6 +1,10 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Shop/UI/Shop.uss?fileID=7433441132597879392&amp;guid=f7c5e37e49dc52a4996ee786fd8acb96&amp;type=3#Shop" />
-    <engine:VisualElement name="Background" style="flex-grow: 1; background-color: rgb(195, 195, 195); padding-right: 0; padding-top: 0; padding-bottom: 0; padding-left: 0; margin-right: 20%; margin-left: 20%; margin-top: 5%; margin-bottom: 5%;">
+    <engine:VisualElement name="Background" style="flex-grow: 1; background-color: rgb(195, 195, 195); padding-right: 0; padding-top: 0; padding-bottom: 0; padding-left: 0; margin-right: 20%; margin-left: 20%; margin-top: 5%; margin-bottom: 5%; visibility: visible;">
+        <engine:VisualElement name="UpperBar" style="flex-grow: 0; background-color: rgb(65, 65, 65); height: 10%; flex-direction: row-reverse; align-content: auto; justify-content: space-between;">
+            <engine:VisualElement name="Close" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Shop/Sprites/close.png?fileID=2800000&amp;guid=5db4eee10e948e14ab19650e08fa528d&amp;type=3#close&quot;); -unity-background-scale-mode: scale-to-fit; flex-shrink: 0; width: 10%; height: 100%;" />
+            <engine:Button text="Sell Junk Items" name="Sell" style="-unity-font-style: bold;" />
+        </engine:VisualElement>
         <engine:VisualElement name="Upper" style="flex-grow: 1; flex-direction: row; align-content: auto; align-self: auto; justify-content: space-evenly;">
             <engine:VisualElement name="Column1" style="flex-grow: 0; flex-direction: column; width: auto; flex-shrink: 1; max-height: none; min-height: auto; min-width: 40%;">
                 <engine:VisualElement name="C0S0" class="ShopItem">
@@ -17,15 +21,15 @@
                 </engine:VisualElement>
             </engine:VisualElement>
             <engine:VisualElement name="Column2" style="flex-grow: 0; flex-direction: column; width: auto; flex-shrink: 1; max-height: none; min-height: auto; min-width: 40%;">
-                <engine:VisualElement name="C0S0" class="ShopItem">
+                <engine:VisualElement name="C1S0" class="ShopItem">
                     <engine:VisualElement name="Image" class="ShopItem_Image" />
                     <engine:Label text="100" name="Cost" style="color: rgb(255, 255, 255); margin-top: 10px; margin-right: 10px; margin-bottom: 5px; margin-left: 60px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; display: flex; left: auto; right: auto; flex-shrink: 1; flex-grow: 1; -unity-text-align: middle-left; font-size: 28px;" />
                 </engine:VisualElement>
-                <engine:VisualElement name="C0S1" class="ShopItem">
+                <engine:VisualElement name="C1S1" class="ShopItem">
                     <engine:VisualElement name="Image" style="flex-grow: 0; position: relative; height: 70%; width: 30%; top: 7%; left: 0; background-image: url(&quot;project://database/Assets/Inventory/Sprites/crowbar.png?fileID=2800000&amp;guid=7f928197278714c4698f5caa86900c1f&amp;type=3#crowbar&quot;); -unity-background-scale-mode: scale-to-fit; background-color: rgba(0, 0, 0, 0); margin-bottom: 0; padding-bottom: 0; margin-top: 3.5%; flex-shrink: 0; margin-left: 1%;" />
                     <engine:Label text="100" name="Cost" style="color: rgb(255, 255, 255); margin-top: 10px; margin-right: 10px; margin-bottom: 5px; margin-left: 60px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; display: flex; left: auto; right: auto; flex-shrink: 1; flex-grow: 1; -unity-text-align: middle-left; font-size: 28px;" />
                 </engine:VisualElement>
-                <engine:VisualElement name="C0S2" class="ShopItem">
+                <engine:VisualElement name="C1S2" class="ShopItem">
                     <engine:VisualElement name="Image" style="flex-grow: 0; position: relative; height: 70%; width: 30%; top: 7%; left: 0; background-image: url(&quot;project://database/Assets/Inventory/Sprites/crowbar.png?fileID=2800000&amp;guid=7f928197278714c4698f5caa86900c1f&amp;type=3#crowbar&quot;); -unity-background-scale-mode: scale-to-fit; background-color: rgba(0, 0, 0, 0); margin-bottom: 0; padding-bottom: 0; margin-top: 3.5%; flex-shrink: 0; margin-left: 1%;" />
                     <engine:Label text="100" name="Cost" style="color: rgb(255, 255, 255); margin-top: 10px; margin-right: 10px; margin-bottom: 5px; margin-left: 60px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; display: flex; left: auto; right: auto; flex-shrink: 1; flex-grow: 1; -unity-text-align: middle-left; font-size: 28px;" />
                 </engine:VisualElement>
