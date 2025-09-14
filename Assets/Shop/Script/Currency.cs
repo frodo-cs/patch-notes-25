@@ -44,5 +44,7 @@ public class Currency : MonoBehaviour
     public void OnLoad() {
         var r = PersistentData.GetCurrency?.Invoke();
         money = r == null ? 0 : r.Value;
+
+        UserInterface.OnWalletUpdated?.Invoke();
     }
 }

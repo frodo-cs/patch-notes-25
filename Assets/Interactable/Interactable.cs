@@ -1,4 +1,5 @@
 using Cinematics;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,10 +12,18 @@ namespace Player {
 
         MouseReaction interactableObj;
 
-        // Start is called before the first frame update
-        void Start() {
+        CurrentState currentState;
+        public enum CurrentState {
+            Normal,
+            Paused
+        }
+
+        public static Action<CurrentState> ChangeState;
+
+        private void Awake() {
             Inputs.onClickPerformed += OnClickStarts;
             Inputs.onClickCancel += OnClickEnds;
+            ChangeState = OnChangeState;
         }
 
         // Update is called once per frame
@@ -25,6 +34,8 @@ namespace Player {
 
             bool? isDialogRunning = DialogBoxController.IsDialogRunning?.Invoke();
 
+            if(currentState == CurrentState.Paused) return;
+
             RaycastHit2D hit = Physics2D.CircleCast(cursorPos, 0.2f, Vector2.zero, 0.1f, interactableMask);
 
             if(hit.transform != null && hit.transform.TryGetComponent(out MouseReaction reaction)) { interactableObj = reaction; }
@@ -34,14 +45,23 @@ namespace Player {
         void OnClickStarts(InputAction.CallbackContext context) {
             if(!context.performed) return;
 
-            if(interactableObj != null) interactableObj.OnInteractStart();
+            if(interactableObj != null && currentState == CurrentState.Normal) interactableObj.OnInteractStart();
             DialogBoxController.InteractOnDialog?.Invoke();
         }
 
         void OnClickEnds(InputAction.CallbackContext context) {
             if(!context.canceled) return;
 
-            if(interactableObj != null) interactableObj.OnInteractEnd();
+            if(interactableObj != null && currentState == CurrentState.Normal) interactableObj.OnInteractEnd();
+        }
+
+        void OnChangeState(CurrentState newState) {
+            if(newState == CurrentState.Paused) {
+                if(interactableObj != null) interactableObj.OnInteractEnd();
+                interactableObj = null;
+            }
+
+            currentState = newState;
         }
 
         private void OnDestroy() {
