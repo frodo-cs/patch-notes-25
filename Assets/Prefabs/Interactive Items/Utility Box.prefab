@@ -103,8 +103,11 @@ MonoBehaviour:
   neededObjects:
   - {fileID: 11400000, guid: b651b9db917088a439900c6bfa019f44, type: 2}
   - {fileID: 11400000, guid: 177c422dca8e28b48a12da752443602e, type: 2}
+  onUnlock:
+    m_PersistentCalls:
+      m_Calls: []
   spriteRenderer: {fileID: 6204695166913543698}
-  col: {fileID: 7802408723770482585}
+  puzzlePrefab: {fileID: 2774270396413370467, guid: 2c013342e5c76334ea3341a8a19de3a2, type: 3}
 --- !u!1 &8933979185717761293
 GameObject:
   m_ObjectHideFlags: 0

@@ -190,6 +190,9 @@ MonoBehaviour:
     hideOnDialogEnds: 1
   neededObjects:
   - {fileID: 11400000, guid: f1e205983a4967a45b0b8824dbc2c7a6, type: 2}
+  onUnlock:
+    m_PersistentCalls:
+      m_Calls: []
   spriteRenderer: {fileID: 4316530836496422643}
   safe: {fileID: 2360242841454880831, guid: d30e45b77273d2c41a2a8b32f80eaba0, type: 3}
   spawnPoint: {fileID: 5664242362352777433}

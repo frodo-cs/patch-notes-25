@@ -102,6 +102,9 @@ MonoBehaviour:
     hideOnDialogEnds: 1
   neededObjects:
   - {fileID: 11400000, guid: e057d9f45c20c934084d980bb2cedeb8, type: 2}
+  onUnlock:
+    m_PersistentCalls:
+      m_Calls: []
   droppables:
   - {fileID: 11400000, guid: b651b9db917088a439900c6bfa019f44, type: 2}
   - {fileID: 11400000, guid: 9a9a034a1a4539740be2784690a021fb, type: 2}

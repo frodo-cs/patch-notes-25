@@ -1,4 +1,5 @@
 using Cinematics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,36 +9,26 @@ namespace Player.Gameplay.ClickableItems
     public class UtilityBox : ItemDependent
     {
         [SerializeField] SpriteRenderer spriteRenderer;
-        [SerializeField] Collider2D col;
+        [SerializeField] GameObject puzzlePrefab;
+        private GameObject puzzleInstance;
+        private bool isOpen = false;
 
         private List<Inventory.Inventory.InventoryData> GetItemsNeed()
         {
             var selectedIndexes = InteractionController.Instance.SelectedIndexes;
             var inventoryItems = Inventory.Inventory.Instance.GetItems();
-            var selectedItems = new List<Inventory.Inventory.InventoryData>();
 
-            foreach (var index in selectedIndexes)
-            {
-                if (index >= 0 && index < inventoryItems.Count)
-                {
-                    selectedItems.Add(inventoryItems[index]);
-                }
-            }
-
-            return selectedItems;
+            return selectedIndexes
+                .Where(index => index >= 0 && index < inventoryItems.Count)
+                .Select(index => inventoryItems[index])
+                .ToList();
         }
 
         private bool HasItemsNeeded()
         {
             var selectedItems = GetItemsNeed();
-
-            foreach (var needed in neededObjects)
-            {
-                if (!selectedItems.Any(item => item.obj == needed && item.amount > 0))
-                    return false;
-            }
-
-            return true;
+            return neededObjects.All(needed =>
+                selectedItems.Any(item => item.obj == needed && item.amount > 0));
         }
 
         public override void OnInteractStart()
@@ -47,28 +38,84 @@ namespace Player.Gameplay.ClickableItems
 
             var selected = InteractionController.Instance.ItemSelected;
 
-            if (!HasItemsNeeded())
+            if (!isOpen && !HasItemsNeeded())
             {
                 dialog.text = "You don't have the required items";
                 OpenDialog();
                 return;
             }
 
-            dialog.text = "You opened the utility box";
+            if (!isOpen)
+            {
+                dialog.text = "You opened the utility box";
+                OpenDialog();
+                DialogBoxController.OnDialogEnds += OpenUtilityBox;
+                return;
+            }
+
+            dialog.text = "You find a switch board";
             OpenDialog();
-            DialogBoxController.OnDialogEnds += OpenUtilityBox;
+            DialogBoxController.OnDialogEnds += InstantiatePuzzle;
         }
 
-        protected void OpenUtilityBox()
+        private void OpenUtilityBox()
         {
             spriteRenderer.color = new Color(170f / 255f, 90f / 255f, 90f / 255f, 0.4f);
-            col.enabled = false;
+            isOpen = true;
+            DialogBoxController.OnDialogEnds -= OpenUtilityBox;
+        }
+
+        private void InstantiatePuzzle()
+        {
+            gameObject.GetComponent<Collider2D>().enabled = false;
+            DialogBoxController.OnDialogEnds -= InstantiatePuzzle;
+
+            puzzleInstance = Instantiate(
+                puzzlePrefab,
+                Vector3.zero,
+                Quaternion.identity,
+                transform
+            );
+
+            Puzzles.SwitchBoardPuzzle.OnPasswordCorrect += OnPasswordCorrect;
+            Puzzles.SwitchBoardPuzzle.OnExitClicked += OnDestroyPuzzle;
+        }
+
+        private void OnDestroyPuzzle()
+        {
+            gameObject.GetComponent<Collider2D>().enabled = true;
+            Puzzles.SwitchBoardPuzzle.OnPasswordCorrect -= OnPasswordCorrect;
+            Puzzles.SwitchBoardPuzzle.OnExitClicked -= OnDestroyPuzzle;
+
+            if (puzzleInstance != null)
+                Destroy(puzzleInstance);
+        }
+
+        private void OnPasswordCorrect()
+        {
+            dialog.text = "Turn on lights";
+            OpenDialog();
+            DialogBoxController.OnDialogEnds += OnFinishPuzzle;
+        }
+
+        private void OnFinishPuzzle()
+        {
+            DialogBoxController.OnDialogEnds -= OnFinishPuzzle;
+            Puzzles.SwitchBoardPuzzle.OnPasswordCorrect -= OnPasswordCorrect;
+            Puzzles.SwitchBoardPuzzle.OnExitClicked -= OnDestroyPuzzle;
+
+            if (puzzleInstance != null)
+                Destroy(puzzleInstance);
         }
 
         private void OnDestroy()
         {
             DialogBoxController.OnDialogEnds -= OpenUtilityBox;
-        }
+            DialogBoxController.OnDialogEnds -= InstantiatePuzzle;
+            DialogBoxController.OnDialogEnds -= OnFinishPuzzle;
 
+            Puzzles.SwitchBoardPuzzle.OnPasswordCorrect -= OnPasswordCorrect;
+            Puzzles.SwitchBoardPuzzle.OnExitClicked -= OnDestroyPuzzle;
+        }
     }
 }
