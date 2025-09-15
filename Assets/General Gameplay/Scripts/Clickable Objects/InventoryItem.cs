@@ -23,6 +23,8 @@ public class InventoryItem : MouseReaction
 
     private void OnItemAddedToInventory(GameObject addedObject)
     {
+        hasBeenPicked = true;
+        SavePicked();
         if (addedObject == gameObject)
             Destroy(gameObject);
     }
