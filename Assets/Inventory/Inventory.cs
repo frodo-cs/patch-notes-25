@@ -62,12 +62,12 @@ namespace Player.Inventory
 
         private void SaveObjects()
         {
-            Save("player_inventory", new ListInventoryData("Inventory", objects));
+            SaveGeneralData?.Invoke(new ListInventoryData("Inventory", objects));
         }
 
         private void LoadObjects()
         {
-            var data = GetData("player_inventory", "Inventory") as ListInventoryData;
+            ListInventoryData data = LoadGeneralData?.Invoke("Inventory") as ListInventoryData;
             if (data != null)
             {
                 objects = data.value;

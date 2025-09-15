@@ -8,6 +8,8 @@ public class Conversation : MonoBehaviour
     int currentConversation = 0;
     int currentDialog = 0;
 
+    [SerializeField] bool repeateConversation;
+
     private void Start() {
         for(int i = 0; i < conversations.Length; i++) {
             for(int j = 0; j < conversations[i].dialogs.Length; j++) {
@@ -15,7 +17,18 @@ public class Conversation : MonoBehaviour
             }
         }
 
-        //StartDialog();
+        Debug.Log("b");
+        OnLoad();
+    }
+
+    protected virtual void OnLoad() {
+        var loadDialog = PersistentData.GetData?.Invoke(transform.name, "currentDialog");
+        var loadConversation = PersistentData.GetData?.Invoke(transform.name, "currentConversation");
+
+        if(loadDialog != null && loadConversation != null) {
+            currentDialog = (int)loadDialog.getData();
+            currentConversation = (int)loadConversation.getData();
+        }
     }
 
     public void StartDialog() {
@@ -28,7 +41,13 @@ public class Conversation : MonoBehaviour
             DialogBoxController.PlayDialog?.Invoke(conversations[currentConversation].dialogs[currentDialog]);
             DialogBoxController.OnDialogEnds += NextDialog;
 
+            PersistentData.Save?.Invoke(transform.name, new PersistentData.IntData("currentDialog", currentDialog));
+            PersistentData.Save?.Invoke(transform.name, new PersistentData.IntData("currentConversation", currentConversation));
+
             currentDialog++;
+        } else if(repeateConversation) {
+            currentConversation = 0;
+            currentDialog = 0;  
         }
     }
 

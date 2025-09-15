@@ -11,6 +11,9 @@ namespace Player.Gameplay {
         public override void OnInteractStart() {
             if(InteractionController.Instance.ItemSelected) {
                 DialogBoxController.PlayDialog?.Invoke(treatDialog);
+
+                PersistentData.SaveGeneralData?.Invoke(new PersistentData.BoolData("BeckyWithYou", true));
+
             } else {
                 conversation.StartDialog();
             }

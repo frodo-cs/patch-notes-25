@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Player;
+using Player.Inventory;
 
 public class PersistentData : MonoBehaviour
 {

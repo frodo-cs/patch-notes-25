@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionMaterial: {fileID: 2100000, guid: f4b2822379e6108409667495c7f4b7e9, type: 2}
+  transitionSpeed: 2
 --- !u!114 &5726835226794613598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,3 +59,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e396d726d7fbb64b9d53a6edd4a4289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  savedCurrency: 0

@@ -17,6 +17,7 @@ public class ChangeScene : MonoBehaviour
     public static loadScene LoadScene;
 
     public static bool isSceneTransitioning;
+    [SerializeField] float transitionSpeed;
 
     private void Awake() {
         LoadScene = OnLoadScene;
@@ -57,7 +58,7 @@ public class ChangeScene : MonoBehaviour
             while(t <= 1) {
                 transitionMaterial.SetFloat("_time", t);
 
-                t += Time.deltaTime;
+                t += Time.deltaTime * transitionSpeed;
                 yield return null;
             }
 
@@ -81,7 +82,7 @@ public class ChangeScene : MonoBehaviour
             while(t <= 1) {
                 transitionMaterial.SetFloat("_time", 1f - t);
 
-                t += Time.deltaTime;
+                t += Time.deltaTime * transitionSpeed;
                 yield return null;
             }
 
