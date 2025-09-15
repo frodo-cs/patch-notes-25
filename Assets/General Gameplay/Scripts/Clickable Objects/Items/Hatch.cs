@@ -31,7 +31,7 @@ namespace Player.Gameplay.ClickableItems
 
                     if (!HasItemNeeded(selected))
                     {
-                        dialog.text = "Too heavy for you";
+                        dialog.text = "Yeah, I sure as shit am not Superman. Going to need a jack to get this open.";
                         OpenDialog();
                         return;
                     } else
@@ -42,7 +42,7 @@ namespace Player.Gameplay.ClickableItems
                 case HatchState.CarUp:
                     if (!HasItemNeeded(selected))
                     {
-                        dialog.text = "You need a keycard";
+                        dialog.text = "Of course the hatch is shut tight… though it’s got a slim slot, like it’s waiting for something to slide in";
                         OpenDialog();
                         return;
                     } else

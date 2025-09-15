@@ -34,17 +34,17 @@ namespace Player.Gameplay.ClickableItems
 
                 if (!touched && !HasItemsNeeded())
                 {
-                    dialog.text = "You don't have the required items";
+                    dialog.text = "Looks like it's strapped shut like Fort Knox. I could try prying it with a crowbar and hope it breaks loose";
                     OpenDialog();
                     return;
                 }
 
-                dialog.text = "You find a switch board";
+                dialog.text = "Bet one of these little switches powers up something";
                 OpenDialog();
                 DialogBoxController.OnDialogEnds += InstantiatePuzzle;
             } else
             {
-                dialog.text = "You alerady turned the lights on";
+                dialog.text = "Lights are already on, why do I keep playing with this?";
                 OpenDialog();
             }
         }

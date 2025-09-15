@@ -14,12 +14,12 @@ namespace Player.Gameplay.ClickableItems
             {
                 if (!CanAddItems())
                 {
-                    dialog.text = "Your inventory doesn't have enough space";
+                    dialog.text = "No room to haul more crap arounde";
                     OpenDialog();
                     return;
                 }
 
-                dialog.text = "You found some trash";
+                dialog.text = "Just some trash... figures. Might still come in handy";
                 OpenDialog();
                 DialogBoxController.OnDialogEnds += AddItems;
             }

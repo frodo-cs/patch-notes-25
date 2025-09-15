@@ -24,7 +24,7 @@ namespace Player.Gameplay.ClickableItems
                 return;
             }
 
-            dialog.text = "You emptied the storage container";
+            dialog.text = "Wonder if it is unlocked...";
             OpenDialog();
             DialogBoxController.OnDialogEnds += OpenStorage;
 

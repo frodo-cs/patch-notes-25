@@ -11,19 +11,19 @@ namespace Player.Gameplay.ClickableItems
 
             if (touched && droppables.Length == 0)
             {
-                dialog.text = "The trash can is already empty";
+                dialog.text = "There's only trash in this trash can";
                 OpenDialog();
                 return;
             }
 
             if (!CanAddItems())
             {
-                dialog.text = "Your inventory doesn't have enough space";
+                dialog.text = "I have no room for more trash";
                 OpenDialog();
                 return;
             }
 
-            dialog.text = "You found some stuff";
+            dialog.text = "Bet these could come handy";
             OpenDialog();
             DialogBoxController.OnDialogEnds += AddItems;
         }

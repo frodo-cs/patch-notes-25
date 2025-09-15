@@ -19,19 +19,19 @@ namespace Player.Gameplay.ClickableItems
 
             if (touched && droppables.Length == 0)
             {
-                dialog.text = "The rats are already distracted";
+                dialog.text = "Looks like the rats are already busy chowing down";
                 OpenDialog();
                 return;
             }
 
             if (!CanAddItems())
             {
-                dialog.text = "Your inventory doesn't have enough space";
+                dialog.text = "No room to haul more junk. Gotta clear some space";
                 OpenDialog();
                 return;
             }
 
-            dialog.text = "Distracted by the meal";
+            dialog.text = "Those little demons are too busy with the grub to notice me";
             OpenDialog();
             DialogBoxController.OnDialogEnds -= AddItems;
             DialogBoxController.OnDialogEnds += AddItems;

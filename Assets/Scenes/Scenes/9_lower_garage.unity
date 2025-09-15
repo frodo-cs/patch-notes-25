@@ -424,7 +424,7 @@ MonoBehaviour:
   itemId: storage_container
   dialog:
     introAnim: {fileID: 0}
-    text: This container is flooded
+    text: Huh? there seems to be a treasure down there
     characterSpeaking:
       expresionKey: 
       character: {fileID: 0}

@@ -486,7 +486,7 @@ MonoBehaviour:
   itemId: car
   dialog:
     introAnim: {fileID: 0}
-    text: the door seems locked
+    text: If only I could find a wire...
     characterSpeaking:
       expresionKey: 
       character: {fileID: 0}

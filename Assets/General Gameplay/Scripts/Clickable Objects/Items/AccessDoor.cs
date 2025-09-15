@@ -64,7 +64,7 @@ namespace Player.Gameplay.ClickableItems
         {
             isDoorOpen = true;
             SaveDoorOpened();
-            dialog.text = "Correct password";
+            dialog.text = "Nice";
             OpenDialog();
             DialogBoxController.OnDialogEnds += GoToScene;
         }

@@ -16,7 +16,7 @@ namespace Player.Gameplay.ClickableItems
 
             if (touched)
             {
-                dialog.text = "The coffee dispenser is empty";
+                dialog.text = "Huh, seems that was all";
                 OpenDialog();
                 return;
             }
@@ -27,7 +27,7 @@ namespace Player.Gameplay.ClickableItems
                 return;
             }
 
-            dialog.text = "You received x amount of money";
+            dialog.text = "Nothing like an early payday";
             OpenDialog();
             Inventory.Inventory.RemoveItem?.Invoke(selected);
             DialogBoxController.OnDialogEnds += SaveTouched;

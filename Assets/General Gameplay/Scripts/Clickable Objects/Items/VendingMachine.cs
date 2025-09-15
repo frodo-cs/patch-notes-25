@@ -15,26 +15,26 @@ namespace Player.Gameplay.ClickableItems
 
             if (!HasItemNeeded(selected))
             {
-                dialog.text = "You need a token to use the vending machine";
+                dialog.text = "It says it accepts token only, huh? What was the problem with the good old greenback? I guess i should keep a eye out for these token things";
                 OpenDialog();
                 return;
             }
 
             if (touched && droppables.Length == 0)
             {
-                dialog.text = "No more items";
+                dialog.text = "This old thing seems empty";
                 OpenDialog();
                 return;
             }
 
             if (!CanAddItems())
             {
-                dialog.text = "Your inventory doesn't have enough space";
+                dialog.text = "It seems I ran out of space";
                 OpenDialog();
                 return;
             }
 
-            dialog.text = "Vending machine dispenses an item";
+            dialog.text = "These tokens seemed to do the trick";
             OpenDialog();
 
             DialogBoxController.OnDialogEnds -= AddItems;

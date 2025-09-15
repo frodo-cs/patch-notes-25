@@ -548,7 +548,8 @@ MonoBehaviour:
   itemId: rat_nest
   dialog:
     introAnim: {fileID: 0}
-    text: Hungry rats
+    text: Gonna need something to bait those tiny demons out, otherwise all I'm gonna
+      get from them is the Bubonic plague. Something edible would do the trick
     characterSpeaking:
       expresionKey: 
       character: {fileID: 0}

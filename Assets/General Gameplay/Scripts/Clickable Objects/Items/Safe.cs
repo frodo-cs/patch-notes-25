@@ -73,7 +73,7 @@ namespace Player.Gameplay.ClickableItems
         private void OpenSafe()
         {
             puzzleInstance.SetActive(false);
-            dialog.text = "You opened the safe";
+            dialog.text = "Finally. Thought this damn box was welded shut";
             OpenDialog();
 
             DialogBoxController.OnDialogEnds += AddItems;

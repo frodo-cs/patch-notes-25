@@ -36,7 +36,7 @@ if (touched)
 
                 if (!CanAddItems())
                 {
-                    dialog.text = "Your inventory doesn't have enough space";
+                    dialog.text = "It seems I ran out of space for shit";
                     OpenDialog();
                     return;
                 }
@@ -44,7 +44,7 @@ if (touched)
                 if (droppables.Length > 0 && HasItemNeeded(selected))
                 {
                     spriteRenderer.sprite = Utilities.ToSprite(openCar);
-                    dialog.text = "You found some items in the glove box";
+                    dialog.text = "Heave and ho, bitch. Heave and ho. That wasn't so bad for a first try.";
                     OpenDialog();
                     DialogBoxController.OnDialogEnds += AddItems;
                 }

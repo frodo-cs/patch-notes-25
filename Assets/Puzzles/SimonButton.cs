@@ -33,7 +33,7 @@ public class SimonButton : ItemDependent
         gameEnded = true;
         SaveGameStatus();
         RemoveItems();
-        dialog.text = "A door has opened";
+        dialog.text = "I heard a door unlock nearby";
         OpenDialog();
     }
 
@@ -78,7 +78,7 @@ public class SimonButton : ItemDependent
             simon.Play();
         } else if (Active && !hasItems)
         {
-            dialog.text = "You don't have the required items";
+            dialog.text = "Looks like this thing needs me to have two keys lined up to make it grind and shine. Wish that guy didn't lose the keys";
             OpenDialog();
             return;
         }
