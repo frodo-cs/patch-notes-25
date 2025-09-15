@@ -16,6 +16,7 @@ namespace Player.Gameplay {
 
             } else {
                 conversation.StartDialog();
+                PersistentData.SaveGeneralData?.Invoke(new PersistentData.BoolData("BeckyWithYou", true));
             }
         }
     }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2833601353698490853}
   - component: {fileID: 6916897349620273241}
   - component: {fileID: 8198073049367455995}
+  - component: {fileID: 2292417673676103573}
   m_Layer: 0
   m_Name: Donavan
   m_TagString: Untagged
@@ -186,6 +187,7 @@ MonoBehaviour:
       hideOnDialogEnds: 1
     events: []
   repeateConversation: 1
+  repeatFirstConversation: 0
 --- !u!70 &2833601353698490853
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -220,8 +222,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.3, y: 0}
-  m_Size: {x: 4, y: 10}
+  m_Offset: {x: -0.3, y: 1.7112368}
+  m_Size: {x: 4, y: 6.577526}
   m_Direction: 0
 --- !u!114 &6916897349620273241
 MonoBehaviour:
@@ -237,6 +239,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conversation: {fileID: 1963022957324919287}
   beckyDialog: {fileID: 8198073049367455995}
+  postBeckyDialog: {fileID: 2292417673676103573}
+  key: {fileID: 11400000, guid: 3aa224b202a2a4a4cab59412bafb26dc, type: 2}
 --- !u!114 &8198073049367455995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,3 +295,28 @@ MonoBehaviour:
       hideOnDialogEnds: 0
     events: []
   repeateConversation: 0
+  repeatFirstConversation: 0
+--- !u!114 &2292417673676103573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8760967720609335958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc37300055fddff4f82fd1aa42caf2e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conversations:
+  - dialogs:
+    - introAnim: {fileID: 0}
+      text: I love her so much!... Thank you!
+      characterSpeaking:
+        expresionKey: idle
+        character: {fileID: 11400000, guid: f6b9636c2840752429341e8ed9258500, type: 2}
+      textSpeed: 0
+      hideOnDialogEnds: 0
+    events: []
+  repeateConversation: 0
+  repeatFirstConversation: 0
