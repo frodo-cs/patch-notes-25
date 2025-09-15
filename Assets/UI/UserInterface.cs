@@ -28,15 +28,17 @@ namespace Player.UI
         public static Action OnInventoryUpdated;
         public static Action OnWalletUpdated;
 
-        private void Start()
-        {
+        private void Awake() {
             DialogBoxController.OnDialogStars += HideUI;
             DialogBoxController.OnDialogEnds += ShowUI;
             DialogBoxController.OnQuestionEnds += ShowUI;
             OnInventoryUpdated += UpdateInventory;
             OnWalletUpdated += UpdateWallet;
             InteractionController.OnSelectionChanged += UpdateInventory;
+        }
 
+        private void Start()
+        {
             InitializeUI();
         }
 

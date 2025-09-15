@@ -90,7 +90,8 @@ namespace Player.Gameplay.ClickableItems
             Puzzles.SwitchBoardPuzzle.OnPasswordCorrect -= OnPasswordCorrect;
             Puzzles.SwitchBoardPuzzle.OnExitClicked -= OnDestroyPuzzle;
             lightsOn = true;
-            Save(itemId, new BoolData("DoorOpened", lightsOn));
+
+            SaveGeneralData(new BoolData("PowerRestored", lightsOn));
 
             dialog.text = "I think I heard somethingclick!";
             OpenDialog();

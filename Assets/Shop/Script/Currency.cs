@@ -20,12 +20,12 @@ public class Currency : MonoBehaviour
     }
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            AddMoneyEvent(10);
-        } else if(Input.GetKeyDown(KeyCode.S)) {
-            AddMoneyEvent(-10);
-        }
+        //if (Input.GetKeyDown(KeyCode.W))
+        //{
+        //    AddMoneyEvent(10);
+        //} else if(Input.GetKeyDown(KeyCode.S)) {
+        //    AddMoneyEvent(-10);
+        //}
     }
 
     public void AddMoneyEvent(int delta = 0) {
