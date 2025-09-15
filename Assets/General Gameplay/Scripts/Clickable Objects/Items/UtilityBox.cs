@@ -93,7 +93,7 @@ namespace Player.Gameplay.ClickableItems
 
             SaveGeneralData(new BoolData("PowerRestored", lightsOn));
 
-            dialog.text = "I think I heard somethingclick!";
+            dialog.text = "I think I heard something click!";
             OpenDialog();
             DialogBoxController.OnDialogEnds += OnDoorOpen;
 
