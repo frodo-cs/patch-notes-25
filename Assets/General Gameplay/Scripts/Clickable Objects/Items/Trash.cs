@@ -5,16 +5,25 @@ namespace Player.Gameplay.ClickableItems
 {
     public class Trash : ItemDroppables
     {
+        protected override void Start()
+        {
+            base.Start();
+            if (touched)
+            {
+                gameObject.GetComponent<Collider2D>().enabled = false;
+            }
+        }
+
         public override void OnInteractStart()
         {
             if (DialogBoxController.IsDialogRunning?.Invoke() == true)
                 return;
 
-            if (!touched || droppables.Length > 0)
+            if (!touched && droppables.Length > 0)
             {
                 if (!CanAddItems())
                 {
-                    dialog.text = "No room to haul more crap arounde";
+                    dialog.text = "No room to haul more crap around";
                     OpenDialog();
                     return;
                 }
@@ -27,6 +36,7 @@ namespace Player.Gameplay.ClickableItems
 
         protected override void AddItems()
         {
+            touched = true;
             Inventory.Inventory.AddItems?.Invoke(droppables);
             droppables = new Inventory.Object[0];
             gameObject.GetComponent<Collider2D>().enabled = false;
