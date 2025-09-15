@@ -43,7 +43,6 @@ namespace Player.Inventory
             }
 
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
 
         private void Start()
@@ -54,6 +53,7 @@ namespace Player.Inventory
             AddItems += OnAddItems;
             AddItem += OnAddItem;
 
+            Debug.Log("Loading Inventory Objects!");
             LoadObjects();
         }
 

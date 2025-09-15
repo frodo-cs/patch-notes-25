@@ -118,6 +118,52 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &156422781
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 156422782}
+  - component: {fileID: 156422783}
+  m_Layer: 0
+  m_Name: keycard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &156422782
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156422781}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.2, y: 13.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5447241429120502886}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &156422783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156422781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d585725a33c93cf4f8534b12f5443beb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: master_key
+  obj: {fileID: 11400000, guid: b643d2c98e746a44baa6d9d48d5fddf9, type: 2}
 --- !u!1001 &943724697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -129,22 +175,6 @@ PrefabInstance:
     - target: {fileID: 411502339863201402, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
       propertyPath: m_Name
       value: Main Camera
-      objectReference: {fileID: 0}
-    - target: {fileID: 3466494110685875428, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
-      propertyPath: dialog.textSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3466494110685875428, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
-      propertyPath: objects.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3466494110685875428, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
-      propertyPath: objects.Array.data[0].obj
-      value: 
-      objectReference: {fileID: 11400000, guid: f1e205983a4967a45b0b8824dbc2c7a6, type: 2}
-    - target: {fileID: 3466494110685875428, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
-      propertyPath: objects.Array.data[0].amount
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4248252162900250354, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -434,7 +464,19 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f1e205983a4967a45b0b8824dbc2c7a6, type: 2}
   onUnlock:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 156422783}
+        m_TargetAssemblyTypeName: InventoryItem, Assembly-CSharp
+        m_MethodName: OnInteractStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   spriteRenderer: {fileID: 3331529265834891462}
   texture: {fileID: 2800000, guid: 474b3d7f5b434c04bb5d17441e9d305d, type: 3}
   safe: {fileID: 2360242841454880831, guid: d30e45b77273d2c41a2a8b32f80eaba0, type: 3}
@@ -453,6 +495,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5664242363783068856}
+  - {fileID: 156422782}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &5664242363783068856

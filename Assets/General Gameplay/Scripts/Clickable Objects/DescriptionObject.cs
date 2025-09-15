@@ -28,12 +28,12 @@ public class DescriptionObject : MouseReaction
             DialogBoxController.PlayDialog?.Invoke(dialog);
     }
 
-    protected void SaveTouched()
+    protected virtual void SaveTouched()
     {
         Save(itemId, new BoolData("Touched", touched));
     }
 
-    protected void LoadTouched()
+    protected virtual void LoadTouched()
     {
         var data = GetData(itemId, "Touched") as BoolData;
         if (data != null)
