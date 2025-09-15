@@ -6,34 +6,52 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/First Part/1_entry_bay.unity
+    path: Assets/Scenes/Scenes/1_entry_bay.unity
     guid: dd1ead64f4f98da4cb6bd446e4708032
   - enabled: 1
-    path: Assets/Scenes/First Part/2_parking_lot.unity
+    path: Assets/Scenes/Scenes/2_car_room.unity
     guid: ca027300f86aff5459dd9b30017846d1
   - enabled: 1
-    path: Assets/Scenes/First Part/3_vending_machine.unity
+    path: Assets/Scenes/Scenes/3_vending_machine.unity
     guid: c66ce7dab7133a046b246da8d6087fbe
   - enabled: 1
-    path: Assets/Scenes/First Part/4_utility_box.unity
+    path: Assets/Scenes/Scenes/4_utility_box.unity
     guid: 6678c4d8e32d44a46be5f815f37aa908
   - enabled: 1
-    path: Assets/Scenes/First Part/5_access_door.unity
+    path: Assets/Scenes/Scenes/5_security_room_access.unity
     guid: 7e6676131e2d2844a8b8b1b5e12c1060
   - enabled: 1
-    path: Assets/Scenes/Second Part/1_security_office.unity
-    guid: e5dfd12816298c348b581f53ba9c9c92
+    path: Assets/Scenes/Scenes/6_simon_room.unity
+    guid: 77e28d97920da284d966be9adea01b27
   - enabled: 1
-    path: Assets/Scenes/Test0.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Scenes/7_stairwell_1.unity
+    guid: 050c992dc3152904bb7bef3602cf2c54
   - enabled: 1
-    path: Assets/Scenes/Test1.unity
-    guid: 7717720418d95034787c5d2c817c5fbc
+    path: Assets/Scenes/Scenes/8_stairwell_2.unity
+    guid: 76905e912f9e7ef4a8e00eb7f8d93782
   - enabled: 1
-    path: Assets/Scenes/Test3.unity
-    guid: f86eb0d713483ac40a59646bcd3a1785
+    path: Assets/Scenes/Scenes/9_lower_garage.unity
+    guid: 3315ce74c0f278e41933fda50585013f
   - enabled: 1
-    path: Assets/Scenes/Inventory.unity
-    guid: e8f062128e582ae4798ebeb3caa546b4
+    path: Assets/Scenes/Scenes/10_boarded_up.unity
+    guid: 90acc4d8212ca6a40a49c24868af2f6d
+  - enabled: 1
+    path: Assets/Scenes/Scenes/11_hallway.unity
+    guid: 545d3d4df82b0d1409245db825961747
+  - enabled: 1
+    path: Assets/Scenes/Scenes/12_lola_s.unity
+    guid: 059cac6e3967cbd4cac18da049241916
+  - enabled: 1
+    path: Assets/Scenes/Scenes/13_caution_pedestrians.unity
+    guid: 9b5386edcd8147948bda41f5dc6970c5
+  - enabled: 1
+    path: Assets/Scenes/Scenes/14_pipe_room.unity
+    guid: 646f9a7d9203c2243889701502e92856
+  - enabled: 1
+    path: Assets/Scenes/Scenes/15_weird_room.unity
+    guid: 48cf4754da973c84fad9972c282d81d8
+  - enabled: 1
+    path: Assets/Scenes/Scenes/16_exit_room.unity
+    guid: 1a8317e9a8c401945b3da59e7326a0e8
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

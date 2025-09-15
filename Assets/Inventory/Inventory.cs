@@ -2,6 +2,7 @@ using Cinematics;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static PersistentData;
 
 namespace Player.Inventory
 {
@@ -24,7 +25,7 @@ namespace Player.Inventory
 
         private const int COLUMNS = 9;
 
-        [System.Serializable]
+        [Serializable]
         public struct InventoryData
         {
             public Object obj;
@@ -49,9 +50,25 @@ namespace Player.Inventory
             PickUpObject += OnAddOneItem;
             RemoveItem += OnRemoveItem;
             AddItems += OnAddItems;
+
+            LoadObjects();
         }
 
         public List<InventoryData> GetItems() => objects;
+
+        private void SaveObjects()
+        {
+            Save("player_inventory", new ListInventoryData("Inventory", objects));
+        }
+
+        private void LoadObjects()
+        {
+            var data = GetData("player_inventory", "Inventory") as ListInventoryData;
+            if (data != null)
+            {
+                objects = data.value;
+            }
+        }
 
         private void OnAddItems(Object[] obj)
         {
@@ -59,11 +76,13 @@ namespace Player.Inventory
             {
                 TryAddItem(item);
             }
+            SaveObjects();
         }
 
         private bool OnAddOneItem(Object obj)
         {
             bool added = TryAddItem(obj);
+            SaveObjects();
             return added;
         }
 
@@ -131,6 +150,7 @@ namespace Player.Inventory
                 objects[index] = item;
             }
 
+            SaveObjects();
             UI.UserInterface.OnInventoryUpdated?.Invoke();
         }
 
