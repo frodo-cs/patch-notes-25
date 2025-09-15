@@ -12,6 +12,9 @@ namespace Player
         [SerializeField] LayerMask interactableMask;
         [SerializeField] Vector2 cursorPos;
 
+        public delegate CurrentState getState();
+        public static getState GetCurrentState;
+
         MouseReaction interactableObj;
 
         CurrentState currentState;
@@ -25,6 +28,8 @@ namespace Player
 
         private void Awake()
         {
+            GetCurrentState = getCurrentState;
+
             Inputs.onClickPerformed += OnClickStarts;
             Inputs.onClickCancel += OnClickEnds;
             ChangeState = OnChangeState;
@@ -54,6 +59,8 @@ namespace Player
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
             }
         }
+
+        CurrentState getCurrentState() { return currentState; }
 
         void OnClickStarts(InputAction.CallbackContext context)
         {

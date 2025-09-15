@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Cinematics;
+using UnityEngine;
 
 namespace Player.UI
 {
@@ -118,6 +119,10 @@ namespace Player.UI
         private void OnMouseDown()
         {
             Debug.Log($"Move to scene: {sceneIndex}");
+
+            bool? isInDialog = DialogBoxController.IsDialogRunning?.Invoke();
+            if((isInDialog != null && isInDialog.Value) || Interactable.GetCurrentState.Invoke() == Interactable.CurrentState.Paused) return;
+
             var result = ChangeScene.LoadScene?.Invoke(sceneIndex);
             if (result == null || !result.Value)
                 OnFail();
