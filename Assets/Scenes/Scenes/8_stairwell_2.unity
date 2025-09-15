@@ -500,9 +500,9 @@ MonoBehaviour:
   arrowDown: {fileID: 2800000, guid: a1ee52b2c259de945abe6fee7ebc3f56, type: 3}
   fields:
   - alignment: 3
-    scene: 6
-  - alignment: 1
     scene: 8
+  - alignment: 1
+    scene: 10
 --- !u!4 &6347829059176296487
 Transform:
   m_ObjectHideFlags: 0

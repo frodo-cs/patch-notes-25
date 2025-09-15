@@ -617,7 +617,7 @@ MonoBehaviour:
   arrowDown: {fileID: 2800000, guid: a1ee52b2c259de945abe6fee7ebc3f56, type: 3}
   fields:
   - alignment: 3
-    scene: 7
+    scene: 9
 --- !u!1 &9205067936640873669
 GameObject:
   m_ObjectHideFlags: 0

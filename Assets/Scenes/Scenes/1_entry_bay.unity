@@ -280,7 +280,7 @@ MonoBehaviour:
       character: {fileID: 0}
     textSpeed: 0
     hideOnDialogEnds: 0
-  sceneToMove: 12
+  sceneToMove: 14
 --- !u!1001 &767030181
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -994,7 +994,7 @@ MonoBehaviour:
   arrowDown: {fileID: 2800000, guid: a1ee52b2c259de945abe6fee7ebc3f56, type: 3}
   fields:
   - alignment: 1
-    scene: 9
+    scene: 11
 --- !u!4 &7612542880725197015
 Transform:
   m_ObjectHideFlags: 0
@@ -1031,7 +1031,7 @@ MonoBehaviour:
       character: {fileID: 0}
     textSpeed: 1
     hideOnDialogEnds: 1
-  sceneToMove: 6
+  sceneToMove: 7
 --- !u!114 &8536170374286858083
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -81,7 +81,7 @@ namespace Player.Gameplay.ClickableItems
 
         private void FinalStep()
         {
-            var result = ChangeScene.LoadScene?.Invoke(16);
+            var result = ChangeScene.LoadScene?.Invoke(18);
             if (result == null || !result.Value)
                 Debug.LogWarning("Failed to change scene");
         }

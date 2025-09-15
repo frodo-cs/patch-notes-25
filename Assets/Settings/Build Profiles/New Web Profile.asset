@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 15003, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: New Web Profile
+  m_EditorClassIdentifier: 
+  m_BuildTarget: 20
+  m_Subtarget: 0
+  m_PlatformId: 84a3bb9e7420477f885e98145999eb20
+  m_PlatformBuildProfile:
+    rid: 5741666546352914433
+  m_Scenes:
+  - m_enabled: 1
+    m_path: Assets/Scenes/Scenes/1_entry_bay.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/Scenes/2_car_room.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/Scenes/3_vending_machine.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/Scenes/4_utility_box.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/Scenes/5_security_room_access.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/Scenes/6_simon_room.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/Scenes/7_stairwell_1.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/Scenes/8_stairwell_2.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/Scenes/9_lower_garage.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/Scenes/10_boarded_up.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/Scenes/11_hallway.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/Scenes/12_lola_s.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/Scenes/13_caution_pedestrians.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/Scenes/14_pipe_room.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/Scenes/15_weird_room.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/Scenes/16_exit_room.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/Scenes/17_ending.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/Scenes/0_0_menu.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/Scenes/0_1_cutscene.unity
+  m_ScriptingDefines: []
+  m_PlayerSettingsYaml:
+    m_Settings: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 5741666546352914433
+      type: {class: WebGLPlatformSettings, ns: UnityEditor.WebGL, asm: UnityEditor.WebGL.Extensions}
+      data:
+        m_Development: 0
+        m_ConnectProfiler: 0
+        m_BuildWithDeepProfilingSupport: 0
+        m_AllowDebugging: 0
+        m_WaitForManagedDebugger: 0
+        m_ManagedDebuggerFixedPort: 0
+        m_ExplicitNullChecks: 0
+        m_ExplicitDivideByZeroChecks: 0
+        m_ExplicitArrayBoundsChecks: 0
+        m_CompressionType: -1
+        m_InstallInBuildFolder: 0
+        m_CodeOptimization: 4
+        m_WebGLClientBrowserPath: 
+        m_WebGLClientBrowserType: 0
+        m_WebGLTextureSubtarget: 0

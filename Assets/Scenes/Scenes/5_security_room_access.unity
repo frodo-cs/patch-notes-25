@@ -390,7 +390,7 @@ MonoBehaviour:
       character: {fileID: 0}
     textSpeed: 0
     hideOnDialogEnds: 1
-  sceneToMove: 14
+  sceneToMove: 16
   puzzlePrefab: {fileID: 2158184333113043349, guid: 3015e4b1abe96854a813d626b7215120, type: 3}
   password: 2298
 --- !u!60 &1664199389
@@ -746,7 +746,7 @@ MonoBehaviour:
       character: {fileID: 0}
     textSpeed: 0
     hideOnDialogEnds: 1
-  sceneToMove: 5
+  sceneToMove: 7
   puzzlePrefab: {fileID: 2158184333113043349, guid: 3015e4b1abe96854a813d626b7215120, type: 3}
   password: 7337
 --- !u!114 &8916101998751138702

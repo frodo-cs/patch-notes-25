@@ -521,7 +521,7 @@ MonoBehaviour:
   arrowDown: {fileID: 2800000, guid: a1ee52b2c259de945abe6fee7ebc3f56, type: 3}
   fields:
   - alignment: 3
-    scene: 0
+    scene: 2
 --- !u!4 &6681502110281069485
 Transform:
   m_ObjectHideFlags: 0

@@ -290,7 +290,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6303376404632410257, guid: abe7d748161c492418e8544d993b3b8f, type: 3}
       propertyPath: fields.Array.data[0].scene
-      value: 0
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6303376404632410257, guid: abe7d748161c492418e8544d993b3b8f, type: 3}
+      propertyPath: fields.Array.data[1].scene
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6303376404632410257, guid: abe7d748161c492418e8544d993b3b8f, type: 3}
+      propertyPath: fields.Array.data[2].scene
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6303376404632410257, guid: abe7d748161c492418e8544d993b3b8f, type: 3}
       propertyPath: fields.Array.data[0].alignment
