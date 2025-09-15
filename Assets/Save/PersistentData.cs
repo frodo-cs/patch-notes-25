@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Player;
 
 public class PersistentData : MonoBehaviour
 {
@@ -214,6 +215,16 @@ public class PersistentData : MonoBehaviour
 
         public override object getData() { return value; }
         public override void setData(object obj) { value = (Player.Inventory.Object[])obj; }
+    }
+
+    public class ListInventoryData : PropertyData
+    {
+        public List<Player.Inventory.Inventory.InventoryData> value;
+
+        public ListInventoryData(string variableName, List<Player.Inventory.Inventory.InventoryData> v) : base(variableName) { value = v; }
+
+        public override object getData() { return value; }
+        public override void setData(object obj) { value = (List<Player.Inventory.Inventory.InventoryData>)obj; }
     }
 
     public class BoolData : PropertyData

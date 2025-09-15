@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2494658897837793290
+--- !u!1 &4281024681855687421
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4889165389690498052}
-  - component: {fileID: 5228879500557626587}
+  - component: {fileID: 2593192900542599561}
+  - component: {fileID: 6303376404632410257}
   m_Layer: 0
   m_Name: Movement
   m_TagString: Untagged
@@ -17,13 +17,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4889165389690498052
+--- !u!4 &2593192900542599561
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2494658897837793290}
+  m_GameObject: {fileID: 4281024681855687421}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
@@ -32,26 +32,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5228879500557626587
+--- !u!114 &6303376404632410257
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2494658897837793290}
+  m_GameObject: {fileID: 4281024681855687421}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8fa58103ec109f240bdf4cf139d5981b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI: {fileID: 0}
+  arrowLeft: {fileID: 2800000, guid: 145fac60e8b496a4f93e7aee27c50574, type: 3}
+  arrowRight: {fileID: 2800000, guid: af29458f9c5ca0143a571a4ec3950750, type: 3}
+  arrowUp: {fileID: 2800000, guid: 4bf6ed1a60d636146be22e95fbbddf03, type: 3}
+  arrowDown: {fileID: 2800000, guid: a1ee52b2c259de945abe6fee7ebc3f56, type: 3}
   fields:
   - alignment: 0
-    index: 0
-    text: Entry Bay
+    scene: 1
   - alignment: 2
-    index: 1
-    text: Parking Lot
+    scene: 2
   - alignment: 1
-    index: 2
-    text: Utility Box
+    scene: 3
+  - alignment: 3
+    scene: 0
