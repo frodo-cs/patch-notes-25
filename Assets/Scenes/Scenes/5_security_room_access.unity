@@ -118,6 +118,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &912207794
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5816066277728572918, guid: d7f918c91c2fc92469d61544058b0615, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 5816066277728572918, guid: d7f918c91c2fc92469d61544058b0615, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 5816066277728572918, guid: d7f918c91c2fc92469d61544058b0615, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5816066277728572918, guid: d7f918c91c2fc92469d61544058b0615, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5816066277728572918, guid: d7f918c91c2fc92469d61544058b0615, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5816066277728572918, guid: d7f918c91c2fc92469d61544058b0615, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5816066277728572918, guid: d7f918c91c2fc92469d61544058b0615, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5816066277728572918, guid: d7f918c91c2fc92469d61544058b0615, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5816066277728572918, guid: d7f918c91c2fc92469d61544058b0615, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5816066277728572918, guid: d7f918c91c2fc92469d61544058b0615, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760967720609335958, guid: d7f918c91c2fc92469d61544058b0615, type: 3}
+      propertyPath: m_Name
+      value: Donavan
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d7f918c91c2fc92469d61544058b0615, type: 3}
 --- !u!1001 &943724697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -655,8 +712,8 @@ MonoBehaviour:
       character: {fileID: 0}
     textSpeed: 0
     hideOnDialogEnds: 1
-  puzzlePrefab: {fileID: 2158184333113043349, guid: 3015e4b1abe96854a813d626b7215120, type: 3}
   sceneToMove: 5
+  puzzlePrefab: {fileID: 2158184333113043349, guid: 3015e4b1abe96854a813d626b7215120, type: 3}
   password: 1111
 --- !u!114 &8916101998751138702
 MonoBehaviour:
@@ -690,3 +747,4 @@ SceneRoots:
   - {fileID: 7612542880725197015}
   - {fileID: 1120918466}
   - {fileID: 1097351921153329814}
+  - {fileID: 912207794}

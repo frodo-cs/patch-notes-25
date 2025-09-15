@@ -8,6 +8,8 @@ public class Conversation : MonoBehaviour
     int currentConversation = 0;
     int currentDialog = 0;
 
+    [SerializeField] bool repeateConversation;
+
     private void Start() {
         for(int i = 0; i < conversations.Length; i++) {
             for(int j = 0; j < conversations[i].dialogs.Length; j++) {
@@ -43,6 +45,9 @@ public class Conversation : MonoBehaviour
             PersistentData.Save?.Invoke(transform.name, new PersistentData.IntData("currentConversation", currentConversation));
 
             currentDialog++;
+        } else if(repeateConversation) {
+            currentConversation = 0;
+            currentDialog = 0;  
         }
     }
 
