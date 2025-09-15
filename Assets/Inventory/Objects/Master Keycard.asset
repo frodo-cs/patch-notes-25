@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Master Keycard
   m_EditorClassIdentifier: 
   Portrait: {fileID: 2800000, guid: 64679ea0fe3a28249a86d3c0ad9ce269, type: 3}
-  PortraitHover: {fileID: 2800000, guid: 4ed5ea103e3c14c4bb0a8409aa03b4d7, type: 3}
+  PortraitHover: {fileID: 2800000, guid: 8368eeed84eba654a923d3709b0d177d, type: 3}
   objectName: master keycard
   highlightText: 
   maxAmount: 1

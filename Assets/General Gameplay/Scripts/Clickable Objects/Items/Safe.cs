@@ -1,4 +1,5 @@
 using Cinematics;
+using Player.Puzzles;
 using System;
 using UnityEngine;
 
@@ -7,29 +8,47 @@ namespace Player.Gameplay.ClickableItems
     public class Safe : ItemDroppables
     {
         [SerializeField] GameObject puzzleObject;
+        [SerializeField] string password;
         private GameObject puzzleInstance;
 
         public override void OnInteractStart()
         {
             if (DialogBoxController.IsDialogRunning?.Invoke() == true)
                 return;
-
             var selected = InteractionController.Instance.ItemSelected;
 
             if (!HasItemNeeded(selected))
             {
-                puzzleObject.SetActive(true);
-                Puzzles.NumberInput.OnPasswordCorrect += OpenSafe;
+                InstantiatePuzzle();
             } else if (HasItemNeeded(selected))
             {
                 OpenSafe();
             }
         }
 
+        private void InstantiatePuzzle()
+        {
+            gameObject.GetComponent<Collider2D>().enabled = false;
+            DialogBoxController.OnDialogEnds -= InstantiatePuzzle;
+
+            puzzleInstance = Instantiate(
+                puzzleObject,
+                Vector3.zero,
+                Quaternion.identity,
+                transform
+            );
+
+            var input = puzzleInstance.GetComponent<NumberInput>();
+            input.SetValueToMatch(password.ToString());
+
+            NumberInput.OnPasswordCorrect += OpenSafe;
+            NumberInput.OnExitPuzzle += OnExitClicked;
+        }
+
         private void OnExitClicked()
         {
-            Puzzles.NumberInput.OnPasswordCorrect -= OpenSafe;
-            Puzzles.NumberInput.OnExitPuzzle -= OnExitClicked;
+            NumberInput.OnPasswordCorrect -= OpenSafe;
+            NumberInput.OnExitPuzzle -= OnExitClicked;
 
             if (puzzleInstance != null)
                 Destroy(puzzleInstance);
@@ -53,7 +72,7 @@ namespace Player.Gameplay.ClickableItems
 
         private void OpenSafe()
         {
-            puzzleObject.SetActive(false);
+            puzzleInstance.SetActive(false);
             dialog.text = "You opened the safe";
             OpenDialog();
 
@@ -62,15 +81,15 @@ namespace Player.Gameplay.ClickableItems
             if (puzzleInstance != null)
                 Destroy(puzzleInstance);
 
-            Puzzles.NumberInput.OnPasswordCorrect -= OpenSafe;
-            Puzzles.NumberInput.OnExitPuzzle -= OnExitClicked;
+            NumberInput.OnPasswordCorrect -= OpenSafe;
+            NumberInput.OnExitPuzzle -= OnExitClicked;
         }
 
         private void OnDestroy()
         {
             DialogBoxController.OnDialogEnds -= AddItems;
-            Puzzles.NumberInput.OnPasswordCorrect -= OpenSafe;
-            Puzzles.NumberInput.OnExitPuzzle -= OnExitClicked;
+            NumberInput.OnPasswordCorrect -= OpenSafe;
+            NumberInput.OnExitPuzzle -= OnExitClicked;
         }
     }
 }

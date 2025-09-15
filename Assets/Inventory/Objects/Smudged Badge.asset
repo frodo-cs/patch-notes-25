@@ -13,11 +13,9 @@ MonoBehaviour:
   m_Name: Smudged Badge
   m_EditorClassIdentifier: 
   Portrait: {fileID: 2800000, guid: 7dcd05fb0a0281144a61660b04b568d8, type: 3}
-  PortraitHover: {fileID: 2800000, guid: 07879ff5b5aaac942837c52c46ca846d, type: 3}
-  PortraitMerge: {fileID: 2800000, guid: b644c719dd4e00c428a4c3f7c49064a9, type: 3}
+  PortraitHover: {fileID: 2800000, guid: cbe76f9fd548e2b4b93ea900101ee825, type: 3}
   objectName: smudged badge
   highlightText: needs reading
   maxAmount: 1
   combinableWith:
   - {fileID: 11400000, guid: b651b9db917088a439900c6bfa019f44, type: 2}
-  canMerge: 1

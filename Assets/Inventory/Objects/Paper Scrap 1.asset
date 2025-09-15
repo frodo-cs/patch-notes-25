@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Paper Scrap 1
   m_EditorClassIdentifier: 
   Portrait: {fileID: 2800000, guid: a83a59c66d58de142a9d353e82e7919a, type: 3}
-  PortraitHover: {fileID: 2800000, guid: f0b068a55174ca64690147da7dcaf2a7, type: 3}
+  PortraitHover: {fileID: 2800000, guid: d96f2fdbd8f88b443b43e4c00b7d4843, type: 3}
   objectName: paper scrap
   highlightText: torn paper reads <color=cyan>95</color>
   maxAmount: 1

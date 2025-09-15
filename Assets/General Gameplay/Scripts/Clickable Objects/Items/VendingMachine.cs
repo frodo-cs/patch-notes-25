@@ -29,28 +29,39 @@ namespace Player.Gameplay.ClickableItems
 
             if (!CanAddItems())
             {
-                dialog.text = "Your inventory doesn't have enough spac";
+                dialog.text = "Your inventory doesn't have enough space";
                 OpenDialog();
                 return;
             }
 
             dialog.text = "Vending machine dispenses an item";
             OpenDialog();
+
+            DialogBoxController.OnDialogEnds -= AddItems;
             DialogBoxController.OnDialogEnds += AddItems;
         }
 
         protected override void AddItems()
         {
-            if(droppables.Length == 0) return;
+            DialogBoxController.OnDialogEnds -= AddItems;
+
+            if (droppables.Length == 0)
+                return;
 
             var selected = InteractionController.Instance.ItemSelected;
-            var selectedItem = new Inventory.Object[] { droppables[0] };
+            Inventory.Inventory.AddItem?.Invoke(droppables[0]);
+
             droppables = droppables.Skip(1).ToArray();
             SaveDroppables();
+
             InteractionController.Instance.ClearSelection();
             Inventory.Inventory.RemoveItem?.Invoke(selected);
-            Inventory.Inventory.AddItems?.Invoke(selectedItem);
             SaveTouched();
+        }
+
+        protected void OnDestroy()
+        {
+            DialogBoxController.OnDialogEnds -= AddItems;
         }
     }
 }

@@ -1,18 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR;
 
 namespace Player.Puzzles
 {
     public class Simon : MonoBehaviour
     {
+        [SerializeField] private string itemId;
+        [SerializeField] private int maxRounds = 5;
         [SerializeField] private Screen[] screens;
         [SerializeField] private SimonButton button;
 
         [Header("Audio Setup")]
         [SerializeField] private float duration = 0.2f;
 
+        public static event Action OnSimonComplete;
         private List<int> levelScreens = new();
         private int currentIndex = 0;
 
@@ -20,7 +23,7 @@ namespace Player.Puzzles
         {
             None,
             Listening,
-            Playing
+            Playing,
         }
 
         private State currentState = State.None;
@@ -30,16 +33,6 @@ namespace Player.Puzzles
             foreach (var screen in screens)
             {
                 screen.TurnOff();
-            }
-            StartCoroutine(MenuTileAnimation());
-        }
-
-        private IEnumerator MenuTileAnimation()
-        {
-            while (currentState == State.None)
-            {
-                yield return FlashScreen(Random.Range(0, screens.Length));
-                yield return new WaitForSeconds(duration);
             }
         }
 
@@ -60,13 +53,19 @@ namespace Player.Puzzles
                     currentIndex++;
                     if (currentIndex == levelScreens.Count)
                     {
-                        levelScreens.Add(Random.Range(0, screens.Length));
-                        StartCoroutine(PlaySequence());
+                        if (levelScreens.Count <= maxRounds)
+                        {
+                            levelScreens.Add(UnityEngine.Random.Range(0, screens.Length));
+                            StartCoroutine(PlaySequence());
+                        } else
+                        {
+                            StartCoroutine(HandleEnd(true));
+                        }
                     }
                 } else
                 {
                     currentState = State.None;
-                    StartCoroutine(HandleFailure());
+                    StartCoroutine(HandleEnd(false));
                     button.Active = true;
                 }
             }
@@ -75,13 +74,12 @@ namespace Player.Puzzles
         public void Play()
         {
             button.Active = false;
-            StopCoroutine(MenuTileAnimation());
 
             levelScreens = new()
             {
-                Random.Range(0, screens.Length),
-                Random.Range(0, screens.Length),
-                Random.Range(0, screens.Length)
+                UnityEngine.Random.Range(0, screens.Length),
+                UnityEngine.Random.Range(0, screens.Length),
+                UnityEngine.Random.Range(0, screens.Length)
             };
 
             StartCoroutine(PlaySequence());
@@ -90,7 +88,7 @@ namespace Player.Puzzles
         private IEnumerator PlaySequence()
         {
             currentState = State.Listening;
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1.75f);
 
             foreach (int index in levelScreens)
             {
@@ -102,14 +100,22 @@ namespace Player.Puzzles
             currentState = State.Playing;
         }
 
-        private IEnumerator HandleFailure()
+        private IEnumerator HandleEnd(bool success)
         {
             currentState = State.None;
 
             for (int i = 0; i < 3; i++)
             {
                 foreach (var screen in screens)
-                    screen.SetFailed();
+                {
+                    if (success)
+                    {
+                        screen.SetSuccess();
+                    } else
+                    {
+                        screen.SetFailed();
+                    }
+                }
 
                 yield return new WaitForSeconds(0.25f);
 
@@ -119,9 +125,19 @@ namespace Player.Puzzles
                 yield return new WaitForSeconds(0.25f);
             }
 
-            currentState = State.Listening;
-            currentIndex = 0;
+            if (success)
+            {
+                button.Active = false;
+                OnSimonComplete?.Invoke();
+            } else
+            {
+                currentState = State.Listening;
+                currentIndex = 0;
+                button.Active = true;
+            }
+
         }
+
     }
 }
 

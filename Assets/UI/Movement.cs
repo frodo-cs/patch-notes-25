@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Player.UI
 {
@@ -25,13 +25,13 @@ namespace Player.UI
         private const float screenHeight = 535f;
         private const float inventoryHeight = 125f;
         private const float buttonSize = 50f;
+        private const float offset = 40f;
 
         private void Start()
         {
             mainCam = Camera.main;
             CreateMovementButtons();
         }
-
         private void CreateMovementButtons()
         {
             foreach (var field in fields)
@@ -39,37 +39,32 @@ namespace Player.UI
                 GameObject go = new GameObject(field.alignment.ToString());
                 go.transform.parent = transform;
 
-
                 BoxCollider2D collider = go.AddComponent<BoxCollider2D>();
                 collider.isTrigger = true;
 
-                Vector2 pixelSize = Vector2.zero;
+                Vector2 pixelSize = new Vector2(buttonSize, buttonSize);
                 Vector2 pixelPos = Vector2.zero;
                 Texture2D icon = null;
 
                 switch (field.alignment)
                 {
                     case FieldData.Alignment.Left:
-                        pixelSize = new Vector2(buttonSize, buttonSize);
-                        pixelPos = new Vector2(25f, inventoryHeight + (screenHeight - inventoryHeight) / 2);
+                        pixelPos = new Vector2(offset, inventoryHeight + (screenHeight - inventoryHeight) / 2);
                         icon = arrowLeft;
                         break;
 
                     case FieldData.Alignment.Right:
-                        pixelSize = new Vector2(buttonSize, buttonSize);
-                        pixelPos = new Vector2(screenWidth - 25f, inventoryHeight + (screenHeight - inventoryHeight) / 2);
+                        pixelPos = new Vector2(screenWidth - offset, inventoryHeight + (screenHeight - inventoryHeight) / 2);
                         icon = arrowRight;
                         break;
 
                     case FieldData.Alignment.Up:
-                        pixelSize = new Vector2(buttonSize, buttonSize);
-                        pixelPos = new Vector2(screenWidth / 2f, screenHeight - 25f);
+                        pixelPos = new Vector2(screenWidth / 2f, screenHeight - offset);
                         icon = arrowUp;
                         break;
 
                     case FieldData.Alignment.Down:
-                        pixelSize = new Vector2(buttonSize, buttonSize);
-                        pixelPos = new Vector2(screenWidth / 2f, inventoryHeight + 25f);
+                        pixelPos = new Vector2(screenWidth / 2f, inventoryHeight + offset);
                         icon = arrowDown;
                         break;
                 }
@@ -81,22 +76,13 @@ namespace Player.UI
                         icon,
                         new Rect(0, 0, icon.width, icon.height),
                         new Vector2(0.5f, 0.5f),
-                        100f
+                        175f
                     );
                     sr.sortingOrder = 10;
 
-
-                    Vector2 worldTargetSize = PixelToWorldSize(new Vector2(buttonSize, buttonSize));
-                    Vector2 spriteWorldSize = sr.sprite.bounds.size;
-                    go.transform.localScale = new Vector3(
-                        worldTargetSize.x / spriteWorldSize.x,
-                        worldTargetSize.y / spriteWorldSize.y,
-                        1f
-                    );
+                    collider.size = sr.sprite.bounds.size;
                 }
 
-
-                collider.size = PixelToWorldSize(pixelSize);
                 go.transform.position = PixelToWorldPos(pixelPos);
 
                 var clickComp = go.AddComponent<MovementClick>();

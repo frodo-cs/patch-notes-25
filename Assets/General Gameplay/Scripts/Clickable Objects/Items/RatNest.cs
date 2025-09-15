@@ -33,11 +33,16 @@ namespace Player.Gameplay.ClickableItems
 
             dialog.text = "Distracted by the meal";
             OpenDialog();
+            DialogBoxController.OnDialogEnds -= AddItems;
             DialogBoxController.OnDialogEnds += AddItems;
         }
 
         protected override void AddItems()
         {
+            DialogBoxController.OnDialogEnds -= AddItems;
+            if (droppables.Length == 0)
+                return;
+
             var selected = InteractionController.Instance.ItemSelected;
             InteractionController.Instance.ClearSelection();
             Inventory.Inventory.RemoveItem?.Invoke(selected);

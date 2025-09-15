@@ -55,7 +55,7 @@ Material:
     m_Floats:
     - _EnableExternalAlpha: 0
     - _ZWrite: 0
-    - _time: 0.0038573146
+    - _time: 0.44144553
     m_Colors:
     - _Background: {r: 0.12522252, g: 0.12530042, b: 0.13207549, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

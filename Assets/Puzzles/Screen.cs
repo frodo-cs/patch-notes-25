@@ -9,9 +9,13 @@ namespace Player.Puzzles
         [SerializeField] private Color color;
         private SpriteRenderer spriteRenderer;
 
-        public void Start()
+        private void Awake()
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+
+        public void Start()
+        {
             spriteRenderer.color = color;
             TurnOff();
         }
@@ -19,6 +23,11 @@ namespace Player.Puzzles
         public void SetFailed()
         {
             spriteRenderer.color = Color.red;
+        }
+
+        public void SetSuccess()
+        {
+            spriteRenderer.color = Color.green;
         }
 
         public void TurnOff()

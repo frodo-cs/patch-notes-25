@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using static PersistentData;
+using static UnityEditor.Progress;
 
 namespace Player.Inventory
 {
@@ -21,6 +22,7 @@ namespace Player.Inventory
         public static Action<Object> RemoveItem;
         public static Action<GameObject> OnItemAdded;
         public static Action<Object[]> AddItems;
+        public static Action<Object> AddItem;
         public static int SpaceLeft => COLUMNS - Instance.objects.Count;
 
         private const int COLUMNS = 9;
@@ -50,9 +52,11 @@ namespace Player.Inventory
             PickUpObject += OnAddOneItem;
             RemoveItem += OnRemoveItem;
             AddItems += OnAddItems;
+            AddItem += OnAddItem;
 
             LoadObjects();
         }
+
 
         public List<InventoryData> GetItems() => objects;
 
@@ -79,6 +83,13 @@ namespace Player.Inventory
             SaveObjects();
         }
 
+        private void OnAddItem(Object obj)
+        {
+            TryAddItem(obj);
+            SaveObjects();
+        }
+
+
         private bool OnAddOneItem(Object obj)
         {
             bool added = TryAddItem(obj);
@@ -96,6 +107,7 @@ namespace Player.Inventory
             {
                 ShowMessage($"You picked up {inventoryItem.obj.objectName}");
                 OnItemAdded?.Invoke(obj);
+                SaveObjects();
             }
         }
 
@@ -169,6 +181,7 @@ namespace Player.Inventory
             RemoveItem -= OnRemoveItem;
             AddItems -= OnAddItems;
             PickUpObject -= OnAddOneItem;
+            AddItem -= OnAddItem;
         }
     }
 }

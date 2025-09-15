@@ -7,6 +7,7 @@ namespace Player.Gameplay.ClickableItems
     public class StorageContainer : ItemDependent
     {
         [SerializeField] SpriteRenderer spriteRenderer;
+        [SerializeField] Texture2D texture;
         [SerializeField] GameObject safe;
         [SerializeField] private Transform spawnPoint;
 
@@ -23,7 +24,7 @@ namespace Player.Gameplay.ClickableItems
                 return;
             }
 
-            dialog.text = "You opened the storage container";
+            dialog.text = "You emptied the storage container";
             OpenDialog();
             DialogBoxController.OnDialogEnds += OpenStorage;
 
@@ -31,7 +32,7 @@ namespace Player.Gameplay.ClickableItems
 
         private void OpenStorage()
         {
-            spriteRenderer.color = new Color(170f / 255f, 90f / 255f, 90f / 255f, 0.4f);
+            spriteRenderer.sprite = Utilities.ToSprite(texture);
             GetComponent<Collider2D>().enabled = false;
 
             var selected = InteractionController.Instance.ItemSelected;

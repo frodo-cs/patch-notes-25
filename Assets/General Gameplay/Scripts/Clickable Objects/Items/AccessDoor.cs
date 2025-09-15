@@ -5,13 +5,11 @@ using static PersistentData;
 
 namespace Player.Gameplay.ClickableItems
 {
-    public class AccessDoor : DescriptionObject
+    public class AccessDoor : Door
     {
         [SerializeField] GameObject puzzlePrefab;
-        [SerializeField] int sceneToMove;
         [SerializeField] int password;
         private GameObject puzzleInstance;
-        private bool isDoorOpen = false;
 
         protected override void Start()
         {
@@ -29,9 +27,7 @@ namespace Player.Gameplay.ClickableItems
                 GoToScene();
             } else
             {
-                dialog.text = "There's a keypad";
-                OpenDialog();
-                DialogBoxController.OnDialogEnds += InstantiatePuzzle;
+                InstantiatePuzzle();
             }
         }
 
@@ -73,7 +69,7 @@ namespace Player.Gameplay.ClickableItems
             DialogBoxController.OnDialogEnds += GoToScene;
         }
 
-        private void GoToScene()
+        protected override void GoToScene()
         {
             OnDestroyPuzzle();
             var result = ChangeScene.LoadScene?.Invoke(sceneToMove);
@@ -84,15 +80,6 @@ namespace Player.Gameplay.ClickableItems
         private void SaveDoorOpened()
         {
             Save(itemId, new BoolData("DoorOpened", isDoorOpen));
-        }
-
-        protected void LoadDoorOpened()
-        {
-            var data = GetData(itemId, "DoorOpened") as BoolData;
-            if (data != null)
-            {
-                isDoorOpen = data.value;
-            }
         }
 
         private void OnDestroy()

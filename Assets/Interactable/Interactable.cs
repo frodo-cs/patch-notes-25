@@ -11,7 +11,6 @@ namespace Player
     {
         [SerializeField] LayerMask interactableMask;
         [SerializeField] Vector2 cursorPos;
-        [SerializeField] Texture2D cursor;
 
         MouseReaction interactableObj;
 
@@ -49,10 +48,6 @@ namespace Player
             if (hit.transform != null && hit.transform.TryGetComponent(out MouseReaction reaction))
             {
                 interactableObj = reaction;
-                if (cursor != null)
-                {
-                    Cursor.SetCursor(cursor, Vector2.zero, CursorMode.Auto);
-                }
             } else if (isDialogRunning != null && !isDialogRunning.Value)
             {
                 interactableObj = null;
