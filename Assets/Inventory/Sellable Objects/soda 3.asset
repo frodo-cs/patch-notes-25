@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: soda 3
   m_EditorClassIdentifier: 
   Portrait: {fileID: 2800000, guid: 083a43b323d965a4393f9903a5e1cb76, type: 3}
-  PortraitHover: {fileID: 2800000, guid: 083a43b323d965a4393f9903a5e1cb76, type: 3}
+  PortraitHover: {fileID: 2800000, guid: a43821d1ab5f17c428000564b08dd20f, type: 3}
   objectName: soda
   highlightText: 
   maxAmount: 1

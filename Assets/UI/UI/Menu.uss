@@ -1,0 +1,19 @@
+.menu-default {
+    background-image: url("project://database/Assets/UI/Sprites/title.png?fileID=4369572136041557648&guid=b1a9906bf542c5747afcee488d2ae963&type=3#title_0");
+    background-size: cover;
+}
+
+.menu-hover {
+    background-image: url("project://database/Assets/UI/Sprites/title_door_hovered.png?fileID=8251021578469645594&guid=67d14f0dbcd08dc49a6c6f20c46eb3e2&type=3#title_door_hovered_0");
+    background-size: cover;
+}
+
+#Default > VisualElement > .unity-button {
+    -unity-text-outline-color: rgba(0, 0, 0, 0);
+    color: rgba(27, 27, 27, 0);
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+}

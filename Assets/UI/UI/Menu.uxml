@@ -1,0 +1,9 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/UI/Menu.uss?fileID=7433441132597879392&amp;guid=b5327ac427de8404689119ea592f37eb&amp;type=3#Menu" />
+    <engine:VisualElement name="Default" class="menu-default" style="flex-grow: 1; width: 960px; height: 540px; position: absolute; justify-content: flex-end;">
+        <engine:VisualElement style="flex-grow: initial; flex-direction: row; justify-content: space-between; align-items: flex-end;">
+            <engine:Button text="Start" name="End" style="height: 53px; width: 118px;" />
+            <engine:Button text="End" name="Start" style="width: 591px; height: 260px;" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>
