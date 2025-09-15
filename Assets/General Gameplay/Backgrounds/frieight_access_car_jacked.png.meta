@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      frieight_access_car_jacked_0: 7718263000211266855
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

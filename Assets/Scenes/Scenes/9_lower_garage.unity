@@ -131,6 +131,10 @@ PrefabInstance:
       value: Main Camera
       objectReference: {fileID: 0}
     - target: {fileID: 3466494110685875428, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
+      propertyPath: dialog.textSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3466494110685875428, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
       propertyPath: objects.Array.size
       value: 0
       objectReference: {fileID: 0}

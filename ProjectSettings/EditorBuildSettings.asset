@@ -53,5 +53,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scenes/16_exit_room.unity
     guid: 1a8317e9a8c401945b3da59e7326a0e8
+  - enabled: 1
+    path: Assets/Scenes/Scenes/17_ending.unity
+    guid: 6416036e743d124459eb88500c4f3f39
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

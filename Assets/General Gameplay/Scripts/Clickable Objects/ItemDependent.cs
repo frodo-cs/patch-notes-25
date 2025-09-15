@@ -19,7 +19,7 @@ namespace Player.Gameplay
             neededSet = new HashSet<Inventory.Object>(neededObjects);
         }
 
-        protected bool HasItemNeeded(Inventory.Object selected)
+        protected virtual bool HasItemNeeded(Inventory.Object selected)
         {
             return neededSet.Contains(selected);
         }

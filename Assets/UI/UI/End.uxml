@@ -1,0 +1,10 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/UI/End.uss?fileID=7433441132597879392&amp;guid=06b0ae1fcad9bc44babcc2fca15f58f1&amp;type=3#End" />
+    <engine:VisualElement style="flex-grow: 1; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; align-items: center;">
+        <engine:VisualElement name="VisualElement" style="flex-grow: 1; width: 60%; justify-content: center;">
+            <engine:Label text="“In the immortal words of Big Hester, there is opportunity for success where one least expects it." name="Label" class="fade-label" style="-unity-text-align: upper-center;" />
+            <engine:Label text="Maybe that Copperfield fella wasn&apos;t so bad after all. At least he saved me from having my organs harvested and sold." name="Label" class="fade-label" style="-unity-text-align: upper-center;" />
+            <engine:Label text="I should invest money into some proper equipment to scope out this place. This is gonna be my Klondike, I can feel it.” " name="Label" class="fade-label" style="-unity-text-align: upper-center;" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>
