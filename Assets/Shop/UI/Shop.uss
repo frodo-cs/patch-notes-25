@@ -9,6 +9,11 @@
     flex-direction: row;
     align-content: stretch;
     align-self: auto;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-left: 15px;
 }
 
 .ShopItem_Sold {
@@ -18,16 +23,16 @@
 .ShopItem_Image {
     flex-grow: 0;
     position: relative;
-    height: 70%;
-    width: 30%;
-    top: 7%;
-    left: 0;
     background-image: url("project://database/Assets/Inventory/Sprites/crowbar.png?fileID=2800000&guid=7f928197278714c4698f5caa86900c1f&type=3#crowbar");
     -unity-background-scale-mode: scale-to-fit;
     background-color: rgba(0, 0, 0, 0);
     margin-bottom: 0;
     padding-bottom: 0;
-    margin-top: 3.5%;
     flex-shrink: 0;
-    margin-left: 1%;
+    margin-top: 0;
+    height: 50px;
+    width: 50px;
+    top: 2px;
+    left: auto;
+    margin-left: 6%;
 }

@@ -1018,18 +1018,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
-    - target: {fileID: 2222052948144048396, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
-      propertyPath: sellConfirm.question.characterSpeaking.character
-      value: 
-      objectReference: {fileID: 11400000, guid: d9459a0d867113640858b46b044d1417, type: 2}
-    - target: {fileID: 2222052948144048396, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
-      propertyPath: sellConfirm.question.characterSpeaking.expresionKey
-      value: idle
-      objectReference: {fileID: 0}
-    - target: {fileID: 4223287024077899631, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4248252162900250354, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1069,10 +1057,6 @@ PrefabInstance:
     - target: {fileID: 4248252162900250354, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5880113555413819152, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
-      propertyPath: dialog.textSpeed
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
