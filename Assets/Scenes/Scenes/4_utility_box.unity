@@ -130,30 +130,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
-    - target: {fileID: 3466494110685875428, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
-      propertyPath: dialog.textSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3466494110685875428, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
-      propertyPath: objects.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3466494110685875428, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
-      propertyPath: objects.Array.data[0].obj
-      value: 
-      objectReference: {fileID: 11400000, guid: b651b9db917088a439900c6bfa019f44, type: 2}
-    - target: {fileID: 3466494110685875428, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
-      propertyPath: objects.Array.data[1].obj
-      value: 
-      objectReference: {fileID: 11400000, guid: 177c422dca8e28b48a12da752443602e, type: 2}
-    - target: {fileID: 3466494110685875428, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
-      propertyPath: objects.Array.data[0].amount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3466494110685875428, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
-      propertyPath: objects.Array.data[1].amount
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4248252162900250354, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -335,7 +311,6 @@ MonoBehaviour:
     textSpeed: 1
     hideOnDialogEnds: 1
   neededObjects:
-  - {fileID: 11400000, guid: b651b9db917088a439900c6bfa019f44, type: 2}
   - {fileID: 11400000, guid: 177c422dca8e28b48a12da752443602e, type: 2}
   onUnlock:
     m_PersistentCalls:

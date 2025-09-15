@@ -121,6 +121,16 @@ namespace Player.Puzzles
         private void AddClass(string className)
         {
             SetPlaceHolderText();
+            if (className == "Correct")
+            {
+                inputField.style.color = new StyleColor(Color.green);
+
+
+            } else if (className == "Incorrect")
+            {
+                inputField.style.color = new StyleColor(Color.red);
+
+            }
             inputField.AddToClassList(className);
             Invoke(nameof(Clear), 1f);
         }
@@ -131,10 +141,10 @@ namespace Player.Puzzles
             inputField.value = string.Empty;
         }
 
+
         private void ResetClass()
         {
-            inputField.RemoveFromClassList("Correct");
-            inputField.RemoveFromClassList("Incorrect");
+            inputField.style.color = new StyleColor(new Color32(37, 178, 29, 255));
             inputField.textEdition.placeholder = new string('*', valueToMatch.Length);
         }
 
