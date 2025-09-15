@@ -346,9 +346,9 @@ MonoBehaviour:
     characterSpeaking:
       expresionKey: 
       character: {fileID: 0}
-    textSpeed: 0
+    textSpeed: 1
     hideOnDialogEnds: 1
-  sceneToMove: 15
+  sceneToMove: 17
 --- !u!1001 &1974296125
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1197,7 +1197,7 @@ MonoBehaviour:
   arrowDown: {fileID: 2800000, guid: a1ee52b2c259de945abe6fee7ebc3f56, type: 3}
   fields:
   - alignment: 3
-    scene: 4
+    scene: 6
 --- !u!1 &6354543635776138324
 GameObject:
   m_ObjectHideFlags: 0

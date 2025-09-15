@@ -157,7 +157,7 @@ MonoBehaviour:
       character: {fileID: 0}
     textSpeed: 0
     hideOnDialogEnds: 0
-  sceneToMove: 10
+  sceneToMove: 12
 --- !u!4 &599669652
 Transform:
   m_ObjectHideFlags: 0
