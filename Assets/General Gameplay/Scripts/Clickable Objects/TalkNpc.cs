@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Player.Gameplay {
     public class TalkNpc : MouseReaction {
-        [SerializeField] Conversation conversation;
+        [SerializeField] protected Conversation conversation;
 
         public override void OnInteractStart() {
             conversation.StartDialog();
