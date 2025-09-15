@@ -62,7 +62,7 @@ MonoBehaviour:
   droppables:
   - {fileID: 11400000, guid: b643d2c98e746a44baa6d9d48d5fddf9, type: 2}
   puzzleObject: {fileID: 2158184333113043349, guid: 3015e4b1abe96854a813d626b7215120, type: 3}
-  password: 1111
+  password: 9563
 --- !u!60 &711435778005600908
 PolygonCollider2D:
   m_ObjectHideFlags: 0

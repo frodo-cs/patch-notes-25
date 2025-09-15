@@ -15,7 +15,7 @@ MonoBehaviour:
   Portrait: {fileID: 2800000, guid: 7dcd05fb0a0281144a61660b04b568d8, type: 3}
   PortraitHover: {fileID: 2800000, guid: cbe76f9fd548e2b4b93ea900101ee825, type: 3}
   objectName: smudged badge
-  highlightText: password written 1111
+  highlightText: 2298
   maxAmount: 1
   combinableWith:
   - {fileID: 11400000, guid: b651b9db917088a439900c6bfa019f44, type: 2}
