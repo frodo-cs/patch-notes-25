@@ -291,6 +291,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 3466494110685875428, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
+      propertyPath: objects.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3466494110685875428, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
+      propertyPath: objects.Array.data[0].obj
+      value: 
+      objectReference: {fileID: 11400000, guid: 177c422dca8e28b48a12da752443602e, type: 2}
+    - target: {fileID: 3466494110685875428, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
+      propertyPath: objects.Array.data[0].amount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4248252162900250354, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -405,6 +417,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lola_0
       objectReference: {fileID: 0}
+    - target: {fileID: 1589896738502801, guid: 49fd50ca40fc27440ba2a5601d61db15, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5215186121937260860, guid: 49fd50ca40fc27440ba2a5601d61db15, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.6
@@ -517,6 +533,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6681502110281069485}
   - component: {fileID: 3331529265834891462}
+  - component: {fileID: 6681502110281069486}
+  - component: {fileID: 6681502110281069487}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -568,7 +586,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -10
-  m_Sprite: {fileID: 1638489443129206622, guid: 29850f017acc49d4a90b8fcedfa7fc43, type: 3}
+  m_Sprite: {fileID: -5636264043871967328, guid: 4378fa4268ba06c4cb6b35dbd1f878a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -594,6 +612,88 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6681502110281069486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226782816005398695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fea24f95acf66414781c017648c44480, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: crate
+  dialog:
+    introAnim: {fileID: 0}
+    text: 
+    characterSpeaking:
+      expresionKey: 
+      character: {fileID: 0}
+    textSpeed: 0
+    hideOnDialogEnds: 1
+  neededObjects:
+  - {fileID: 11400000, guid: 177c422dca8e28b48a12da752443602e, type: 2}
+  onUnlock:
+    m_PersistentCalls:
+      m_Calls: []
+  droppables:
+  - {fileID: 11400000, guid: 5fc07a1ccb28c5747b18b3cca9350a01, type: 2}
+  sr: {fileID: 3331529265834891462}
+  openSprite: {fileID: 2800000, guid: 414cb563a605cfe4cb0a9fd4a2aadecf, type: 3}
+--- !u!60 &6681502110281069487
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226782816005398695}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 9.6, y: 4.15}
+    newSize: {x: 9.6, y: 4.15}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.2474761, y: -0.5584655}
+      - {x: 0.20358515, y: -1.1093957}
+      - {x: 0.74738884, y: -1.3581122}
+      - {x: 0.9395691, y: -0.7471033}
+      - {x: 0.79444844, y: -0.46530518}
+  m_UseDelaunayMesh: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

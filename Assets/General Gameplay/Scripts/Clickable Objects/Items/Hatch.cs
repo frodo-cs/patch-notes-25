@@ -1,4 +1,5 @@
 using Cinematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using static PersistentData;
 
@@ -17,6 +18,7 @@ namespace Player.Gameplay.ClickableItems
         protected override void Start()
         {
             LoadState();
+            UpdateVisual();
         }
 
         public override void OnInteractStart()
@@ -67,6 +69,14 @@ namespace Player.Gameplay.ClickableItems
                 return neededObjects[index] == selected;
             }
             return false;
+        }
+
+        private void UpdateVisual()
+        {
+            var text = bgs[(int)state];
+            if (text != null)
+                sr.sprite = Utilities.ToSprite(bgs[(int)state]);
+
         }
 
         private void FinalStep()

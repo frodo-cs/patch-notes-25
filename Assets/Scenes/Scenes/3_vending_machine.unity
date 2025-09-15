@@ -519,10 +519,11 @@ MonoBehaviour:
       m_Calls: []
   droppables:
   - {fileID: 11400000, guid: 0b1fdaa8d4591284db6ce185f944d2f7, type: 2}
-  - {fileID: 11400000, guid: c3ee104dca9825c459de94a064835971, type: 2}
-  - {fileID: 11400000, guid: c3ee104dca9825c459de94a064835971, type: 2}
-  - {fileID: 11400000, guid: c3ee104dca9825c459de94a064835971, type: 2}
-  - {fileID: 11400000, guid: c3ee104dca9825c459de94a064835971, type: 2}
+  - {fileID: 11400000, guid: c8679f03fc7c59b45b93e45a3455cd67, type: 2}
+  - {fileID: 11400000, guid: 3d181f79260ba6242af1c6a777178bb6, type: 2}
+  - {fileID: 11400000, guid: 9a0ca37b293b5e045bd4ca5b6b022396, type: 2}
+  - {fileID: 11400000, guid: fe5ae5571b619e7438c1809d11c2cdab, type: 2}
+  - {fileID: 11400000, guid: 25ba0fc5c5a764d44bdec994de777f59, type: 2}
 --- !u!4 &9088327206286598244
 Transform:
   m_ObjectHideFlags: 0

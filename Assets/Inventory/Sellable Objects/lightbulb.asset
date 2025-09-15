@@ -10,14 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65ab3fa0c7ce0224fbf2d48b5b9aa164, type: 3}
-  m_Name: Junk1
+  m_Name: lightbulb
   m_EditorClassIdentifier: 
-  Portrait: {fileID: 2800000, guid: c52ec19764936a14685e0fa2d8ac51bf, type: 3}
-  PortraitHover: {fileID: 2800000, guid: c52ec19764936a14685e0fa2d8ac51bf, type: 3}
-  PortraitMerge: {fileID: 0}
-  objectName: Junk 1
-  highlightText: Just junk!
-  maxAmount: 5
+  Portrait: {fileID: 2800000, guid: 398a78d65d57bf5468f9b0cd3f7f04a9, type: 3}
+  PortraitHover: {fileID: 2800000, guid: 398a78d65d57bf5468f9b0cd3f7f04a9, type: 3}
+  objectName: lightbulb
+  highlightText: 
+  maxAmount: 1
   combinableWith: []
-  canMerge: 0
-  sellingPrice: 60
+  sellingPrice: 50

@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 0bf5b182592d4094f88d49acb6026b7e
+guid: 4a60c6dfd6eaaeb4f9efbfebdfd2b149
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1891588348193170109
-    second: key selected_0
+      213: -6043028438808795138
+    second: comic2 sleeve_0
+  - first:
+      213: 2337884344673226547
+    second: comic2 sleeve_1
+  - first:
+      213: 9217630468909015471
+    second: comic2 sleeve_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -24,7 +30,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -37,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,10 +78,23 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: 4
-    textureCompression: 0
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Win64
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,13 +132,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: key selected_0
+      name: comic2 sleeve_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 23
-        width: 57
-        height: 49
+        x: 52
+        y: 22
+        width: 378
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +147,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 34d9dac5b6abfb5e0800000000000000
-      internalID: -1891588348193170109
+      spriteID: ef7e739f6a9d22ca0800000000000000
+      internalID: -6043028438808795138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: comic2 sleeve_1
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 388
+        width: 7
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33fc132cc65d17020800000000000000
+      internalID: 2337884344673226547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: comic2 sleeve_2
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 467
+        width: 264
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa1a32a031a9bef70800000000000000
+      internalID: 9217630468909015471
       vertices: []
       indices: 
       edges: []
@@ -148,7 +211,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      key selected_0: -1891588348193170109
+      comic2 sleeve_0: -6043028438808795138
+      comic2 sleeve_1: 2337884344673226547
+      comic2 sleeve_2: 9217630468909015471
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
