@@ -59,6 +59,12 @@ namespace Player.Gameplay.ClickableItems
             SaveTouched();
         }
 
+        protected override bool CanAddItems()
+        {
+            return neededObjects.Length + Inventory.Inventory.SpaceLeft - 1 >= 0;
+
+        }
+
         protected void OnDestroy()
         {
             DialogBoxController.OnDialogEnds -= AddItems;

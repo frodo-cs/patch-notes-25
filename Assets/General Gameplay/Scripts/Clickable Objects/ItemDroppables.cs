@@ -22,7 +22,7 @@ namespace Player.Gameplay.ClickableItems
 
         protected virtual void AddItems() { }
 
-        protected bool CanAddItems()
+        protected virtual bool CanAddItems()
         {
             return neededObjects.Length + Inventory.Inventory.SpaceLeft - droppables.Length >= 0;
 

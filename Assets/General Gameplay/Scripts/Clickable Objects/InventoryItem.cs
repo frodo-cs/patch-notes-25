@@ -1,13 +1,22 @@
 using Cinematics;
 using Player;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using static PersistentData;
 
 public class InventoryItem : MouseReaction
 {
+    [SerializeField] string itemId;
     public Player.Inventory.Object obj;
+    private bool hasBeenPicked;
 
     private void Start()
     {
+        LoadPicked();
+        if(hasBeenPicked)
+        {
+            Destroy(gameObject);
+        }
         Player.Inventory.Inventory.OnItemAdded += OnItemAddedToInventory;
     }
 
@@ -29,5 +38,20 @@ public class InventoryItem : MouseReaction
     private void OnDestroy()
     {
         Player.Inventory.Inventory.OnItemAdded -= OnItemAddedToInventory;
+    }
+
+    protected void SavePicked()
+    {
+        Save(itemId, new BoolData("Picked", hasBeenPicked));
+    }
+
+    protected void LoadPicked()
+    {
+        var data = GetData(itemId, "Picked") as BoolData;
+        if (data != null)
+        {
+            hasBeenPicked = data.value;
+        }
+
     }
 }

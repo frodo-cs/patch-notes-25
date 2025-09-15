@@ -415,6 +415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d585725a33c93cf4f8534b12f5443beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemId: comic1
   obj: {fileID: 11400000, guid: 320358c5f4710424581456424448d974, type: 2}
 --- !u!212 &1604281233
 SpriteRenderer:
@@ -639,6 +640,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d585725a33c93cf4f8534b12f5443beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemId: foreclosure
   obj: {fileID: 11400000, guid: 1f9f38a173e810546aa179bfd97b22c5, type: 2}
 --- !u!212 &2098822478
 SpriteRenderer:
