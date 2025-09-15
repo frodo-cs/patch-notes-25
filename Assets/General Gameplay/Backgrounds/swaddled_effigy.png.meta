@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      swaddled_effigy_0: -5430382190881124372
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
