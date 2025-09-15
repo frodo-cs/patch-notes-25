@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      scattered_doors_0: -935084321111537813
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

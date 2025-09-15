@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      caution_pedestrians_0: -5765775879347613548
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

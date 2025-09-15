@@ -635,7 +635,27 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      close_up_vending_items_circles_0: 1824771777391584697
+      close_up_vending_items_circles_1: -4713432251752469694
+      close_up_vending_items_circles_10: -286570865099234102
+      close_up_vending_items_circles_11: -2330516802121420857
+      close_up_vending_items_circles_12: 9044003552268759968
+      close_up_vending_items_circles_13: -2124274242758373868
+      close_up_vending_items_circles_14: 2067972152175139531
+      close_up_vending_items_circles_15: 6848530924718289748
+      close_up_vending_items_circles_16: -449893674508668772
+      close_up_vending_items_circles_17: 5889965683380568505
+      close_up_vending_items_circles_18: 5121761160220409519
+      close_up_vending_items_circles_19: 6973141704616952118
+      close_up_vending_items_circles_2: 7086894249555409114
+      close_up_vending_items_circles_3: -6756082158718456616
+      close_up_vending_items_circles_4: 6980037556666243006
+      close_up_vending_items_circles_5: -7411218241621104448
+      close_up_vending_items_circles_6: 7798374259155034565
+      close_up_vending_items_circles_7: 4673257557727390319
+      close_up_vending_items_circles_8: -532627068375283459
+      close_up_vending_items_circles_9: 7339819271446622282
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

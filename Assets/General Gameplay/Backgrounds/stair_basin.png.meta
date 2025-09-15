@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      stair_basin_0: 3938061595620462411
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
