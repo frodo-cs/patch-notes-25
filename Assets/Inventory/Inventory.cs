@@ -85,6 +85,8 @@ namespace Player.Inventory
 
         private void OnAddItem(Object obj)
         {
+            if(obj == null) return;
+
             TryAddItem(obj);
             SaveObjects();
         }

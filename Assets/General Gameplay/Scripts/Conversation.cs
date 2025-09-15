@@ -9,6 +9,7 @@ public class Conversation : MonoBehaviour
     int currentDialog = 0;
 
     [SerializeField] bool repeateConversation;
+    [SerializeField] int repeatFirstConversation = 0;
 
     private void Start() {
         for(int i = 0; i < conversations.Length; i++) {
@@ -46,12 +47,14 @@ public class Conversation : MonoBehaviour
 
             currentDialog++;
         } else if(repeateConversation) {
-            currentConversation = 0;
-            currentDialog = 0;  
+            currentConversation = repeatFirstConversation;
+            currentDialog = 0;
         }
     }
 
     void NextDialog() {
+
+        if(currentConversation >= conversations.Length) { return; }
 
         for(int i = 0; i < conversations[currentConversation].events.Length; i++) {
             if(conversations[currentConversation].events[i].index + 1 == currentDialog) {
@@ -60,6 +63,7 @@ public class Conversation : MonoBehaviour
                 break;
             }
         }
+
 
         if(currentDialog < conversations[currentConversation].dialogs.Length) {
             DialogBoxController.PlayDialog?.Invoke(conversations[currentConversation].dialogs[currentDialog]);
