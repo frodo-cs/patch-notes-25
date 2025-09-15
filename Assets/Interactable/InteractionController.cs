@@ -21,6 +21,14 @@ namespace Player {
                 Destroy(gameObject);
         }
 
+        private void Start() {
+            UI.UserInterface.OnInventoryUpdated += SelectSelected;
+        }
+
+        void SelectSelected() {
+            ItemSelected = null;
+        }
+
         public void OnLeftClick(int index)
         {
             MultipleSelection = false;
@@ -83,6 +91,10 @@ namespace Player {
         public int GetLastIndexSelected()
         {
             return SelectedIndexes.Count == 0 ? -1 : SelectedIndexes[SelectedIndexes.Count - 1];
+        }
+
+        private void OnDestroy() {
+            UI.UserInterface.OnInventoryUpdated -= SelectSelected;
         }
     }
 }

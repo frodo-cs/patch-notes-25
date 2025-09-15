@@ -12,16 +12,19 @@
     border-top-color: rgb(255, 255, 255);
     border-bottom-color: rgb(255, 255, 255);
     font-size: 150%;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     position: relative;
     width: 20%;
     flex-wrap: nowrap;
     white-space: normal;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
 }
 
 .ResponseText:hover {
     color: rgb(255, 194, 0);
     font-size: 160%;
+    -unity-text-align: upper-center;
 }
 
 .Panel {
@@ -31,28 +34,32 @@
     border-right-width: 1px;
     border-bottom-width: 1px;
     border-left-width: 1px;
-    width: 90%;
+    width: 100%;
     align-self: center;
-    display: flex;
     bottom: 1%;
     border-left-color: rgb(255, 255, 255);
     border-right-color: rgb(255, 255, 255);
     border-top-color: rgb(255, 255, 255);
     border-bottom-color: rgb(255, 255, 255);
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin-top: 0;
     margin-right: 0;
     margin-bottom: 0;
     margin-left: 0;
-    padding-top: 5px;
-    padding-right: 15px;
-    padding-bottom: 5px;
-    padding-left: 15px;
     max-height: none;
     min-height: 20%;
-    height: auto;
+    visibility: visible;
+    align-content: auto;
+    display: flex;
+    flex-direction: column;
+    background-image: resource('dialoguebox');
+    -unity-background-scale-mode: scale-and-crop;
+    height: 188px;
+    padding-top: 3%;
+    padding-right: 2%;
+    padding-bottom: 2%;
+    padding-left: 2%;
 }
 
 .DialogActor {
@@ -107,5 +114,5 @@
     align-items: auto;
     visibility: visible;
     border-top-width: 2px;
-    -unity-font: url('project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=5bea87a57b4fbf34bb79f6d7e21ccad2&type=3#NotInter-Regular');
+    -unity-font: url("project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=5bea87a57b4fbf34bb79f6d7e21ccad2&type=3#NotInter-Regular");
 }
