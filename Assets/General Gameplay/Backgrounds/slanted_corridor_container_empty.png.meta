@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      slanted_corridor_container_empty_0: 1830297797345967677
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

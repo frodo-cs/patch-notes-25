@@ -453,34 +453,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8536170374286858083
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1626173288151740597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc8da40b34822454f8afc39d42c4f3ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: trash
-  dialog:
-    introAnim: {fileID: 0}
-    text: 
-    characterSpeaking:
-      expresionKey: 
-      character: {fileID: 0}
-    textSpeed: 1
-    hideOnDialogEnds: 1
-  neededObjects: []
-  onUnlock:
-    m_PersistentCalls:
-      m_Calls: []
-  droppables:
-  - {fileID: 11400000, guid: e057d9f45c20c934084d980bb2cedeb8, type: 2}
---- !u!1660057539 &9223372036854775807
+
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:

@@ -15,7 +15,18 @@ public class Conversation : MonoBehaviour
             }
         }
 
-        //StartDialog();
+        Debug.Log("b");
+        OnLoad();
+    }
+
+    protected virtual void OnLoad() {
+        var loadDialog = PersistentData.GetData?.Invoke(transform.name, "currentDialog");
+        var loadConversation = PersistentData.GetData?.Invoke(transform.name, "currentConversation");
+
+        if(loadDialog != null && loadConversation != null) {
+            currentDialog = (int)loadDialog.getData();
+            currentConversation = (int)loadConversation.getData();
+        }
     }
 
     public void StartDialog() {
@@ -27,6 +38,9 @@ public class Conversation : MonoBehaviour
         if(currentConversation < conversations.Length) {
             DialogBoxController.PlayDialog?.Invoke(conversations[currentConversation].dialogs[currentDialog]);
             DialogBoxController.OnDialogEnds += NextDialog;
+
+            PersistentData.Save?.Invoke(transform.name, new PersistentData.IntData("currentDialog", currentDialog));
+            PersistentData.Save?.Invoke(transform.name, new PersistentData.IntData("currentConversation", currentConversation));
 
             currentDialog++;
         }

@@ -224,6 +224,63 @@ MonoBehaviour:
     textSpeed: 0
     hideOnDialogEnds: 0
   sceneToMove: 12
+--- !u!1001 &1035328313
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8139534876883653543, guid: 3268b51b7fbb7a243b3a7bdd3742fef7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8139534876883653543, guid: 3268b51b7fbb7a243b3a7bdd3742fef7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.5000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8139534876883653543, guid: 3268b51b7fbb7a243b3a7bdd3742fef7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8139534876883653543, guid: 3268b51b7fbb7a243b3a7bdd3742fef7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8139534876883653543, guid: 3268b51b7fbb7a243b3a7bdd3742fef7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8139534876883653543, guid: 3268b51b7fbb7a243b3a7bdd3742fef7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8139534876883653543, guid: 3268b51b7fbb7a243b3a7bdd3742fef7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8139534876883653543, guid: 3268b51b7fbb7a243b3a7bdd3742fef7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8139534876883653543, guid: 3268b51b7fbb7a243b3a7bdd3742fef7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8139534876883653543, guid: 3268b51b7fbb7a243b3a7bdd3742fef7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284860126744044069, guid: 3268b51b7fbb7a243b3a7bdd3742fef7, type: 3}
+      propertyPath: m_Name
+      value: DrCoopefield
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3268b51b7fbb7a243b3a7bdd3742fef7, type: 3}
 --- !u!1001 &1186419169
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -324,6 +381,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 3466494110685875428, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
+      propertyPath: dialog.textSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4248252162900250354, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -366,7 +427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8685971892663127710, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -439,7 +500,7 @@ Transform:
   m_GameObject: {fileID: 1626173288151740597}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -679,7 +740,7 @@ Transform:
   m_GameObject: {fileID: 4643794672679967216}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.6213, y: -1.64, z: -0.035}
+  m_LocalPosition: {x: -4.6213, y: -1.64, z: 1.36}
   m_LocalScale: {x: 1.9, y: 1.9, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1075,3 +1136,4 @@ SceneRoots:
   - {fileID: 1410811708}
   - {fileID: 204535008}
   - {fileID: 6588768819589962163}
+  - {fileID: 1035328313}

@@ -135,10 +135,10 @@ TextureImporter:
       name: Lola_0
       rect:
         serializedVersion: 2
-        x: 246
-        y: 130
-        width: 321
-        height: 861
+        x: 242
+        y: 24
+        width: 330
+        height: 976
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,55 +153,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Lola_1
-      rect:
-        serializedVersion: 2
-        x: 298
-        y: 23
-        width: 108
-        height: 109
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 32a2f6716fbf33cd0800000000000000
-      internalID: -2579441127179474397
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Lola_2
-      rect:
-        serializedVersion: 2
-        x: 426
-        y: 26
-        width: 147
-        height: 111
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2227a1e50369409b0800000000000000
-      internalID: -5114798142304652766
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 9bc09e671db42494981b6704aa4451fb
     internalID: 0
     vertices: []
     indices: 

@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      weird_chute2_0: -5636264043871967328
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

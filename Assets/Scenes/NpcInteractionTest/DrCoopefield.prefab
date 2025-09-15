@@ -98,9 +98,9 @@ GameObject:
   - component: {fileID: 8139534876883653543}
   - component: {fileID: 5956046592258478571}
   - component: {fileID: 7993365128965752298}
-  - component: {fileID: 8953893198975367494}
   - component: {fileID: 2800784527215911764}
   - component: {fileID: 6720543160834065602}
+  - component: {fileID: 7921467088867590675}
   m_Layer: 0
   m_Name: DrCoopefield
   m_TagString: Untagged
@@ -216,7 +216,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 1}
   m_Size: {x: 4.38, y: 9}
   m_Direction: 0
---- !u!114 &8953893198975367494
+--- !u!114 &2800784527215911764
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -225,7 +225,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 8284860126744044069}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc37300055fddff4f82fd1aa42caf2e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 68f35e5acefdcce46b4c98432ac4ebf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conversation: {fileID: 7921467088867590675}
+--- !u!95 &6720543160834065602
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8284860126744044069}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 75fe6e96442b14b40a6573e43cdf634b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7921467088867590675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8284860126744044069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a06aa51762466814e9ab4263a6ccc8a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   conversations:
@@ -365,38 +400,3 @@ MonoBehaviour:
               m_StringArgument: Out
               m_BoolArgument: 1
             m_CallState: 2
---- !u!114 &2800784527215911764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8284860126744044069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68f35e5acefdcce46b4c98432ac4ebf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  conversation: {fileID: 8953893198975367494}
---- !u!95 &6720543160834065602
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8284860126744044069}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 75fe6e96442b14b40a6573e43cdf634b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0

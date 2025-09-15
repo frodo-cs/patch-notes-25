@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      far_away_room_with_screens_0: 2295499581443679328
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
