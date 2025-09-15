@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 namespace Player.UI
@@ -24,8 +25,7 @@ namespace Player.UI
 
         private void OnMouseClick(MouseUpEvent e)
         {
-            Debug.Log("START");
-            var result = ChangeScene.LoadScene?.Invoke(0);
+            SceneManager.LoadScene("0_1_cutscene");
         }
 
         private void OnDisable()

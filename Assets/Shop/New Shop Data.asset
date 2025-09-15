@@ -15,5 +15,5 @@ MonoBehaviour:
   slots:
   - obj: {fileID: 11400000, guid: 177c422dca8e28b48a12da752443602e, type: 2}
     price: 100
-  - obj: {fileID: 11400000, guid: f1e205983a4967a45b0b8824dbc2c7a6, type: 2}
+  - obj: {fileID: 11400000, guid: 0bae50abb581cb94eb1e8a5cac0e5550, type: 2}
     price: 100

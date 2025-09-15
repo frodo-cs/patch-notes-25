@@ -57,7 +57,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Scenes/17_ending.unity
     guid: 6416036e743d124459eb88500c4f3f39
   - enabled: 1
-    path: Assets/Scenes/Scenes/0_menu.unity
+    path: Assets/Scenes/Scenes/0_0_menu.unity
     guid: 5a49c01d245831d40b072b582f3dfb76
+  - enabled: 1
+    path: Assets/Scenes/Scenes/0_1_cutscene.unity
+    guid: 6bfc0667928ada84c9ef61e6661480ee
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
