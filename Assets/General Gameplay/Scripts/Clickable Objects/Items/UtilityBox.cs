@@ -16,7 +16,7 @@ namespace Player.Gameplay.ClickableItems
         protected override void Start()
         {
             base.Start();
-            var data = GetData(itemId, "LightsOn") as BoolData;
+            var data = GetData(itemId, "DoorOpened") as BoolData;
             if (data != null)
             {
                 lightsOn = data.value;
@@ -89,13 +89,21 @@ namespace Player.Gameplay.ClickableItems
 
             Puzzles.SwitchBoardPuzzle.OnPasswordCorrect -= OnPasswordCorrect;
             Puzzles.SwitchBoardPuzzle.OnExitClicked -= OnDestroyPuzzle;
-            Save(itemId, new BoolData("LightsOn", true));
+            lightsOn = true;
+            Save(itemId, new BoolData("DoorOpened", lightsOn));
 
+            dialog.text = "I think I heard somethingclick!";
+            OpenDialog();
+            DialogBoxController.OnDialogEnds += OnDoorOpen;
+
+        }
+
+        private void OnDoorOpen()
+        {
+            DialogBoxController.OnDialogEnds -= OnDoorOpen;
+            Save(itemId, new BoolData("DoorOpened", lightsOn));
             if (puzzleInstance != null)
                 Destroy(puzzleInstance);
-
-            dialog.text = "Turn on lights";
-            OpenDialog();
         }
 
         private void OnDestroy()
@@ -105,6 +113,7 @@ namespace Player.Gameplay.ClickableItems
 
             Puzzles.SwitchBoardPuzzle.OnPasswordCorrect -= OnPasswordCorrect;
             Puzzles.SwitchBoardPuzzle.OnExitClicked -= OnDestroyPuzzle;
+            DialogBoxController.OnDialogEnds -= OnDoorOpen;
         }
     }
 }

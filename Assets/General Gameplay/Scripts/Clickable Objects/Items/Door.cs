@@ -12,7 +12,6 @@ namespace Player.Gameplay.ClickableItems
 
         protected override void Start()
         {
-            base.Start();
             LoadDoorOpened();
         }
 
@@ -43,6 +42,9 @@ namespace Player.Gameplay.ClickableItems
             if (data != null)
             {
                 isDoorOpen = data.value;
+            } else
+            {
+                Debug.Log($"Loaded state for {itemId}: {data}");
             }
         }
     }
