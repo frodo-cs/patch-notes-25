@@ -51,27 +51,36 @@ namespace Player.Puzzles
             CheckPassword();
         }
 
-        private int GetSelectedValue(ToggleButtonGroup group)
+        private int? GetSelectedValue(ToggleButtonGroup group)
         {
             var options = group.value.GetActiveOptions(stackalloc int[group.value.length]);
-            return options.Length > 0 ? options[0] : -1;
+            if (options.Length == 0)
+                return null;
+            return options[0];
         }
 
         private void CheckPassword()
         {
+            var light = UI.rootVisualElement.Q<VisualElement>("Light");
             for (int i = 0; i < groups.Count; i++)
             {
-                int currentValue = GetSelectedValue(groups[i]);
-                if (currentValue != valueToMatch[i])
-                {
-                    UI.rootVisualElement.Q<VisualElement>("Light").style.backgroundColor = Color.red;
-                    return;
+                int? currentValue = GetSelectedValue(groups[i]);
 
+                if ((valueToMatch[i] == 0 && currentValue != null) ||
+                    (valueToMatch[i] == 1 && currentValue != 0))
+                {
+                    light.RemoveFromClassList("light-on");
+                    light.AddToClassList("light-off");
+                    return;
                 }
             }
-            UI.rootVisualElement.Q<VisualElement>("Light").style.backgroundColor = Color.green;
+
+            light.RemoveFromClassList("light-off");
+            light.AddToClassList("light-on");
             OnPasswordCorrect?.Invoke();
         }
+
+
 
     }
 }

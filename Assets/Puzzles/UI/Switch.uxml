@@ -1,49 +1,41 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Puzzles/UI/Switch.uss?fileID=7433441132597879392&amp;guid=ecd1da12485ea524caf3a86a42973148&amp;type=3#Switch" />
     <engine:VisualElement name="Background" style="flex-grow: 1; align-items: center; justify-content: center;">
-        <engine:VisualElement name="VisualElement" class="SwitchBoard" style="width: 25%; height: 50%;">
+        <engine:VisualElement name="VisualElement" class="SwitchBoard" style="width: 150px; height: 220px; padding-top: 35px; padding-right: 20px; padding-left: 20px;">
             <engine:Button text="x" name="Exit" parse-escape-sequences="true" style="top: 15px; right: 15px; position: absolute; width: 10px; height: 10px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px;" />
-            <engine:VisualElement style="flex-grow: 1; width: 100%; align-items: flex-end; height: 8px; max-height: 8px; min-height: 8px;">
-                <engine:VisualElement name="Light" style="flex-grow: 1; background-color: rgb(0, 0, 0); width: 8px; height: 8px; position: relative; top: auto; right: auto; max-width: 8px; min-width: 8px; max-height: 8px; min-height: 8px;" />
+                <engine:VisualElement style="flex-grow: 1; width: 100%; align-items: flex-end; height: 8px; max-height: 8px; min-height: 8px;">
+            <engine:VisualElement name="Light" class="light-off" style="flex-grow: 1; width: 8px; height: 8px; position: relative;" />
             </engine:VisualElement>
             <engine:VisualElement style="flex-grow: 1; margin-top: 0; align-items: center; justify-content: space-evenly; height: 80%;">
                 <engine:VisualElement name="Row1" style="flex-grow: 0; flex-direction: row; align-items: center; justify-content: space-evenly; align-self: center; align-content: auto; width: 100%;">
-                    <engine:ToggleButtonGroup name="ToggleButtonGroup" is-multiple-selection="false" value="01" enabled="true">
-                        <engine:Button label="Toggle" class="ToggleButton" />
+                    <engine:ToggleButtonGroup name="ToggleButtonGroup" is-multiple-selection="false" enabled="true" allow-empty-selection="true">
                         <engine:Button label="Toggle" class="ToggleButton" />
                     </engine:ToggleButtonGroup>
-                    <engine:ToggleButtonGroup name="ToggleButtonGroup" is-multiple-selection="false" value="01" enabled="true">
-                        <engine:Button label="Toggle" class="ToggleButton" />
+                    <engine:ToggleButtonGroup name="ToggleButtonGroup" is-multiple-selection="false" enabled="true" allow-empty-selection="true">
                         <engine:Button label="Toggle" class="ToggleButton" />
                     </engine:ToggleButtonGroup>
                 </engine:VisualElement>
                 <engine:VisualElement name="Row2" style="flex-grow: 0; flex-direction: row; align-items: center; justify-content: space-evenly; align-self: center; align-content: auto; width: 100%;">
-                    <engine:ToggleButtonGroup name="ToggleButtonGroup" is-multiple-selection="false" value="01" enabled="true">
-                        <engine:Button label="Toggle" class="ToggleButton" />
+                    <engine:ToggleButtonGroup name="ToggleButtonGroup" is-multiple-selection="false" enabled="true" allow-empty-selection="true">
                         <engine:Button label="Toggle" class="ToggleButton" />
                     </engine:ToggleButtonGroup>
-                    <engine:ToggleButtonGroup name="ToggleButtonGroup" is-multiple-selection="false" value="01" enabled="true">
-                        <engine:Button label="Toggle" class="ToggleButton" />
+                    <engine:ToggleButtonGroup name="ToggleButtonGroup" is-multiple-selection="false" enabled="true" allow-empty-selection="true">
                         <engine:Button label="Toggle" class="ToggleButton" />
                     </engine:ToggleButtonGroup>
                 </engine:VisualElement>
                 <engine:VisualElement name="Row3" style="flex-grow: 0; flex-direction: row; align-items: center; justify-content: space-evenly; align-self: center; align-content: auto; width: 100%;">
-                    <engine:ToggleButtonGroup name="ToggleButtonGroup" is-multiple-selection="false" value="01" enabled="true">
-                        <engine:Button label="Toggle" class="ToggleButton" />
+                    <engine:ToggleButtonGroup name="ToggleButtonGroup" is-multiple-selection="false" enabled="true" allow-empty-selection="true">
                         <engine:Button label="Toggle" class="ToggleButton" />
                     </engine:ToggleButtonGroup>
-                    <engine:ToggleButtonGroup name="ToggleButtonGroup" is-multiple-selection="false" value="01" enabled="true">
-                        <engine:Button label="Toggle" class="ToggleButton" />
+                    <engine:ToggleButtonGroup name="ToggleButtonGroup" is-multiple-selection="false" enabled="true" allow-empty-selection="true">
                         <engine:Button label="Toggle" class="ToggleButton" />
                     </engine:ToggleButtonGroup>
                 </engine:VisualElement>
                 <engine:VisualElement name="Row4" style="flex-grow: 0; flex-direction: row; align-items: center; justify-content: space-evenly; align-self: center; align-content: auto; width: 100%;">
-                    <engine:ToggleButtonGroup name="ToggleButtonGroup" is-multiple-selection="false" value="01" enabled="true">
-                        <engine:Button label="Toggle" class="ToggleButton" />
+                    <engine:ToggleButtonGroup name="ToggleButtonGroup" is-multiple-selection="false" enabled="true" allow-empty-selection="true">
                         <engine:Button label="Toggle" class="ToggleButton" />
                     </engine:ToggleButtonGroup>
-                    <engine:ToggleButtonGroup name="ToggleButtonGroup" is-multiple-selection="false" value="01" enabled="true">
-                        <engine:Button label="Toggle" class="ToggleButton" />
+                    <engine:ToggleButtonGroup name="ToggleButtonGroup" is-multiple-selection="false" enabled="true" allow-empty-selection="true">
                         <engine:Button label="Toggle" class="ToggleButton" />
                     </engine:ToggleButtonGroup>
                 </engine:VisualElement>
