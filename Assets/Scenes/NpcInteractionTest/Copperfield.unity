@@ -371,12 +371,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5880113555413819152, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
+      propertyPath: dialog.textSpeed
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6034b77d770c8746bbaf0aaea7a02e4, type: 3}
---- !u!1001 &2325714351536617318
+--- !u!1001 &2027326175
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -440,5 +444,5 @@ SceneRoots:
   - {fileID: 303692222}
   - {fileID: 1851402212}
   - {fileID: 4238431}
-  - {fileID: 2325714351536617318}
   - {fileID: 170301315}
+  - {fileID: 2027326175}
