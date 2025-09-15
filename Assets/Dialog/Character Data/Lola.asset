@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 426d1000e2e62a1408f3c9fbf11375e2, type: 3}
-  m_Name: Gabe
+  m_Name: Lola
   m_EditorClassIdentifier: 
   speechSounds: []
   expresions:
   - key: idle
-    sprite: {fileID: 6221130157647751367, guid: 60004aa6617213c4fa02e0f3fe6a4606, type: 3}
+    sprite: {fileID: 7207046561035158348, guid: d43348de2589b1d4f89dba7568e21129, type: 3}

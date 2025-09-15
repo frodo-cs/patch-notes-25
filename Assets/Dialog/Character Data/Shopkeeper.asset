@@ -15,4 +15,4 @@ MonoBehaviour:
   speechSounds: []
   expresions:
   - key: idle
-    sprite: {fileID: 6221130157647751367, guid: 60004aa6617213c4fa02e0f3fe6a4606, type: 3}
+    sprite: {fileID: 3740130581307631773, guid: aeff9993d4482bc4cbfe202e46defde3, type: 3}
