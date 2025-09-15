@@ -36,6 +36,8 @@ namespace Player.Gameplay.ClickableItems
             gameObject.GetComponent<Collider2D>().enabled = false;
             DialogBoxController.OnDialogEnds -= InstantiatePuzzle;
 
+            Interactable.ChangeState?.Invoke(Interactable.CurrentState.Paused);
+
             puzzleInstance = Instantiate(
                 puzzlePrefab,
                 Vector3.zero,
@@ -52,6 +54,9 @@ namespace Player.Gameplay.ClickableItems
 
         private void OnDestroyPuzzle()
         {
+
+            Interactable.ChangeState?.Invoke(Interactable.CurrentState.Normal);
+
             gameObject.GetComponent<Collider2D>().enabled = true;
             NumberInput.OnPasswordCorrect -= OnPasswordCorrect;
             NumberInput.OnExitPuzzle -= OnDestroyPuzzle;
