@@ -62,6 +62,8 @@ if (touched)
             gameObject.GetComponent<Collider2D>().enabled = false;  
             SaveDroppables();
             SaveTouched();
+
+            DialogBoxController.OnDialogEnds -= AddItems;
         }
 
         private void OnDestroy()

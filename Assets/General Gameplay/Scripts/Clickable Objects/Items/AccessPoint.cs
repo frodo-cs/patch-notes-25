@@ -17,11 +17,14 @@ namespace Player.Gameplay.ClickableItems
             GoToScene();
         }
 
-        private void GoToScene()
-        {
+        private void GoToScene() {
+            SoundTable.PlaySound?.Invoke($"movement_door_{Random.Range(0, 3)}");
+
             var result = ChangeScene.LoadScene?.Invoke(sceneToMove);
-            if (result == null || !result.Value)
+            if(result == null || !result.Value) {
                 Debug.LogWarning("Failed to change scene");
+                return;
+            }
         }
     }
 }

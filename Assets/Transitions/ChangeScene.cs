@@ -54,6 +54,8 @@ public class ChangeScene : MonoBehaviour
             transitionMaterial.SetFloat("_time", 0);
             isSceneTransitioning = true;
 
+            SoundTable.PlaySound?.Invoke($"movement_footsteps_{UnityEngine.Random.Range(0, 3)}");
+
             float t = 0;
             while(t <= 1) {
                 transitionMaterial.SetFloat("_time", t);
@@ -64,6 +66,7 @@ public class ChangeScene : MonoBehaviour
 
             SceneManager.LoadScene(indexBuild);
             currentCorrutine = null;
+
 
             yield return new WaitUntil(() => sceneRef == null);
 

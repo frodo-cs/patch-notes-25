@@ -36,6 +36,8 @@ namespace Player.Gameplay.ClickableItems
 
         protected override void AddItems()
         {
+            SoundTable.PlaySound?.Invoke(onPickSound);
+
             touched = true;
             Inventory.Inventory.AddItems?.Invoke(droppables);
             droppables = new Inventory.Object[0];

@@ -48,7 +48,8 @@ namespace Player.Puzzles
 
         private void OnGroupValueChanged(ChangeEvent<ToggleButtonGroupState> evt)
         {
-            CheckPassword();
+            Debug.Log(evt.target);
+            CheckPassword(evt.target as ToggleButtonGroup);  
         }
 
         private int? GetSelectedValue(ToggleButtonGroup group)
@@ -59,16 +60,26 @@ namespace Player.Puzzles
             return options[0];
         }
 
-        private void CheckPassword()
+        private void CheckPassword(ToggleButtonGroup lastGroup)
         {
             var light = UI.rootVisualElement.Q<VisualElement>("Light");
             for (int i = 0; i < groups.Count; i++)
             {
                 int? currentValue = GetSelectedValue(groups[i]);
+                if(groups[i] == lastGroup) { //Last switch
 
-                if ((valueToMatch[i] == 0 && currentValue != null) ||
-                    (valueToMatch[i] == 1 && currentValue != 0))
-                {
+                    if((valueToMatch[i] == 0 && currentValue != null) || (valueToMatch[i] == 1 && currentValue != 0)) {
+                        SoundTable.PlaySound?.Invoke("interact_switch");
+                    } else {
+                        SoundTable.PlaySound?.Invoke("interact_switch_correct");
+                    }
+                }
+            }
+
+            for(int i = 0; i < groups.Count; i++) {
+                int? currentValue = GetSelectedValue(groups[i]);
+
+                if((valueToMatch[i] == 0 && currentValue != null) || (valueToMatch[i] == 1 && currentValue != 0)) {
                     light.RemoveFromClassList("light-on");
                     light.AddToClassList("light-off");
                     return;

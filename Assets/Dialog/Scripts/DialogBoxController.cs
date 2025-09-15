@@ -146,6 +146,7 @@ namespace Cinematics {
 
 
             void DialogPostWrite() {
+                if(currentCorrutine != null)
                 StopCoroutine(currentCorrutine);
                 currentCorrutine = StartCoroutine(corrutineEnd());
 

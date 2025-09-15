@@ -534,6 +534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: comic1
+  onPickupSound: 
   obj: {fileID: 11400000, guid: 320358c5f4710424581456424448d974, type: 2}
 --- !u!212 &1604281233
 SpriteRenderer:
@@ -637,6 +638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: foreclosure
+  onPickupSound: paper_pickup
   obj: {fileID: 11400000, guid: 1f9f38a173e810546aa179bfd97b22c5, type: 2}
 --- !u!212 &2098822478
 SpriteRenderer:
@@ -1051,7 +1053,7 @@ MonoBehaviour:
     characterSpeaking:
       expresionKey: 
       character: {fileID: 0}
-    textSpeed: 1
+    textSpeed: 4
     hideOnDialogEnds: 1
   neededObjects: []
   onUnlock:
@@ -1060,6 +1062,7 @@ MonoBehaviour:
   droppables:
   - {fileID: 11400000, guid: e057d9f45c20c934084d980bb2cedeb8, type: 2}
   - {fileID: 11400000, guid: b6bf2b7144b619f4ebb72184beadef37, type: 2}
+  onPickSound: item_pickup
 --- !u!60 &8536170374286858084
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ namespace Player.Gameplay.ClickableItems
     public class ItemDroppables : ItemDependent
     {
         [SerializeField] protected Inventory.Object[] droppables;
-
+        [SerializeField] protected string onPickSound = "item_pickup";
 
         protected override void Start()
         {
@@ -24,6 +24,7 @@ namespace Player.Gameplay.ClickableItems
 
         protected virtual bool CanAddItems()
         {
+            SoundTable.PlaySound?.Invoke(onPickSound);
             return neededObjects.Length + Inventory.Inventory.SpaceLeft - droppables.Length >= 0;
 
         }

@@ -180,6 +180,8 @@ namespace Player.UI
 
         void OnBuyShopItem(VisualElement e, int index)
         {
+            if(DialogBoxController.IsDialogRunning.Invoke()) return;
+
             int? money = Currency.GetMoney?.Invoke();
             money = money == null ? 0 : money.Value;
 

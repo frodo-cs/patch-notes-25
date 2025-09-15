@@ -6,6 +6,9 @@ using static PersistentData;
 public class InventoryItem : MouseReaction
 {
     [SerializeField] string itemId;
+
+    [SerializeField] string onPickupSound;
+
     public Player.Inventory.Object obj;
     private bool hasBeenPicked;
 
@@ -24,6 +27,9 @@ public class InventoryItem : MouseReaction
     {
         hasBeenPicked = true;
         SavePicked();
+
+        SoundTable.PlaySound?.Invoke(onPickupSound == "" ? "item_pickup" : onPickupSound);
+
         if (addedObject == gameObject)
             Destroy(gameObject);
     }
