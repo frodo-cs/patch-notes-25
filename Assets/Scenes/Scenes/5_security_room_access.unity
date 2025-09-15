@@ -381,7 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 682a3020ad6fe09409386f0087910b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: access_door_bay
+  itemId: panic_room
   dialog:
     introAnim: {fileID: 0}
     text: 
